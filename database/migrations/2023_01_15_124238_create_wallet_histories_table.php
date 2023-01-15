@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('wallet_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('wallet_id');
+            $table->string('wallet_history_desc')->nullable();
+            $table->integer('wallet_history_money');
+            $table->string('wallet_history_status')->default('PENDING');
             $table->timestamps();
         });
     }

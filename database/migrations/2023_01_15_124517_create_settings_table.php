@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->integer('min_withdraw')->default(100000);
+            $table->integer('presentase_admin')->default(40);
+            $table->integer('presentase_teacher')->default(50);
+            $table->integer('presentase_affiliate')->default(10);
             $table->timestamps();
         });
     }

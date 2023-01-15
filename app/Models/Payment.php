@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
+    public function payment_method() {
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id', 'id');
+    }
 }

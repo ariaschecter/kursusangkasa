@@ -17,11 +17,26 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
+
+
+    public function teacher() {
+        return $this->belongsTo(Teacher::class, 'id', 'id');
+    }
+
+    public function wallet() {
+        return $this->belongsTo(Wallet::class, 'id', 'id');
+    }
+
+    public function payment() {
+        return $this->hasMany(Payment::class, 'user_id', 'id');
+    }
+
+    public function course_acces() {
+        return $this->hasMany(CourseAcces::class, 'user_id', 'id');
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.

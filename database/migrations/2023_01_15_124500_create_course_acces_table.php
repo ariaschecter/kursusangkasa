@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('course_acces', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id');
+            $table->foreignId('user_id');
+            $table->integer('course_acces_last')->default(1);
+            $table->date('course_acces_subscribe')->nullable();
             $table->timestamps();
         });
     }

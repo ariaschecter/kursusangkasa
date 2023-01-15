@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('sub_courses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id');
+            $table->integer('sub_course_no');
+            $table->string('sub_course_name');
             $table->timestamps();
         });
     }

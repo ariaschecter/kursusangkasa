@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->string('teacher_tag')->nullable();
+            $table->string('teacher_bio')->nullable();
             $table->timestamps();
         });
     }

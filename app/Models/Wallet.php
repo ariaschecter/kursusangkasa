@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Wallet extends Model
 {
     use HasFactory;
+    protected $guarded = [''];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'id', 'id');
+    }
+
+    public function wallet_history() {
+        return $this->hasMany(WalletHistory::class, 'wallet_id', 'id');
+    }
 }
