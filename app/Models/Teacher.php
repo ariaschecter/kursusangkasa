@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = [''];
 
     public function user() {
         return $this->belongsTo(User::class, 'id', 'id');

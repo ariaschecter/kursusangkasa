@@ -62,7 +62,7 @@
                       </div>
                   </div>
                   <!-- end row -->
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert City Data">
+                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert Category Data">
                   </form>
 
               </div>

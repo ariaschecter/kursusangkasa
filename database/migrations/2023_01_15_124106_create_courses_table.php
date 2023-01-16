@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('affiliate_percentage');
             $table->integer('course_enroll')->default(0);
             $table->integer('course_subscribe')->nullable(); // Day
-            $table->string('course_active');
+            $table->string('course_status')->default('ARCHIVE'); //active, archive, pending
             $table->timestamps();
         });
     }

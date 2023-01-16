@@ -41,7 +41,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.course.index') }}" class="waves-effect">
                         <i class="ri-book-2-line"></i>
                         <span>Course</span>
                     </a>

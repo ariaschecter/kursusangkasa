@@ -21,8 +21,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('wa_number');
             $table->string('password');
-            $table->string('role');
-            $table->string('affiliate_id');
+            $table->string('role')->default('USER');
+            $table->string('affiliate_id')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
