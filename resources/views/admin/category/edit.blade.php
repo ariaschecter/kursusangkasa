@@ -14,7 +14,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('home.category.index') }}">Category</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Category</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div>
@@ -24,39 +24,14 @@
     <!-- end page title -->
 
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-body">
 
-                <h4 class="card-title">Add Category </h4>
+                <h4 class="card-title">Edit Category </h4>
 
-                <form method="post" action="{{ route('home.category.edit', $category->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.category.update', $category->id) }}" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="row mb-3">
-                        <label for="city_id" class="col-sm-2 col-form-label">City</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default Select Example" name="city_id" id="city_id">
-                                <option>Open this select menu</option>
-                                @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}" {{ ($city->id == $category->city_id ? 'selected' : '') }}>{{ $city->city_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('city_id') <span class="text-danger"> {{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row mb-3">
-                        <label for="category_no" class="col-sm-2 col-form-label">Category Nomor</label>
-                        <div class="col-sm-10">
-                            <input name="category_no" class="form-control" type="number" value="{{ $category->category_no }}" id="category_no">
-                            @error('category_no')
-                                <span class="text-danger"> {{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
 
                     <div class="row mb-3">
                         <label for="category_name" class="col-sm-2 col-form-label">Category Name</label>
@@ -69,7 +44,25 @@
                     </div>
                     <!-- end row -->
 
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Category Data">
+                  <div class="row mb-3">
+                      <label for="category_picture" class="col-sm-2 col-form-label">Category Picture </label>
+                      <div class="col-sm-10">
+                        <input name="category_picture" class="form-control" type="file"  id="image">
+                            @error('category_picture')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                      </div>
+                  </div>
+                  <!-- end row -->
+
+                    <div class="row mb-3">
+                       <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
+                      <div class="col-sm-10">
+                          <img id="showImage" class="img-fluid img-thumbnail" src="{{ asset('storage/' . $category->category_picture) }}" alt="Image Show">
+                      </div>
+                  </div>
+                  <!-- end row -->
+                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert City Data">
                   </form>
 
               </div>
