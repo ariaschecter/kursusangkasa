@@ -17,6 +17,13 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
+                <li>
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
                 <li class="menu-title">Course</li>
 
                 <li>
@@ -27,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.category.index') }}" class="waves-effect">
                         <i class=" ri-bookmark-line"></i>
                         <span>Category</span>
                     </a>
