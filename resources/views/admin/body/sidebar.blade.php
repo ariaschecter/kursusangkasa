@@ -98,14 +98,14 @@
                 <li class="menu-title">Admin</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.user.index') }}" class="waves-effect">
                         <i class="ri-group-line"></i>
                         <span>User</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.teacher.index') }}" class="waves-effect">
                         <i class="ri-user-line"></i>
                         <span>Teacher</span>
                     </a>

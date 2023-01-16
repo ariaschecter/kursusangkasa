@@ -43,15 +43,15 @@
 
                                 <tbody>
                                     @php($i = 1)
-                                    @foreach ($users as $user)
+                                    @foreach ($teachers as $teacher)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $user->username }}</td>
-                                            <td><a target="_blank" href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
-                                            <td><a target="_blank" href="{{ 'https://wa.me/' . $user->wa_number }}">{{ $user->wa_number }}</a></td>
+                                            <td>{{ $teacher->user->username }}</td>
+                                            <td><a target="_blank" href="mailto:{{ $teacher->user->email }}">{{ $teacher->user->email }}</a></td>
+                                            <td><a target="_blank" href="{{ 'https://wa.me/' . $teacher->user->wa_number }}">{{ $teacher->user->wa_number }}</a></td>
                                             <td>
-                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('admin.user.edit', $teacher->user->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('admin.user.delete', $teacher->user->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

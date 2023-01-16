@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -54,6 +55,16 @@ Route::prefix('admin/')->group(function() {
         Route::get('/payment-method/edit/{payment_method}', 'edit')->name('admin.payment_method.edit');
         Route::post('/payment-method/edit/{payment_method}', 'update')->name('admin.payment_method.update');
         Route::get('/payment-method/delete/{payment_method}', 'destroy')->name('admin.payment_method.delete');
+    });
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/user', 'user_index')->name('admin.user.index');
+        Route::get('/teacher', 'teacher_index')->name('admin.teacher.index');
+        // Route::get('/user/add', 'create')->name('admin.user.add');
+        // Route::post('/user/add', 'store')->name('admin.user.store');
+        Route::get('/user/edit/{user}', 'edit')->name('admin.user.edit');
+        // Route::post('/user/edit/{user}', 'update')->name('admin.user.update');
+        Route::get('/user/delete/{user}', 'destroy')->name('admin.user.delete');
     });
 });
 
