@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('wa_number');
             $table->string('password');
             $table->string('role');
             $table->string('affiliate_id');
