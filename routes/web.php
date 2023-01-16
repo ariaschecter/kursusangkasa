@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,15 @@ Route::prefix('admin/')->group(function() {
         Route::get('/course/edit/{course}', 'edit')->name('admin.course.edit');
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');
         Route::get('/course/delete/{course}', 'destroy')->name('admin.course.delete');
+    });
+
+    Route::controller(PaymentMethodController::class)->group(function () {
+        Route::get('/payment-method', 'index')->name('admin.payment_method.index');
+        Route::get('/payment-method/add', 'create')->name('admin.payment_method.add');
+        Route::post('/payment-method/add', 'store')->name('admin.payment_method.store');
+        Route::get('/payment-method/edit/{payment_method}', 'edit')->name('admin.payment_method.edit');
+        Route::post('/payment-method/edit/{payment_method}', 'update')->name('admin.payment_method.update');
+        Route::get('/payment-method/delete/{payment_method}', 'destroy')->name('admin.payment_method.delete');
     });
 });
 

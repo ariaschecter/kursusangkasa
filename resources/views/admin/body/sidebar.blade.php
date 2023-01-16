@@ -73,7 +73,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.payment_method.index') }}" class="waves-effect">
                         <i class="ri-bank-card-line"></i>
                         <span>Payment Method</span>
                     </a>
