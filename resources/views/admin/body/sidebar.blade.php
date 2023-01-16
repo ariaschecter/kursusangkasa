@@ -17,12 +17,74 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">Course</li>
 
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
-                        <span>Dashboard</span>
+                        <span>Course Acces</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class=" ri-bookmark-line"></i>
+                        <span>Category</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-book-2-line"></i>
+                        <span>Course</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Wallet</li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-wallet-line"></i>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-history-line"></i>
+                        <span>Wallet History</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Payment</li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class=" ri-money-dollar-circle-line"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-bank-card-line"></i>
+                        <span>Payment Method</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Affiliate</li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class=" ri-vip-diamond-line"></i>
+                        <span>All Affiliate</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-gift-line"></i>
+                        <span>My Affiliate</span>
                     </a>
                 </li>
 
@@ -32,6 +94,20 @@
                     <a href="#" class="waves-effect">
                         <i class="ri-group-line"></i>
                         <span>User</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-user-line"></i>
+                        <span>Teacher</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="ri-settings-5-line"></i>
+                        <span>Setting</span>
                     </a>
                 </li>
 
