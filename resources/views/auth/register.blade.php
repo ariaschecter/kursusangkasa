@@ -25,7 +25,7 @@
 
         <!-- Whatsapp Number -->
         <div class="mt-4">
-            <x-input-label for="wa_number" :value="__('wa_number')" />
+            <x-input-label for="wa_number" :value="__('Whatsapp Number (Ex : 62812xxxxxxxx)')" />
             <x-text-input id="wa_number" class="block mt-1 w-full" type="number" name="wa_number" :value="old('wa_number')" required />
             <x-input-error :messages="$errors->get('wa_number')" class="mt-2" />
         </div>

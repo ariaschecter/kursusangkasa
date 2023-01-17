@@ -37,6 +37,7 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>WhatsApp Number</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,7 @@
                                             <td>{{ $user->username }}</td>
                                             <td><a target="_blank" href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
                                             <td><a target="_blank" href="{{ 'https://wa.me/' . $user->wa_number }}">{{ $user->wa_number }}</a></td>
+                                            <td>{{ $user->role }}</td>
                                             <td>
                                                 <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                                 <a href="{{ route('admin.user.delete', $user->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>

@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/dashboard', function () {
+    return view('admin.index')->name('dashboard');
 });
 
 
@@ -65,6 +65,8 @@ Route::prefix('admin/')->group(function() {
         Route::get('/user/edit/{user}', 'edit')->name('admin.user.edit');
         // Route::post('/user/edit/{user}', 'update')->name('admin.user.update');
         Route::get('/user/delete/{user}', 'destroy')->name('admin.user.delete');
+        Route::get('/setting', 'setting_index')->name('admin.setting.index');
+        Route::post('/setting/{setting}', 'setting_update')->name('admin.setting.update');
     });
 });
 

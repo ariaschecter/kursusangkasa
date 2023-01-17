@@ -112,7 +112,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.setting.index') }}" class="waves-effect">
                         <i class="ri-settings-5-line"></i>
                         <span>Setting</span>
                     </a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -44,6 +45,11 @@ class RegisteredUserController extends Controller
             'wa_number' => $request->wa_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'affiliate_id' => \App\Models\Setting::first()->default_affiliate,
+        ]);
+
+        Wallet::create([
+            'id' => $user->id,
         ]);
 
         event(new Registered($user));
