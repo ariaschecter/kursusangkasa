@@ -19,6 +19,8 @@
         </div>
         <!-- end page title -->
 
+        <a href="{{ $wallet->wallet_amount < $setting->min_withdraw ? '#' : route('admin.wallet.withdraw') }}" class="btn btn-primary mb-2">Withdraw</a>
+
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card">
@@ -43,7 +45,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Income</p>
-                                <h4 class="mb-2">938</h4>
+                                <h4 class="mb-2 text-info">Rp. {{ number_format($in, 0) }}</h4>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-success rounded-3">
@@ -60,7 +62,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Outcome</p>
-                                <h4 class="mb-2">8246</h4>
+                                <h4 class="mb-2 text-danger">Rp. {{ number_format($out, 0) }}</h4>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-danger rounded-3">
@@ -77,7 +79,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Total Affiliate</p>
-                                <h4 class="mb-2">29670</h4>
+                                <h4 class="mb-2">{{ $affiliate }} Person</h4>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-info rounded-3">

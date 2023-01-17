@@ -9,4 +9,8 @@ class WalletHistory extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function wallet() {
+        return $this->belongsTo(Wallet::class, 'wallet_id', 'id');
+    }
 }

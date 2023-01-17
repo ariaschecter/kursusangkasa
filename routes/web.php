@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', function () {
-    return view('admin.index')->name('dashboard');
-});
+    return view('admin.index');
+})->name('dashboard');
 
 
 Route::controller(DashboardController::class)->group(function () {
@@ -78,9 +79,17 @@ Route::prefix('admin/')->group(function() {
 
     Route::controller(WalletController::class)->group(function () {
         Route::get('/wallet', 'index')->name('admin.wallet.index');
+        Route::get('/wallet/withdraw', 'withdraw')->name('admin.wallet.withdraw');
+        Route::post('/wallet/withdraw', 'withdraw_store')->name('admin.wallet.withdraw.store');
         Route::post('/wallet/{wallet}', 'update')->name('admin.wallet.update');
-
     });
+
+    Route::controller(WithdrawController::class)->group(function () {
+        Route::get('/withdraw', 'index')->name('admin.withdraw.index');
+        Route::get('/withdraw/edit/{wallet_history}', 'edit')->name('admin.withdraw.edit');
+        Route::post('/withdraw/edit/{wallet_history}', 'update')->name('admin.withdraw.update');
+    });
+
 });
 
 require __DIR__.'/auth.php';

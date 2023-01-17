@@ -57,9 +57,9 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
-                        <i class="ri-history-line"></i>
-                        <span>Wallet History</span>
+                    <a href="{{ route('admin.withdraw.index') }}" class="waves-effect">
+                        <i class="ri-exchange-dollar-line"></i>
+                        <span>Withdraw</span>
                     </a>
                 </li>
 
