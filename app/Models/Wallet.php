@@ -15,6 +15,6 @@ class Wallet extends Model
     }
 
     public function wallet_history() {
-        return $this->hasMany(WalletHistory::class, 'wallet_id', 'id');
+        return $this->hasMany(WalletHistory::class, 'wallet_id', 'id')->orderBy('updated_at', 'DESC');
     }
 }

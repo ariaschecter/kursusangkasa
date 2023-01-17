@@ -50,7 +50,7 @@
                 <li class="menu-title">Wallet</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.wallet.index') }}" class="waves-effect">
                         <i class="ri-wallet-line"></i>
                         <span>Wallet</span>
                     </a>
