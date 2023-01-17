@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -67,6 +68,11 @@ Route::prefix('admin/')->group(function() {
         Route::get('/user/delete/{user}', 'destroy')->name('admin.user.delete');
         Route::get('/setting', 'setting_index')->name('admin.setting.index');
         Route::post('/setting/{setting}', 'setting_update')->name('admin.setting.update');
+    });
+
+    Route::controller(AffiliateController::class)->group(function () {
+        Route::get('/affiliate/all', 'affiliate_all')->name('admin.affiliate.all');
+        Route::get('/affiliate', 'index')->name('admin.affiliate.index');
     });
 });
 

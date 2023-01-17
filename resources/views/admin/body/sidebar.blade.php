@@ -82,14 +82,14 @@
                 <li class="menu-title">Affiliate</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.affiliate.all') }}" class="waves-effect">
                         <i class=" ri-vip-diamond-line"></i>
                         <span>All Affiliate</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.affiliate.index') }}" class="waves-effect">
                         <i class="ri-gift-line"></i>
                         <span>My Affiliate</span>
                     </a>
