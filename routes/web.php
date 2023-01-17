@@ -7,7 +7,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,12 +73,6 @@ Route::prefix('admin/')->group(function() {
     Route::controller(AffiliateController::class)->group(function () {
         Route::get('/affiliate/all', 'affiliate_all')->name('admin.affiliate.all');
         Route::get('/affiliate', 'index')->name('admin.affiliate.index');
-    });
-
-    Route::controller(WalletController::class)->group(function () {
-        Route::get('/wallet', 'index')->name('admin.wallet.index');
-        Route::post('/wallet/{wallet}', 'update')->name('admin.wallet.update');
-
     });
 });
 
