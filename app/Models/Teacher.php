@@ -11,7 +11,7 @@ class Teacher extends Model
     protected $guarded = [''];
 
     public function user() {
-        return $this->belongsTo(User::class, 'id', 'id');
+        return $this->belongsTo(User::class, 'id', 'id')->orderBy('name', 'ASC');
     }
 
     public function course() {

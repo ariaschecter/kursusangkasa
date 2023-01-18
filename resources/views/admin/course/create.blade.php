@@ -70,21 +70,10 @@
                     <!-- end row -->
 
                     <div class="row mb-3">
-                        <label for="price_new" class="col-sm-2 col-form-label">Price New</label>
+                        <label for="course_price" class="col-sm-2 col-form-label">Course Price</label>
                         <div class="col-sm-10">
-                            <input name="price_new" class="form-control" type="number" value="{{ old('price_new') }}" id="price_new">
-                            @error('price_new')
-                                <span class="text-danger"> {{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row mb-3">
-                        <label for="course_subscribe" class="col-sm-2 col-form-label">Course Duration (Day)<span class="btn btn-sm btn-warning rounded-pill">Leave blank if lifetime</span></label>
-                        <div class="col-sm-10">
-                            <input name="course_subscribe" class="form-control" type="number" value="{{ old('course_subscribe') }}" id="course_subscribe">
-                            @error('course_subscribe')
+                            <input name="course_price" class="form-control" type="number" value="{{ old('course_price') }}" id="course_price">
+                            @error('course_price')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>

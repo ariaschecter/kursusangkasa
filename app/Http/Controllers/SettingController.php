@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Image;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class SettingController extends Controller
 {
@@ -26,14 +27,20 @@ class SettingController extends Controller
         ]);
 
         $validated = $request->except(['_token', 'hero_image']);
-        $image = '';
         if ($request->hero_image) {
-            $image =Image::make($request->hero_image)->resize(738, 835)->store('upload/home');
+            $image = $request->file('hero_image');
+            $upload = 'upload/home/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+            Storage::delete($setting->hero_image);
+            Image::make($image)->resize(735, 835)->save('storage/' . $upload);
+        } else {
+            $upload = $setting->hero_image;
         }
 
-        $validated = $image;
+        $validated = $request->except(['_token', 'hero_image']);
+        $validated['hero_image'] = $upload;
 
         $setting->update($validated);
+
         $notification = [
             'message' => 'Setting Updated Successfully',
             'alert-type' => 'success',

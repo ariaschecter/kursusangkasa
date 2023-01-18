@@ -31,7 +31,7 @@
           </div>
           <div class="col-lg-5">
              <div class="tp-hero__img">
-                <img src="{{ asset('frontend/assets/img/hero/hero-img-1.png') }}" alt="hero">
+                <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="hero">
              </div>
           </div>
        </div>

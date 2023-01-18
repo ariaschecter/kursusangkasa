@@ -95,7 +95,7 @@
                     <h4 class="card-title">Home</h4>
 
                     <div class="row mb-3">
-                        <label for="hero_image" class="col-sm-2 col-form-label">Hero Image </label>
+                        <label for="hero_image" class="col-sm-2 col-form-label">Hero Image (735 x 835)</label>
                         <div class="col-sm-10">
                           <input name="hero_image" class="form-control" type="file"  id="image">
                               @error('hero_image')
@@ -108,8 +108,7 @@
                       <div class="row mb-3">
                          <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="img-fluid img-thumbnail" src="" alt="Image Show">
-                            {{-- {{ asset('storage/' . $setting->hero_image) }} --}}
+                            <img id="showImage" class="img-fluid img-thumbnail" src="{{ asset('storage/' . $setting->hero_image) }}" alt="Image Show">
                         </div>
                     </div>
                     <!-- end row -->

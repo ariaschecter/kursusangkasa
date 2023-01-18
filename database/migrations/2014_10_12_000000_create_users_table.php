@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('wa_number');
+            $table->string('user_picture')->default('upload/profile/user.png');
             $table->string('password');
             $table->string('role')->default('USER');
             $table->string('affiliate_id')->default(1);

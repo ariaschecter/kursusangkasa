@@ -30,8 +30,7 @@ class CourseController extends Controller
             'course_name' => 'required|unique:courses,course_name',
             'course_picture' => 'required|file|image|max:5120',
             'course_desc' => 'required',
-            'price_old' => 'required|integer',
-            'price_new' => 'required|integer',
+            'course_price' => 'required|integer',
         ]);
 
         $upload = $request->file('course_picture')->store('upload/course');
@@ -63,8 +62,7 @@ class CourseController extends Controller
         $request->validate([
             'category_id' => 'required|integer',
             'course_name' => ['required', Rule::unique('courses')->ignore($course->id, 'id')],
-            'price_old' => 'required|integer',
-            'price_new' => 'required|integer',
+            'course_price' => 'required|integer',
             'admin_percentage' => 'required|integer',
             'teacher_percentage' => 'required|integer',
             'affiliate_percentage' => 'required|integer',

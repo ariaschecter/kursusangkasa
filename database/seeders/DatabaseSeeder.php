@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Course;
 use App\Models\Category;
 use App\Models\Teacher;
 use App\Models\Wallet;
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'wa_number' => '6281234354675',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'role' => '<TEACHER></TEACHER>',
+            'role' => 'TEACHER',
             'affiliate_id' => 1,
         ]);
         \App\Models\User::factory()->create([
@@ -63,6 +64,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Setting::factory()->create([
             'default_affiliate' => 1,
         ]);
+        Course::factory(19)->create();
         Category::factory(5)->create();
         Teacher::factory()->create([
             'id' => 2
