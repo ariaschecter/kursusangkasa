@@ -92,6 +92,28 @@
                     </div>
                     <!-- end row -->
 
+                    <h4 class="card-title">Home</h4>
+
+                    <div class="row mb-3">
+                        <label for="hero_image" class="col-sm-2 col-form-label">Hero Image </label>
+                        <div class="col-sm-10">
+                          <input name="hero_image" class="form-control" type="file"  id="image">
+                              @error('hero_image')
+                                  <span class="text-danger"> {{ $message }}</span>
+                              @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                      <div class="row mb-3">
+                         <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
+                        <div class="col-sm-10">
+                            <img id="showImage" class="img-fluid img-thumbnail" src="" alt="Image Show">
+                            {{-- {{ asset('storage/' . $setting->hero_image) }} --}}
+                        </div>
+                    </div>
+                    <!-- end row -->
+
                     <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Setting Data">
                   </form>
 

@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <div class="vertical-menu">
 
     <div data-simplebar class="h-100">
@@ -8,7 +12,7 @@
                 <img src="{{ asset('backend/assets/images/users/logo-admin.jpg') }}" alt="" class="avatar-md rounded-circle">
             </div>
             <div class="mt-3">
-                <h4 class="font-size-16 mb-1">Name Here</h4>
+                <h4 class="font-size-16 mb-1">{{ $user->name }}</h4>
                 <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i> Online</span>
             </div>
         </div>

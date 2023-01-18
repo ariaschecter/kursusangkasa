@@ -5,8 +5,10 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
@@ -22,13 +24,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('home.index');
 });
 
-Route::get('/sidebar', function () {
-    return view('frontend.sidebar');
-});
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -76,6 +76,9 @@ Route::prefix('admin/')->group(function() {
         Route::get('/user/edit/{user}', 'edit')->name('admin.user.edit');
         // Route::post('/user/edit/{user}', 'update')->name('admin.user.update');
         Route::get('/user/delete/{user}', 'destroy')->name('admin.user.delete');
+    });
+
+    Route::controller(SettingController::class)->group(function () {
         Route::get('/setting', 'setting_index')->name('admin.setting.index');
         Route::post('/setting/{setting}', 'setting_update')->name('admin.setting.update');
     });

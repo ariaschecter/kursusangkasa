@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -45,7 +49,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    {{-- <a class="dropdown-item d-block" href="{{ route('logout') }}"><i class="ri-logout-box-r-line align-middle me-1"></i> Logout</a> --}}
+                    <a class="dropdown-item d-block" href="{{ route('logout') }}"><i class="ri-logout-box-r-line align-middle me-1"></i> Logout</a>
                 </div>
             </div>
         </div>

@@ -29,6 +29,16 @@ class DatabaseSeeder extends Seeder
             'affiliate_id' => 1,
         ]);
         \App\Models\User::factory()->create([
+            'name' => 'Teacher',
+            'username' => 'teacher',
+            'email' => 'teacher@gmail.com',
+            'email_verified_at' => now(),
+            'wa_number' => '6281234354675',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'role' => '<TEACHER></TEACHER>',
+            'affiliate_id' => 1,
+        ]);
+        \App\Models\User::factory()->create([
             'name' => 'Aria Maulana',
             'username' => 'email1',
             'email' => 'email1@gmail.com',
@@ -54,7 +64,9 @@ class DatabaseSeeder extends Seeder
             'default_affiliate' => 1,
         ]);
         Category::factory(5)->create();
-        Teacher::factory()->create();
+        Teacher::factory()->create([
+            'id' => 2
+        ]);
 
 
     }
