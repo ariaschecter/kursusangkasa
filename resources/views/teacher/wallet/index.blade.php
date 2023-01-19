@@ -1,5 +1,5 @@
-@extends('admin.admin_master')
-@section('admin')
+@extends('teacher.teacher_master')
+@section('teacher')
 <div class="page-content">
     <div class="container-fluid">
         <!-- start page title -->
@@ -10,7 +10,7 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Wallet</li>
                         </ol>
                     </div>
@@ -19,8 +19,8 @@
         </div>
         <!-- end page title -->
 
-        <a href="{{ $wallet->wallet_amount < $setting->min_withdraw ? '#' : route('admin.wallet.withdraw') }}" class="btn btn-primary mb-2">Withdraw</a>
-        <a href="{{ route('admin.wallet.method') }}" class="btn btn-warning ml-3 mb-2">Update Wallet Method</a>
+        <a href="{{ $wallet->wallet_amount < $setting->min_withdraw ? '#' : route('teacher.wallet.withdraw') }}" class="btn btn-primary mb-2">Withdraw</a>
+        <a href="{{ route('teacher.wallet.method') }}" class="btn btn-warning ml-3 mb-2">Update Wallet Method</a>
 
         <div class="row">
             <div class="col-xl-3 col-md-6">

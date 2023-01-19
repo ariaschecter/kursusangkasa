@@ -106,4 +106,95 @@ class CourseController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function teacher_index() {
+        $courses = Course::orderBy('created_at', 'DESC')->get();
+        return view('teacher.course.index', compact('courses'));
+    }
+
+    public function teacher_create() {
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        return view('teacher.course.create', compact('categories'));
+    }
+
+    public function teacher_store(Request $request) {
+        $setting = Setting::first();
+        $validated = $request->validate([
+            'category_id' => 'required|integer',
+            'course_name' => 'required|unique:courses,course_name',
+            'course_picture' => 'required|file|image|max:5120',
+            'course_desc' => 'required',
+            'price_old' => 'required|integer',
+            'price_new' => 'required|integer',
+        ]);
+
+        $upload = $request->file('course_picture')->store('upload/course');
+        $validated['teacher_id'] = Auth::id();
+        $validated['course_slug'] = Str::slug($request->course_name);
+        $validated['course_picture'] = $upload;
+        $validated['admin_percentage'] = $setting->presentase_admin;
+        $validated['teacher_percentage'] = $setting->presentase_teacher;
+        $validated['affiliate_percentage'] = $setting->presentase_affiliate;
+        $validated['course_subscribe'] = $request->course_subscribe;
+
+
+
+        Course::create($validated);
+
+        $notification = [
+            'message' => 'Category Inserted Successfully',
+            'alert-type' => 'success',
+        ];
+        return redirect()->route('teacher.course.index')->with($notification);
+    }
+
+    public function teacher_edit(Course $course) {
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        return view('teacher.course.edit', compact('course', 'categories'));
+    }
+
+    public function teacher_update(Request $request, Course $course) {
+        $request->validate([
+            'category_id' => 'required|integer',
+            'course_name' => ['required', Rule::unique('courses')->ignore($course->id, 'id')],
+            'price_old' => 'required|integer',
+            'price_new' => 'required|integer',
+            'course_status' => 'required',
+            'course_picture' => 'file|image|max:5120',
+            'course_desc' => 'required',
+        ]);
+
+        $validated = $request->except('_token');
+
+        if ($request->course_picture) {
+            Storage::delete($course->course_picture);
+            $course_picture = $request->file('course_picture')->store('upload/course');
+        } else {
+            $course_picture = $course->course_picture;
+        }
+
+        $validated = $request->except(['_token', 'course_picture']);
+        $validated['course_slug'] = Str::slug($request->course_name);
+        $validated['course_picture'] = $course_picture;
+
+        $course->update($validated);
+
+        $notification = [
+            'message' => 'Course Updated Successfully',
+            'alert-type' => 'success',
+        ];
+        return redirect()->route('teacher.course.index')->with($notification);
+    }
+
+    public function teacher_destroy(Course $course) {
+        Storage::delete($course->course_picture);
+        $course->delete();
+
+        $notification = [
+            'message' => 'Course Deleted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

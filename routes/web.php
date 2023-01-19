@@ -46,8 +46,38 @@ Route::get('/dashboard', function () {
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/admin/dashboard', 'admin_dashboard')->name('admin.dashboard');
+    Route::get('/instructor/dashboard', 'teacher_dashboard')->name('teacher.dashboard');
 });
 
+Route::prefix('instructor')->group(function() {
+    Route::controller(CourseController::class)->group(function () {
+        Route::get('/course', 'teacher_index')->name('teacher.course.index');
+        Route::get('/course/add', 'teacher_create')->name('teacher.course.add');
+        Route::post('/course/add', 'teacher_store')->name('teacher.course.store');
+        Route::get('/course/edit/{course}', 'teacher_edit')->name('teacher.course.edit');
+        Route::post('/course/edit/{course}', 'teacher_update')->name('teacher.course.update');
+        Route::get('/course/delete/{course}', 'teacher_destroy')->name('teacher.course.delete');
+    });
+
+    Route::controller(AffiliateController::class)->group(function () {
+        Route::get('/affiliate', 'teacher_index')->name('teacher.affiliate.index');
+    });
+
+    Route::controller(WalletController::class)->group(function () {
+        Route::get('/wallet', 'teacher_index')->name('teacher.wallet.index');
+        Route::get('/wallet/method', 'teacher_method')->name('teacher.wallet.method');
+        Route::post('/wallet/{wallet}', 'teacher_update')->name('teacher.wallet.update');
+        Route::get('/wallet/withdraw', 'teacher_withdraw')->name('teacher.wallet.withdraw');
+        Route::post('/wallet/withdraw', 'teacher_withdraw_store')->name('teacher.wallet.withdraw.store');
+    });
+
+    Route::controller(WithdrawController::class)->group(function () {
+        Route::get('/withdraw', 'teacher_index')->name('teacher.withdraw.index');
+        Route::get('/withdraw/edit/{wallet_history}', 'teacher_edit')->name('teacher.withdraw.edit');
+        Route::post('/withdraw/edit/{wallet_history}', 'teacher_update')->name('teacher.withdraw.update');
+    });
+
+});
 
 Route::prefix('admin/')->group(function() {
     Route::controller(CategoryController::class)->group(function () {
@@ -99,9 +129,10 @@ Route::prefix('admin/')->group(function() {
 
     Route::controller(WalletController::class)->group(function () {
         Route::get('/wallet', 'index')->name('admin.wallet.index');
+        Route::get('/wallet/method', 'method')->name('admin.wallet.method');
+        Route::post('/wallet/{wallet}', 'update')->name('admin.wallet.update');
         Route::get('/wallet/withdraw', 'withdraw')->name('admin.wallet.withdraw');
         Route::post('/wallet/withdraw', 'withdraw_store')->name('admin.wallet.withdraw.store');
-        Route::post('/wallet/{wallet}', 'update')->name('admin.wallet.update');
     });
 
     Route::controller(WithdrawController::class)->group(function () {
