@@ -59,10 +59,21 @@
                     <!-- end row -->
 
                     <div class="row mb-3">
-                        <label for="course_price" class="col-sm-2 col-form-label">Course Price</label>
+                        <label for="price_old" class="col-sm-2 col-form-label">Price Old</label>
                         <div class="col-sm-10">
-                            <input name="course_price" class="form-control" type="number" value="{{ $course->course_price }}" id="course_price">
-                            @error('course_price')
+                            <input name="price_old" class="form-control" type="number" value="{{ $course->price_old }}" id="price_old">
+                            @error('price_old')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row mb-3">
+                        <label for="price_new" class="col-sm-2 col-form-label">Price New</label>
+                        <div class="col-sm-10">
+                            <input name="price_new" class="form-control" type="number" value="{{ $course->price_new }}" id="price_new">
+                            @error('price_new')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>

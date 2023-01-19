@@ -63,6 +63,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Setting::factory()->create([
             'default_affiliate' => 1,
+            'hero_image' => 'upload/home/hero_image.jpg'
         ]);
         Course::factory(19)->create();
         Category::factory(5)->create();

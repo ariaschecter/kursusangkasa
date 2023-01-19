@@ -36,6 +36,7 @@
                                     <th>Teacher</th>
                                     <th>Category</th>
                                     <th>Course Name</th>
+                                    <th>Price New</th>
                                     <th>Course Price</th>
                                     <th>Enroll</th>
                                     <th>Status</th>
@@ -52,7 +53,7 @@
                                         <td>{{ $course->teacher->user->name }}</td>
                                         <td>{{ $course->category->category_name }}</td>
                                         <td>{{ $course->course_name }}</td>
-                                        <td>{{ number_format($course->course_price, 0) }}</td>
+                                        <td>{{ number_format($course->price_new, 0) }}</td>
                                         <td>{{ $course->course_enroll }}</td>
                                         <td>{{ $course->course_status }}</td>
                                         <td>

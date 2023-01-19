@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
         return [
             'category_name' => $name,
             'category_slug' => Str::slug($name),
-            'category_picture' => 'https://picsum.photos/id/237/200/200',
+            'category_picture' => 'upload/category/category.jpeg',
         ];
     }
 }

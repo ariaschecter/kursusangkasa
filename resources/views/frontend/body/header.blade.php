@@ -14,48 +14,17 @@
                    <div class="main-menu">
                       <nav id="mobile-menu">
                          <ul>
-                            <li class="has-dropdown">
-                               <a href="index.html">Home</a>
-                               <ul class="submenu">
-                                  <li><a href="index.html">Home Style 1</a></li>
-                                  <li><a href="index-2.html">Home Style 2</a></li>
-                                  <li><a href="index-3.html">Home Style 3</a></li>
-                               </ul>
+                            <li>
+                               <a href="{{ route('home.index') }}">Home</a>
                             </li>
                             <li>
-                               <a href="about-us.html">About</a>
+                               <a href="{{ route('home.category.index') }}">Category</a>
                             </li>
-                            <li class="has-dropdown">
-                               <a href="course.html">Courses</a>
-                               <ul class="submenu">
-                                  <li><a href="course-list.html">Courses List</a></li>
-                                  <li><a href="course.html">Courses Grid</a></li>
-                                  <li><a href="course-details.html">Course Details</a></li>
-                                  <li><a href="cart.html">Cart</a></li>
-                                  <li><a href="checkout.html">Checkout</a></li>
-                               </ul>
+                            <li>
+                               <a href="{{ route('home.course.index') }}">Course</a>
                             </li>
-                            <li class="has-dropdown">
-                               <a href="#">Pages</a>
-                               <ul class="submenu">
-                                  <li><a href="event.html">Events</a></li>
-                                  <li><a href="event-details.html">Event Details</a></li>
-                                  <li><a href="instructor.html">Instructor V1</a></li>
-                                  <li><a href="instructor-2.html">Instructor V2</a></li>
-                                  <li><a href="instructor-details.html">Instructor Details</a></li>
-                                  <li><a href="wishlist.html">Wishlist</a></li>
-                                  <li><a href="sign-in.html">Sign In</a></li>
-                                  <li><a href="sign-up.html">Sign Up</a></li>
-                                  <li><a href="faq.html">Faq</a></li>
-                                  <li><a href="404.html">404</a></li>
-                               </ul>
-                            </li>
-                            <li class="has-dropdown">
-                               <a href="blog.html">Blog</a>
-                               <ul class="submenu">
-                                  <li><a href="blog.html">Blog</a></li>
-                                  <li><a href="blog-details.html">Blog Details</a></li>
-                               </ul>
+                            <li>
+                               <a href="contact.html">About Us</a>
                             </li>
                             <li>
                                <a href="contact.html">Contact</a>

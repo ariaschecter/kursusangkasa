@@ -4526,6 +4526,23 @@ input[type=color] {
 .tp-courses__avata a:hover {
   color: var(--tp-theme-primary);
 }
+.tp-category__home {
+  margin-bottom: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+  position: relative;
+}
+.tp-category__home img {
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.tp-category__home a:hover {
+  color: var(--tp-theme-primary);
+}
 .tp-courses__price {
   padding-right: 30px;
   padding-left: 30px;

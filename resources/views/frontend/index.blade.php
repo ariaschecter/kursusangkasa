@@ -85,27 +85,37 @@
                 <div class="row">
                    <div class="col-12">
                       <div class="tp-brand_slider">
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-1.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-2.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-3.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-4.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-5.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-6.png') }}" alt="">
-                         </div>
-                         <div class="tp-brand__item">
-                            <img src="{{ asset('frontend/assets/img/brand/brand-2.png') }}" alt="">
-                         </div>
+                         <!-- Source -->
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
+                         <div class="tp-category__home">
+                            <img src="https://picsum.photos/id/237/200/200" alt="">
+                            {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
+                            <span><a href="#">Nama Category</a></span>
+                        </div>
 
                       </div>
                    </div>

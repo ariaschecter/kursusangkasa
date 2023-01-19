@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('course_slug');
             $table->string('course_picture');
             $table->text('course_desc');
-            $table->integer('course_price');
+            $table->integer('price_old');
+            $table->integer('price_new');
             $table->integer('admin_percentage');
             $table->integer('teacher_percentage');
             $table->integer('affiliate_percentage');

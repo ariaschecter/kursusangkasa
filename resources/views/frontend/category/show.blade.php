@@ -8,11 +8,13 @@
        <div class="row">
           <div class="col-xxl-12">
              <div class="breadcrumb__content p-relative z-index-1">
-                <h3 class="breadcrumb__title">Courses</h3>
+                <h3 class="breadcrumb__title">{{ $category->category_name }} Categories</h3>
                 <div class="breadcrumb__list">
                    <span><a href="{{ route('home.index') }}">Home</a></span>
                    <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-                   <span>courses</span>
+                   <span><a href="{{ route('home.category.index') }}">Category</a></span>
+                   <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                   <span>{{ $category->category_name }}</span>
                 </div>
              </div>
           </div>
