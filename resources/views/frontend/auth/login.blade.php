@@ -11,7 +11,7 @@
              <div class="breadcrumb__content p-relative z-index-1">
                 <h3 class="breadcrumb__title">Log In</h3>
                 <div class="breadcrumb__list">
-                   <span><a href="#">Home</a></span>
+                   <span><a href="{{ route('home.index') }}">Home</a></span>
                    <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
                    <span>Log In</span>
                 </div>
@@ -57,13 +57,15 @@
                             <input type="text" name="email" placeholder="e-mail address">
                             <i class="fal fa-envelope"></i>
                          </div>
+                         @error('email') <span class="text-danger"> {{ $message }}</span> @enderror
                       </div>
                       <div class="sign__input-wrapper mb-10">
                          <h5>Password</h5>
                          <div class="sign__input">
-                            <input type="text" name="password" placeholder="Password">
+                            <input type="password" name="password" placeholder="Password">
                             <i class="fal fa-lock"></i>
                          </div>
+                         @error('password') <span class="text-danger"> {{ $message }}</span> @enderror
                       </div>
                       <div class="sign__action d-sm-flex justify-content-between mb-30">
                          <div class="sign__forgot">
