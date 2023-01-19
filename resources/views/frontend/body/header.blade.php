@@ -5,7 +5,7 @@
              <div class="row align-items-center">
                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-6">
                    <div class="logo has-border">
-                      <a href="index.html">
+                      <a href="{{ route('home.index') }}">
                          <img src="{{ asset('frontend/assets/img/logo/white-logo.png') }}" alt="logo">
                       </a>
                    </div>
@@ -24,10 +24,10 @@
                                <a href="{{ route('home.course.index') }}">Course</a>
                             </li>
                             <li>
-                               <a href="contact.html">About Us</a>
+                               <a href="#">About Us</a>
                             </li>
                             <li>
-                               <a href="contact.html">Contact</a>
+                               <a href="#">Contact</a>
                             </li>
                          </ul>
                       </nav>
@@ -38,8 +38,8 @@
                       <div class="header-acttion-btns d-flex align-items-center d-none d-md-flex">
                          <a href="tel:+(443)003030266" class="tp-phone-btn d-none d-xl-block"><i class="fa-thin fa-phone"></i>+(443)00
                             303 0266 <span></span></a>
-                         <a href="contact.html" class="tp-btn br-0">
-                            <span>Book a Visit <i class="fa-regular fa-arrow-right"></i> </span>
+                         <a href="{{ route('login') }}" class="tp-btn br-0">
+                            <span>Login <i class="fa-regular fa-arrow-right"></i> </span>
                             <div class="transition"></div>
                          </a>
                       </div>

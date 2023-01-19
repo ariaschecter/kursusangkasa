@@ -22,7 +22,7 @@ class CourseFactory extends Factory
         $name = fake()->name();
         return [
             'teacher_id' => 2,
-            'category_id' => fake()->numberBetween(1, 5),
+            'category_id' => fake()->numberBetween(1, 6),
             'course_name' => $name,
             'course_slug' => Str::slug($name),
             'course_picture' => 'upload/course/course.jpg',
@@ -32,6 +32,7 @@ class CourseFactory extends Factory
             'admin_percentage' => $setting->presentase_admin,
             'teacher_percentage' => $setting->presentase_teacher,
             'affiliate_percentage' => $setting->presentase_affiliate,
+            'course_enroll' => fake()->numberBetween(300, 1000),
         ];
     }
 }

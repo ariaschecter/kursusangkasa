@@ -191,7 +191,7 @@
 		]
 	});
 
-	// tesimonial slider 
+	// tesimonial slider
 	$('.tp-testimonial__slider').slick({
 		autoplay: true,
 		autoplaySpeed: 4000,
@@ -226,7 +226,7 @@
 		]
 	});
 
-	// tesimonial slider 
+	// tesimonial slider
 	$('.tp-testimonial-2__slider').slick({
 		autoplay: true,
 		autoplaySpeed: 4000,
@@ -444,7 +444,7 @@
 			scrollTop: 0
 		}, '300');
 	});
-	
+
 	// 36. Data Countdown Js
     $('[data-countdown]').each(function() {
         var $this = $(this),

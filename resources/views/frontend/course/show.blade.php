@@ -42,7 +42,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      </div>
                      <div class="course__teacher-info-3">
                         <h5>Teacher</h5>
-                        <p><a href="#">{{ $course->teacher->user->name }}</a></p>
+                        <p><a href="#link">{{ $course->teacher->user->name }}</a></p>
                      </div>
                   </div>
                   <div class="course__update mr-80 mb-30">
@@ -89,7 +89,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      <div class="tab-pane fade active show" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <div class="mb-3" class="course__description">
                            <h3>Course Overview</h3>
-                           <div>{!! $course->course_desc !!}</div>
+                           <p>{{ $course->course_desc }}</p>
                         </div>
                      </div>
                      <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
@@ -97,11 +97,11 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                            <div class="accordion" id="course__accordion">
                               <div class="accordion-item mb-50">
                                 <h2 class="accordion-header" id="week-01">
-                                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#week-01-content" aria-expanded="true" aria-controls="week-01-content">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week-01-content" aria-expanded="false" aria-controls="week-01-content">
                                     Week 01
                                   </button>
                                 </h2>
-                                <div id="week-01-content" class="accordion-collapse collapse show" aria-labelledby="week-01" data-bs-parent="#course__accordion">
+                                <div id="week-01-content" class="accordion-collapse collapse" aria-labelledby="week-01" data-bs-parent="#course__accordion">
                                   <div class="accordion-body">
                                     <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
                                        <div class="course__curriculum-info">

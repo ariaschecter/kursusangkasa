@@ -1,11 +1,4 @@
-@php
-    if(isset($column)) {
-        $col = $column;
-    } else {
-        $col = 'col-lg-4';
-    }
-@endphp
-<div class="{{ $col }} col-md-6">
+<div class="col-lg-4 col-md-6">
     <div class="tp-courses__item mb-30">
         <div class="tp-courses__thumb w-img fix p-relative">
             <img src="{{ asset('storage/' . $course->course_picture) }}" alt="">

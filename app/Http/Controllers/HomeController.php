@@ -6,13 +6,17 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\Setting;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index() {
         $setting = Setting::first();
-        return view('frontend.index', compact('setting'));
+        $categories = Category::all();
+        $popular = Course::with('teacher', 'category')->orderBy('course_enroll')->limit(6)->get();
+        $latest_course = Course::with('teacher', 'category')->orderBy('created_at', 'DESC')->limit(3)->get();
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course'));
     }
 
     public function course_index() {
@@ -36,8 +40,8 @@ class HomeController extends Controller
         return view('frontend.category.show', compact('category', 'courses'));
     }
 
-    public function teacher_index() {
-        $teachers = Teacher::with('user')->get();
-        return view('frontend.course.index', compact('teachers'));
+    public function teacher_show(User $user) {
+        $teacher = Teacher::with('user', 'course')->findOrFail($user->id);
+        return view('frontend.teacher.show', compact('teacher'));
     }
 }

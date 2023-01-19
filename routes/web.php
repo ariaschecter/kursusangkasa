@@ -35,7 +35,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/course/{course:course_slug}', 'course_show')->name('home.course.show');
     Route::get('/category', 'category_index')->name('home.category.index');
     Route::get('/category/{category:category_slug}', 'category_show')->name('home.category.show');
-    Route::get('/teacher', 'teacher_index')->name('home.teacher.index');
     Route::get('/teacher/{user:username}', 'teacher_show')->name('home.teacher.show');
 });
 

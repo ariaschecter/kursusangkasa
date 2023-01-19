@@ -65,10 +65,12 @@ class DatabaseSeeder extends Seeder
             'default_affiliate' => 1,
             'hero_image' => 'upload/home/hero_image.jpg'
         ]);
-        Course::factory(19)->create();
-        Category::factory(5)->create();
+        Course::factory(20)->create();
+        Category::factory(6)->create();
         Teacher::factory()->create([
-            'id' => 2
+            'id' => 2,
+            'teacher_tag' => 'Time To Operating The System',
+            'teacher_bio' => fake()->paragraph(6, true),
         ]);
 
 

@@ -5,7 +5,9 @@
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <title>Tutorgo - Online Learning and Education HTML Template - shared on themelock.com</title>
-   <meta name="description" content="">
+   @isset($course)
+    <meta name="description" content="{{ Str::of($course->course_desc)->limit(155) }}">
+   @endisset
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <!-- Place favicon.ico in the root directory -->
