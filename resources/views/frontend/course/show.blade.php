@@ -8,11 +8,11 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
    <div class="row">
       <div class="col-xxl-12">
          <div class="breadcrumb__content p-relative z-index-1">
-            <h3 class="breadcrumb__title">Courses Details</h3>
+            <h3 class="breadcrumb__title">Course Details</h3>
             <div class="breadcrumb__list">
                <span><a href="{{ route('home.index') }}">Home</a></span>
                <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-               <span>Courses Details</span>
+               <span>{{ $course->course_name }}</span>
             </div>
          </div>
       </div>
@@ -42,7 +42,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      </div>
                      <div class="course__teacher-info-3">
                         <h5>Teacher</h5>
-                        <p><a href="#link">{{ $course->teacher->user->name }}</a></p>
+                        <p><a href="{{ route('home.teacher.show', $course->teacher->user->username) }}">{{ $course->teacher->user->name }}</a></p>
                      </div>
                   </div>
                   <div class="course__update mr-80 mb-30">
@@ -94,143 +94,37 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      </div>
                      <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
                         <div class="course__curriculum">
-                           <div class="accordion" id="course__accordion">
-                              <div class="accordion-item mb-50">
-                                <h2 class="accordion-header" id="week-01">
-                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week-01-content" aria-expanded="false" aria-controls="week-01-content">
-                                    Week 01
-                                  </button>
-                                </h2>
-                                <div id="week-01-content" class="accordion-collapse collapse" aria-labelledby="week-01" data-bs-parent="#course__accordion">
-                                  <div class="accordion-body">
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg class="document" viewBox="0 0 24 24">
-                                             <path class="st0" d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z"></path>
-                                             <polyline class="st0" points="14,2 14,8 20,8 "></polyline>
-                                             <line class="st0" x1="16" y1="13" x2="8" y2="13"></line>
-                                             <line class="st0" x1="16" y1="17" x2="8" y2="17"></line>
-                                             <polyline class="st0" points="10,9 9,9 8,9 "></polyline>
-                                          </svg>
-                                          <h3> <span>Reading:</span> Ut enim ad minim veniam</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 14 minutes</span>
-                                          <span class="question">2 questions</span>
-                                       </div>
+                            @foreach ($course->sub_course as $sub_course)
+                            <div class="accordion" id="course__accordion-2">
+                                <div class="accordion-item mb-50">
+                                    <h2 class="accordion-header" id="week-02">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $sub_course->sub_course_slug }}" aria-expanded="true" aria-controls="{{ $sub_course->sub_course_slug }}">
+                                            {{ $sub_course->sub_course_name }}
+                                        </button>
+                                    </h2>
+
+                                    <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse  collapse show" aria-labelledby="week-02" data-bs-parent="#course__accordion-2">
+                                    <div class="accordion-body">
+                                        @foreach ($sub_course->list_course as $list_course)
+                                            <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
+                                                <div class="course__curriculum-info">
+                                                    <svg viewBox="0 0 24 24">
+                                                        <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
+                                                        <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
+                                                        </svg>
+                                                    <h3>{{ $list_course->list_course_name }}</h3>
+                                                </div>
+                                                {{-- <div class="course__curriculum-meta">
+                                                    <span class="time"> <i class="icon_clock_alt"></i> 15 minutes</span>
+                                                </div> --}}
+                                            </div>
+                                        @endforeach
+
                                     </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg viewBox="0 0 24 24">
-                                             <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
-                                             <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
-                                             </svg>
-                                          <h3> <span>Video: </span> Greetings and introduction</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 15 minutes</span>
-                                       </div>
                                     </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg viewBox="0 0 16 16">
-                                             <path class="st0" d="M2,12V8c0-3.3,2.9-6,6.4-6s6.4,2.7,6.4,6v4"></path>
-                                             <path class="st0" d="M14.8,12.7c0,0.7-0.6,1.3-1.4,1.3h-0.7c-0.8,0-1.4-0.6-1.4-1.3v-2c0-0.7,0.6-1.3,1.4-1.3h2.1V12.7z M2,12.7  C2,13.4,2.6,14,3.3,14H4c0.7,0,1.3-0.6,1.3-1.3v-2c0-0.7-0.6-1.3-1.3-1.3H2V12.7z"></path>
-                                          </svg>
-                                          <h3> <span>Audio:</span> Interactive lesson</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 7 minutes</span>
-                                          <span class="question">3 questions</span>
-                                       </div>
-                                    </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg class="document" viewBox="0 0 24 24">
-                                             <path class="st0" d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z"></path>
-                                             <polyline class="st0" points="14,2 14,8 20,8 "></polyline>
-                                             <line class="st0" x1="16" y1="13" x2="8" y2="13"></line>
-                                             <line class="st0" x1="16" y1="17" x2="8" y2="17"></line>
-                                             <polyline class="st0" points="10,9 9,9 8,9 "></polyline>
-                                          </svg>
-                                          <h3> <span>Reading: </span> Ut enim ad minim veniam</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 22 minutes</span>
-                                       </div>
-                                    </div>
-                                  </div>
                                 </div>
-                              </div>
-                           </div>
-                           <div class="accordion" id="course__accordion-2">
-                              <div class="accordion-item mb-50">
-                                <h2 class="accordion-header" id="week-02">
-                                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#week-02-content" aria-expanded="true" aria-controls="week-02-content">
-                                    Week 02
-                                  </button>
-                                </h2>
-                                <div id="week-02-content" class="accordion-collapse  collapse show" aria-labelledby="week-02" data-bs-parent="#course__accordion-2">
-                                  <div class="accordion-body">
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg class="document" viewBox="0 0 24 24">
-                                             <path class="st0" d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z"></path>
-                                             <polyline class="st0" points="14,2 14,8 20,8 "></polyline>
-                                             <line class="st0" x1="16" y1="13" x2="8" y2="13"></line>
-                                             <line class="st0" x1="16" y1="17" x2="8" y2="17"></line>
-                                             <polyline class="st0" points="10,9 9,9 8,9 "></polyline>
-                                          </svg>
-                                          <h3> <span>Reading:</span> Ut enim ad minim veniam</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 14 minutes</span>
-                                       </div>
-                                    </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg viewBox="0 0 24 24">
-                                             <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
-                                             <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
-                                             </svg>
-                                          <h3> <span>Video: </span> Greetings and introduction</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 15 minutes</span>
-                                       </div>
-                                    </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg viewBox="0 0 16 16">
-                                             <path class="st0" d="M2,12V8c0-3.3,2.9-6,6.4-6s6.4,2.7,6.4,6v4"></path>
-                                             <path class="st0" d="M14.8,12.7c0,0.7-0.6,1.3-1.4,1.3h-0.7c-0.8,0-1.4-0.6-1.4-1.3v-2c0-0.7,0.6-1.3,1.4-1.3h2.1V12.7z M2,12.7  C2,13.4,2.6,14,3.3,14H4c0.7,0,1.3-0.6,1.3-1.3v-2c0-0.7-0.6-1.3-1.3-1.3H2V12.7z"></path>
-                                             </svg>
-                                          <h3> <span>Audio:</span> Interactive lesson</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 7 minutes</span>
-                                          <span class="question">2 questions</span>
-                                       </div>
-                                    </div>
-                                    <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                       <div class="course__curriculum-info">
-                                          <svg class="document" viewBox="0 0 24 24">
-                                             <path class="st0" d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z"></path>
-                                             <polyline class="st0" points="14,2 14,8 20,8 "></polyline>
-                                             <line class="st0" x1="16" y1="13" x2="8" y2="13"></line>
-                                             <line class="st0" x1="16" y1="17" x2="8" y2="17"></line>
-                                             <polyline class="st0" points="10,9 9,9 8,9 "></polyline>
-                                          </svg>
-                                          <h3> <span>Reading: </span> Ut enim ad minim veniam</h3>
-                                       </div>
-                                       <div class="course__curriculum-meta">
-                                          <span class="time"> <i class="icon_clock_alt"></i> 22 minutes</span>
-                                       </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
+                            </div>
+                            @endforeach
                         </div>
                      </div>
                      <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
@@ -534,7 +428,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                         <div class="course__video-thumb w-img mb-25">
                            <img src="{{ asset('storage/' . $course->course_picture) }}" alt="">
                            <div class="course__video-play">
-                              <a href="https://www.youtube.com/watch?v=nVIsH_F-Lmw" clas data-fancybox="" class="play-btn popup-video"> <i class="fas fa-play"></i> </a>
+                              <a href="{{ $list_course->list_course_link }}" clas data-fancybox="" class="play-btn popup-video"> <i class="fas fa-play"></i> </a>
                            </div>
                         </div>
                         <div class="course__video-meta mb-25 d-flex align-items-center justify-content-between">
@@ -596,7 +490,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                            </ul>
                         </div>
                         <div class="course__enroll-btn p-relative z-index-1">
-                           <a href="#" class="tp-btn w-100">
+                           <a href="{{ route('home.payment.create', $course->course_slug) }}" class="tp-btn w-100">
                               <span>Enroll <i class="fa-regular fa-arrow-right"></i> </span>
                               <div class="transition"></div>
                            </a>

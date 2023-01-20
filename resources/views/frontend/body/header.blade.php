@@ -10,7 +10,7 @@
                       </a>
                    </div>
                 </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-7 d-none d-lg-block">
+                <div class="col-xxl-5 col-xl-5 col-lg-6 d-none d-lg-block">
                    <div class="main-menu">
                       <nav id="mobile-menu">
                          <ul>
@@ -33,13 +33,16 @@
                       </nav>
                    </div>
                 </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-3 col-md-6 col-6">
+                <div class="col-xxl-5 col-xl-5 col-lg-4 col-md-6 col-6">
                    <div class="tp-header__main-right d-flex justify-content-end align-items-center pl-30">
                       <div class="header-acttion-btns d-flex align-items-center d-none d-md-flex">
-                         <a href="tel:+(443)003030266" class="tp-phone-btn d-none d-xl-block"><i class="fa-thin fa-phone"></i>+(443)00
-                            303 0266 <span></span></a>
-                         <a href="{{ route('login') }}" class="tp-btn br-0">
-                            <span>Login <i class="fa-regular fa-arrow-right"></i> </span>
+                         <a href="tel:+(443)003030266" class="tp-phone-btn d-none d-xl-block"><i class="fa-thin fa-phone"></i>+(62)812 3537 5978 <span></span></a>
+                         <a href="{{ route('login') }}" class="tp-btn">
+                            <span>Login</span>
+                            <div class="transition"></div>
+                         </a>
+                         <a href="{{ route('register') }}" class="tp-btn">
+                            <span>Register</span>
                             <div class="transition"></div>
                          </a>
                       </div>

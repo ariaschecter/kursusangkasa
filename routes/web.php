@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListCourseController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
@@ -38,6 +39,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/category', 'category_index')->name('home.category.index');
     Route::get('/category/{category:category_slug}', 'category_show')->name('home.category.show');
     Route::get('/teacher/{user:username}', 'teacher_show')->name('home.teacher.show');
+});
+
+Route::middleware('auth')->controller(PaymentController::class)->group(function () {
+    Route::get('/payment/{course:course_slug}', 'create')->name('home.payment.create');
+    Route::post('/payment/{course:course_slug}', 'store')->name('home.payment.store');
 });
 
 
@@ -119,6 +125,10 @@ Route::prefix('admin/')->group(function() {
         Route::get('/course/edit/{course}', 'edit')->name('admin.course.edit');
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');
         Route::get('/course/delete/{course}', 'destroy')->name('admin.course.delete');
+    });
+
+    Route::controller(PaymentController::class)->group(function () {
+        Route::get('/payment', 'index')->name('admin.payment.index');
     });
 
     Route::controller(PaymentMethodController::class)->group(function () {

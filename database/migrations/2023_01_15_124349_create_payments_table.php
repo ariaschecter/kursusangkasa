@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
+            $table->string('payment_ref');
             $table->foreignId('user_id');
             $table->foreignId('course_id');
             $table->foreignId('payment_method_id');

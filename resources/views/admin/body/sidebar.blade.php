@@ -70,7 +70,7 @@
                 <li class="menu-title">Payment</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.payment.index') }}" class="waves-effect">
                         <i class=" ri-money-dollar-circle-line"></i>
                         <span>Payment</span>
                     </a>

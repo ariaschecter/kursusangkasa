@@ -22,3 +22,10 @@ $(function(){
         })
     });
 });
+
+$('.popup-image').magnificPopup({
+    type: 'image',
+    gallery: {
+        enabled: true
+    }
+});

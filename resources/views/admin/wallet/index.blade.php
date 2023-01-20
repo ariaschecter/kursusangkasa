@@ -19,8 +19,9 @@
         </div>
         <!-- end page title -->
 
-        <a href="{{ $wallet->wallet_amount < $setting->min_withdraw ? '#' : route('admin.wallet.withdraw') }}" class="btn btn-primary mb-2">Withdraw</a>
-        <a href="{{ route('admin.wallet.method') }}" class="btn btn-warning ml-3 mb-2">Update Wallet Method</a>
+        <a href="{{ $wallet->wallet_amount < $setting->min_withdraw ? '#' : route('admin.wallet.withdraw') }}" class="btn btn-primary mb-2 col-lg-2">Withdraw</a>
+        <p class="btn btn-danger ml-3 mb-2 col-lg-7">Minimum Withdraw : Rp. {{ number_format($setting->min_withdraw) }}</p>
+        <a href="{{ route('admin.wallet.method') }}" class="btn btn-warning ml-3 mb-2 col-lg-2">Update Wallet Method</a>
 
         <div class="row">
             <div class="col-xl-3 col-md-6">

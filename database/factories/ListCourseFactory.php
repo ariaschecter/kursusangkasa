@@ -19,9 +19,10 @@ class ListCourseFactory extends Factory
     {
         return [
             'list_course_slug' => Str::random(14),
+            'course_id' => 1,
             'sub_course_id' => fake()->numberBetween(0, 5),
             'list_course_name' => fake()->name(),
-            'list_course_link' => Str::random(10),
+            'list_course_link' => 'https://www.youtube.com/watch?v=WW0ncSSTtwo',
         ];
     }
 }

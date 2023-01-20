@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\ListCourse;
 use App\Models\Setting;
+use App\Models\SubCourse;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,9 +27,11 @@ class HomeController extends Controller
     }
 
     public function course_show(Course $course) {
-        $course = Course::with('teacher', 'category')->findOrFail($course->id);
+        $course = Course::with('teacher', 'category', 'sub_course.list_course')->findOrFail($course->id);
+        $sub_course = SubCourse::where('course_id', $course->id)->orderBy('sub_course_no', 'ASC')->first();
+        $list_course = ListCourse::where('sub_course_id', $sub_course->id)->first();
         $relateds = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->limit(5)->get();
-        return view('frontend.course.show', compact('course', 'relateds'));
+        return view('frontend.course.show', compact('course', 'relateds', 'list_course'));
     }
 
     public function category_index() {
