@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\ListCourse;
+use App\Models\SubCourse;
 use App\Models\Teacher;
 use App\Models\Wallet;
 
@@ -65,13 +67,14 @@ class DatabaseSeeder extends Seeder
             'default_affiliate' => 1,
             'hero_image' => 'upload/home/hero_image.jpg'
         ]);
-        Course::factory(20)->create();
-        Category::factory(6)->create();
+        Course::factory(6)->create();
+        Category::factory()->create();
         Teacher::factory()->create([
             'id' => 2,
             'teacher_tag' => 'Time To Operating The System',
             'teacher_bio' => fake()->paragraph(6, true),
         ]);
+        SubCourse::factory(5)->create();
 
 
     }

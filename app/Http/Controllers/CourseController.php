@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Setting;
+use App\Models\SubCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,11 @@ class CourseController extends Controller
     public function index() {
         $courses = Course::orderBy('course_status', 'DESC')->get();
         return view('admin.course.index', compact('courses'));
+    }
+
+    public function show(Course $course) {
+        $course = Course::with('sub_course.list_course')->findOrFail($course->id);
+        return view('admin.course.show', compact('course'));
     }
 
     public function create() {
@@ -110,6 +116,11 @@ class CourseController extends Controller
     public function teacher_index() {
         $courses = Course::orderBy('created_at', 'DESC')->get();
         return view('teacher.course.index', compact('courses'));
+    }
+
+    public function teacher_show(Course $course) {
+        $course = Course::with('sub_course.list_course')->where('teacher_id', Auth::id())->findOrFail($course->id);
+        return view('teacher.course.show', compact('course'));
     }
 
     public function teacher_create() {

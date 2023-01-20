@@ -14,7 +14,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('teacher.course.index') }}">Category</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('teacher.course.index') }}">Course</a></li>
                         <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </div>

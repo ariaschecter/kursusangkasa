@@ -15,7 +15,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('list_courses', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
+            $table->string('list_course_slug');
+            $table->foreignId('course_id');
             $table->foreignId('sub_course_id');
             $table->string('list_course_name');
             $table->string('list_course_link');

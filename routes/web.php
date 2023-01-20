@@ -6,9 +6,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListCourseController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubCourseController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
@@ -45,19 +47,39 @@ Route::get('/dashboard', function () {
 
 
 Route::controller(DashboardController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/admin/dashboard', 'admin_dashboard')->name('admin.dashboard');
     Route::get('/instructor/dashboard', 'teacher_dashboard')->name('teacher.dashboard');
 });
 
-Route::prefix('instructor')->group(function() {
+Route::middleware('auth')->prefix('instructor')->group(function() {
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course', 'teacher_index')->name('teacher.course.index');
         Route::get('/course/add', 'teacher_create')->name('teacher.course.add');
         Route::post('/course/add', 'teacher_store')->name('teacher.course.store');
-        Route::get('/course/edit/{course}', 'teacher_edit')->name('teacher.course.edit');
-        Route::post('/course/edit/{course}', 'teacher_update')->name('teacher.course.update');
-        Route::get('/course/delete/{course}', 'teacher_destroy')->name('teacher.course.delete');
+        Route::get('/course/show/{course:course_slug}', 'teacher_show')->name('teacher.course.show');
+        Route::get('/course/edit/{course:course_slug}', 'teacher_edit')->name('teacher.course.edit');
+        Route::post('/course/edit/{course:course_slug}', 'teacher_update')->name('teacher.course.update');
+        Route::get('/course/delete/{course:course_slug}', 'teacher_destroy')->name('teacher.course.delete');
     });
+
+    Route::controller(SubCourseController::class)->group(function () {
+        Route::get('/sub-course/add/{course:course_slug}', 'teacher_create')->name('teacher.sub_course.add');
+        Route::post('/sub-course/add/{course:course_slug}', 'teacher_store')->name('teacher.sub_course.store');
+        Route::get('/sub-course/edit/{subcourse:sub_course_slug}', 'teacher_edit')->name('teacher.sub_course.edit');
+        Route::post('/sub-course/edit/{subcourse:sub_course_slug}', 'teacher_update')->name('teacher.sub_course.update');
+        Route::get('/sub-course/delete/{subcourse:sub_course_slug}', 'teacher_destroy')->name('teacher.sub_course.delete');
+    });
+
+    Route::controller(ListCourseController::class)->group(function () {
+        Route::get('/list-course/add/{course:course_slug}', 'teacher_create')->name('teacher.list_course.add');
+        Route::post('/list-course/add/{course:course_slug}', 'teacher_store')->name('teacher.list_course.store');
+        Route::get('/list-course/edit/{listcourse:list_course_slug}', 'teacher_edit')->name('teacher.list_course.edit');
+        Route::post('/list-course/edit/{listcourse:list_course_slug}', 'teacher_update')->name('teacher.list_course.update');
+        Route::get('/list-course/delete/{listcourse:list_course_slug}', 'teacher_destroy')->name('teacher.list_course.delete');
+    });
+
+
 
     Route::controller(AffiliateController::class)->group(function () {
         Route::get('/affiliate', 'teacher_index')->name('teacher.affiliate.index');
@@ -93,6 +115,7 @@ Route::prefix('admin/')->group(function() {
         Route::get('/course', 'index')->name('admin.course.index');
         Route::get('/course/add', 'create')->name('admin.course.add');
         Route::post('/course/add', 'store')->name('admin.course.store');
+        Route::get('/course/show/{course}', 'show')->name('admin.course.show');
         Route::get('/course/edit/{course}', 'edit')->name('admin.course.edit');
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');
         Route::get('/course/delete/{course}', 'destroy')->name('admin.course.delete');

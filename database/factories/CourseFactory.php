@@ -22,7 +22,8 @@ class CourseFactory extends Factory
         $name = fake()->name();
         return [
             'teacher_id' => 2,
-            'category_id' => fake()->numberBetween(1, 6),
+            // 'category_id' => fake()->numberBetween(1, 6),
+            'category_id' => 1,
             'course_name' => $name,
             'course_slug' => Str::slug($name),
             'course_picture' => 'upload/course/course.jpg',

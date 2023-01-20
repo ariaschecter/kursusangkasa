@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ListCourse extends Model
 {
     use HasFactory;
-    protected $guarded = [''];
+    protected $guarded = ['id'];
 
     public function sub_course() {
         return $this->belongsTo(SubCourse::class, 'sub_course_id', 'id');
+    }
+
+    public function course() {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 }

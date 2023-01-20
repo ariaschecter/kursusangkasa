@@ -19,7 +19,7 @@ class Course extends Model
     }
 
     public function sub_course() {
-        return $this->hasMany(SubCourse::class, 'course_id', 'id');
+        return $this->hasMany(SubCourse::class, 'course_id', 'id')->orderBy('sub_course_no', 'ASC');
     }
 
     public function payment() {
