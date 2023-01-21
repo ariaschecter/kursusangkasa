@@ -129,6 +129,8 @@ Route::prefix('admin/')->group(function() {
 
     Route::controller(PaymentController::class)->group(function () {
         Route::get('/payment', 'index')->name('admin.payment.index');
+        Route::get('/payment/accept/{payment}', 'accept')->name('admin.payment.accept');
+        Route::get('/payment/decline/{payment}', 'decline')->name('admin.payment.decline');
     });
 
     Route::controller(PaymentMethodController::class)->group(function () {

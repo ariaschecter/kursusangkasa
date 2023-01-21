@@ -49,14 +49,14 @@
                                         <td>{{ $payment->course->course_name }}</td>
                                         <td>{{ $payment->payment_method->payment_name }}</td>
                                         <td>Rp. {{ number_format($payment->payment_price, 0) }}</td>
-                                        {{-- <td><img src="{{ asset('storage/' . $payment->payment_picture) }}" class="img-fluid" alt=""></td> --}}
                                         <td>
                                             <a href="{{ asset('storage/' . $payment->payment_picture) }}" clas data-fancybox="" class="play-btn popup-image">Show Picture </a>
                                         </td>
                                         <td>
-                                            {{-- <a href="{{ route('admin.course.show', $course->id) }}" class="btn btn-success sm" title="Show Data"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('admin.course.edit', $course->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('admin.course.delete', $course->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a> --}}
+                                            @if($payment->payment_status == 'PENDING')
+                                                <a href="{{ route('admin.payment.accept', $payment->id) }}" class="btn btn-info sm" title="Accept Payment" id="accept"><i class="fas fa-check"></i></a>
+                                                <a href="{{ route('admin.payment.decline', $payment->id) }}" class="btn btn-danger sm" title="Decline Payment" id="decline"><i class="fas fa-ban"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
