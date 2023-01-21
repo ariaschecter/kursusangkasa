@@ -9,7 +9,6 @@ use App\Models\Setting;
 use App\Models\SubCourse;
 use App\Models\Teacher;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

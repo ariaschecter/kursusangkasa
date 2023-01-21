@@ -28,7 +28,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/phpinfo', function() {
-    return phpinfo();
+    $course = \App\Models\Course::first();
+    return view('user.access', compact('course'));
 });
 
 
