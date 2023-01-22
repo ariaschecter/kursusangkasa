@@ -101,4 +101,9 @@ class PaymentController extends Controller
         Payment::create($validated);
         return redirect()->route('home.course.index');
     }
+
+    public function user_index() {
+        $payments = Payment::with('user', 'course', 'payment_method')->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        return view('user.payment.index', compact('payments'));
+    }
 }

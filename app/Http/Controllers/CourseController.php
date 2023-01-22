@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseAcces;
 use App\Models\Setting;
 use App\Models\SubCourse;
 use Illuminate\Http\Request;
@@ -207,5 +208,14 @@ class CourseController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function user_index() {
+        $courses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
+        return view('user.course.index', compact('courses'));
+    }
+
+    public function user_continue(Course $course) {
+        dd($course);
     }
 }

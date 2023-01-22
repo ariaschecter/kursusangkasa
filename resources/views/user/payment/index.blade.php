@@ -1,5 +1,5 @@
-@extends('admin.admin_master')
-@section('admin')
+@extends('user.user_master')
+@section('user')
 <div class="page-content">
     <div class="container-fluid">
 
@@ -11,7 +11,7 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Payment</li>
                         </ol>
                     </div>
@@ -30,21 +30,24 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Status</th>
+                                    <th>#</th>
                                     <th>Ref</th>
                                     <th>Course</th>
                                     <th>Payment Method</th>
                                     <th>Price</th>
                                     <th>Picture</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
+                                @php($i = 1)
                                 @foreach ($payments as $payment)
                                     <tr>
-                                        <td>{{ $payment->payment_status }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td>#{{ $payment->payment_ref }}</td>
                                         <td>{{ $payment->course->course_name }}</td>
                                         <td>{{ $payment->payment_method->payment_method }}</td>
@@ -52,12 +55,9 @@
                                         <td>
                                             <a href="{{ asset('storage/' . $payment->payment_picture) }}" clas data-fancybox="" class="play-btn popup-image">Show Picture </a>
                                         </td>
-                                        <td>
-                                            @if($payment->payment_status == 'PENDING')
-                                                <a href="{{ route('admin.payment.accept', $payment->id) }}" class="btn btn-info sm" title="Accept Payment" id="accept"><i class="fas fa-check"></i></a>
-                                                <a href="{{ route('admin.payment.decline', $payment->id) }}" class="btn btn-danger sm" title="Decline Payment" id="decline"><i class="fas fa-ban"></i></a>
-                                            @endif
-                                        </td>
+                                        <td>{{ $payment->payment_status }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($payment->created_at)->toDateString() }}</td>
+                                        <td><a href="#">Chat Admin</a></td>
                                     </tr>
                                 @endforeach
 

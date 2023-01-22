@@ -71,7 +71,7 @@
 
                 <li>
                     <a href="{{ route('admin.payment.index') }}" class="waves-effect">
-                        <i class=" ri-money-dollar-circle-line"></i>
+                        <i class="ri-money-dollar-circle-line"></i>
                         <span>Payment</span>
                     </a>
                 </li>

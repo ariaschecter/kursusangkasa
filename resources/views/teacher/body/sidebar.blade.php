@@ -46,15 +46,6 @@
                     </a>
                 </li>
 
-                <li class="menu-title">Payment</li>
-
-                <li>
-                    <a href="#" class="waves-effect">
-                        <i class=" ri-money-dollar-circle-line"></i>
-                        <span>Payment</span>
-                    </a>
-                </li>
-
                 <li class="menu-title">Affiliate</li>
 
                 <li>

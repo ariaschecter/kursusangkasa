@@ -22,7 +22,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('teacher.dashboard') }}" class="waves-effect">
+                    <a href="{{ route('user.dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
@@ -31,34 +31,34 @@
                 <li class="menu-title">Course</li>
 
                 <li>
-                    <a href="{{ route('teacher.course.index') }}" class="waves-effect">
+                    <a href="{{ route('user.course.index') }}" class="waves-effect">
                         <i class="ri-book-2-line"></i>
                         <span>Course</span>
-                    </a>
-                </li>
-
-                <li class="menu-title">Wallet</li>
-
-                <li>
-                    <a href="{{ route('teacher.wallet.index') }}" class="waves-effect">
-                        <i class="ri-wallet-line"></i>
-                        <span>Wallet</span>
                     </a>
                 </li>
 
                 <li class="menu-title">Payment</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
-                        <i class=" ri-money-dollar-circle-line"></i>
+                    <a href="{{ route('user.payment.index') }}" class="waves-effect">
+                        <i class="ri-money-dollar-circle-line"></i>
                         <span>Payment</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Wallet</li>
+
+                <li>
+                    <a href="{{ route('user.wallet.index') }}" class="waves-effect">
+                        <i class="ri-wallet-line"></i>
+                        <span>Wallet</span>
                     </a>
                 </li>
 
                 <li class="menu-title">Affiliate</li>
 
                 <li>
-                    <a href="{{ route('teacher.affiliate.index') }}" class="waves-effect">
+                    <a href="{{ route('user.affiliate.index') }}" class="waves-effect">
                         <i class="ri-gift-line"></i>
                         <span>My Affiliate</span>
                     </a>

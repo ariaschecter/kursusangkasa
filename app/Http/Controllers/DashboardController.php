@@ -20,7 +20,9 @@ class DashboardController extends Controller
             case 'TEACHER':
                 return redirect()->route('teacher.dashboard')->with($notification);
                 break;
-            
+            case 'USER':
+                return redirect()->route('user.dashboard')->with($notification);
+                break;
         }
     }
 
@@ -30,5 +32,9 @@ class DashboardController extends Controller
 
     public function teacher_dashboard() {
         return view('teacher.index');
+    }
+
+    public function user_dashboard() {
+        return view('user.index');
     }
 }

@@ -27,14 +27,19 @@
         <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        {{-- Magnific Popup --}}
-        <link rel="stylesheet" href="{{ asset('backend/assets/css/magnific-popup.css') }}">
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-        {{-- Tags Input --}}
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
         {{-- Toastr --}}
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/meanmenu.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome-pro.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/elegent-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css') }}">
 
     </head>
 
@@ -80,7 +85,6 @@
 
         <!-- JAVASCRIPT -->
         <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
@@ -130,6 +134,22 @@
 
         {{-- Tags Input --}}
         <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
+
+        <script src="{{ asset('frontend/assets/js/vendor/jquery.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/vendor/waypoints.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/bootstrap-bundle.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/meanmenu.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/slick.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/magnific-popup.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/parallax.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/nice-select.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/counterup.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/wow.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/isotope-pkgd.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/imagesloaded-pkgd.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/ajax-form.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/countdown.js') }}"></script>
+        <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
 
         <script>
