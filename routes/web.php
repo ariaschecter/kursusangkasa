@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -70,6 +71,10 @@ Route::middleware('auth')->prefix('instructor')->group(function() {
         Route::get('/course/delete/{course:course_slug}', 'teacher_destroy')->name('teacher.course.delete');
     });
 
+    Route::controller(CourseAccesController::class)->group(function () {
+        Route::get('/course-acces', 'index')->name('admin.course_acces.index');
+    });
+
     Route::controller(SubCourseController::class)->group(function () {
         Route::get('/sub-course/add/{course:course_slug}', 'teacher_create')->name('teacher.sub_course.add');
         Route::post('/sub-course/add/{course:course_slug}', 'teacher_store')->name('teacher.sub_course.store');
@@ -108,7 +113,7 @@ Route::middleware('auth')->prefix('instructor')->group(function() {
 
 });
 
-Route::prefix('admin/')->group(function() {
+Route::middleware('auth')->prefix('admin/')->group(function() {
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category', 'index')->name('admin.category.index');
         Route::get('/category/add', 'create')->name('admin.category.add');
@@ -166,7 +171,7 @@ Route::prefix('admin/')->group(function() {
     Route::controller(WalletController::class)->group(function () {
         Route::get('/wallet', 'index')->name('admin.wallet.index');
         Route::get('/wallet/method', 'method')->name('admin.wallet.method');
-        Route::post('/wallet/{wallet}', 'update')->name('admin.wallet.update');
+        Route::post('/wallet/update/{wallet}', 'update')->name('admin.wallet.update');
         Route::get('/wallet/withdraw', 'withdraw')->name('admin.wallet.withdraw');
         Route::post('/wallet/withdraw', 'withdraw_store')->name('admin.wallet.withdraw.store');
     });

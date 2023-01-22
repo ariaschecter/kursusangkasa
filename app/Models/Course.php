@@ -22,6 +22,10 @@ class Course extends Model
         return $this->hasMany(SubCourse::class, 'course_id', 'id')->orderBy('sub_course_no', 'ASC');
     }
 
+    public function list_course() {
+        return $this->hasMany(ListCourse::class, 'course_id', 'id');
+    }
+
     public function payment() {
         return $this->hasMany(Payment::class, 'course_id', 'id');
     }

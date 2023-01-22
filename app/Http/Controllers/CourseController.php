@@ -114,7 +114,7 @@ class CourseController extends Controller
     }
 
     public function teacher_index() {
-        $courses = Course::orderBy('created_at', 'DESC')->get();
+        $courses = Course::orderBy('created_at', 'DESC')->where('teacher_id', Auth::id())->get();
         return view('teacher.course.index', compact('courses'));
     }
 

@@ -1,6 +1,6 @@
 @extends('user.user_master')
 
-@section('frontend')
+@section('user')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="col-12 col-xl-9">
     <div class="nav">
@@ -48,12 +48,12 @@
                 </div>
                 <div class="col-12">
                     <div class="course-details__content">
-                        <div class="embed-responsive embed-responsive-21by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xseJ57EL3E0"></iframe>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item rounded" src="https://www.youtube.com/embed/xseJ57EL3E0" allowfullscreen></iframe>
                           </div>
                         {{-- <iframe   class="course__img w-img mb-30" allow="fullscreen"></iframe> --}}
                         <h2 class="courses-title mb-30">Title</h2>
-                        <div class="courses-tag-btn">
+                        <div class="courses-tag-btn mb-3">
                             <a href="#" class="btn btn-primary col-md-2">Prev</a>
                             <a href="#" class="btn btn-primary col-md-2" style="float: right">Next</a>
                         </div>
@@ -88,13 +88,13 @@
                              @foreach ($course->sub_course as $sub_course)
                              <div class="accordion" id="course__accordion-2">
                                  <div class="accordion-item mb-50">
-                                     <h2 class="accordion-header" id="week-02">
+                                     <h2 class="accordion-header" id="{{ $sub_course->id }}">
                                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $sub_course->sub_course_slug }}" aria-expanded="true" aria-controls="{{ $sub_course->sub_course_slug }}">
                                              {{ $sub_course->sub_course_name }}
                                          </button>
                                      </h2>
 
-                                     <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse  collapse show" aria-labelledby="week-02" data-bs-parent="#course__accordion-2">
+                                     <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse collapse show" aria-labelledby="{{ $sub_course->id }}" data-bs-parent="#course__accordion-2">
                                      <div class="accordion-body">
                                          @foreach ($sub_course->list_course as $list_course)
                                              <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
@@ -416,6 +416,9 @@
 
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 @endsection
 

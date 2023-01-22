@@ -46,7 +46,7 @@
         <div id="layout-wrapper">
 
 
-          @include('teacher.body.header')
+          @include('admin.body.header')
 
             <!-- ========== Left Sidebar Start ========== -->
            @include('teacher.body.sidebar')
@@ -62,7 +62,7 @@
                @yield('teacher')
                 <!-- End Page-content -->
 
-                @include('teacher.body.footer')
+                @include('admin.body.footer')
 
 
             </div>

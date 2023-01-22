@@ -97,13 +97,13 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                             @foreach ($course->sub_course as $sub_course)
                             <div class="accordion" id="course__accordion-2">
                                 <div class="accordion-item mb-50">
-                                    <h2 class="accordion-header" id="week-02">
+                                    <h2 class="accordion-header" id="{{ $sub_course->id }}">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $sub_course->sub_course_slug }}" aria-expanded="true" aria-controls="{{ $sub_course->sub_course_slug }}">
                                             {{ $sub_course->sub_course_name }}
                                         </button>
                                     </h2>
 
-                                    <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse  collapse show" aria-labelledby="week-02" data-bs-parent="#course__accordion-2">
+                                    <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse  collapse show" aria-labelledby="{{ $sub_course->id }}" data-bs-parent="#course__accordion-2">
                                     <div class="accordion-body">
                                         @foreach ($sub_course->list_course as $list_course)
                                             <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">

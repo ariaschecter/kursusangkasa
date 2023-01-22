@@ -31,7 +31,7 @@
                 <li class="menu-title">Course</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.course_acces.index') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Course Acces</span>
                     </a>
