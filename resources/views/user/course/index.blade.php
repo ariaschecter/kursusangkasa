@@ -29,16 +29,25 @@
                         <h4 class="card-title">All Course Data</h4>
                         <div class="card-deck row">
                             @foreach ($courses as $acces)
+                                        @php
+                                            $lifetime = $acces->course_acces_subscribe;
+                                            $date = new \Carbon\Carbon($lifetime);
+                                            $gte = $date->gte(\Carbon\Carbon::now());
+                                        @endphp
                                 <div class="card col-3">
                                     <a href="{{ route('user.course.continue', $acces->course->course_slug) }}"><img class="card-img-top" src="{{ asset('storage/' . $acces->course->course_picture) }}" alt="Card image cap"></a>
                                     <div class="card-body">
                                         <a href="{{ route('user.course.continue', $acces->course->course_slug) }}"><h5 class="card-title">{{ $acces->course->course_name }}</h5></a>
                                     <p class="card-text">{{ Str::of($acces->course->course_desc)->limit(100) }}</p>
                                     <div class="card-footer">
-                                        @if ($lifetime = $acces->course_acces_subscribe == null)
+                                        @if ($lifetime == null)
                                         <small class="h6 text-primary">Fulltime Access</small>
                                         @else
-                                        <small class="h6 text-danger">Until {{ \Carbon\Carbon::parse($acces->course_acces_subscribe)->diffForHumans() }}</small>
+                                            @if($gte)
+                                            <small class="h6 text-danger">Until {{ \Carbon\Carbon::parse($lifetime)->toDateString() }}</small>
+                                            @else
+                                            <small class="h6 text-danger">Course Access is over</small>
+                                            @endif
                                         @endif
                                     </div>
                                     </div>
