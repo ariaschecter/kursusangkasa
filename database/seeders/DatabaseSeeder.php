@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         \App\Models\User::factory()->create([
-            'name' => 'Aria Maulana',
-            'username' => 'acielana',
-            'email' => 'acielana@gmail.com',
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
             'wa_number' => '6281234354675',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
@@ -42,9 +42,9 @@ class DatabaseSeeder extends Seeder
             'affiliate_id' => 1,
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Aria Maulana',
-            'username' => 'email1',
-            'email' => 'email1@gmail.com',
+            'name' => 'user',
+            'username' => 'user1',
+            'email' => 'user1@gmail.com',
             'email_verified_at' => now(),
             'wa_number' => '6281234354675',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
@@ -52,9 +52,9 @@ class DatabaseSeeder extends Seeder
             'affiliate_id' => 1,
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Aria Maulana',
-            'username' => 'email2',
-            'email' => 'email2@gmail.com',
+            'name' => 'user',
+            'username' => 'user2',
+            'email' => 'user2@gmail.com',
             'email_verified_at' => now(),
             'wa_number' => '6281234354675',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
