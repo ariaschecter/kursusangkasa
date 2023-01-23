@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseAcces;
+use App\Models\ListCourse;
 use App\Models\Setting;
 use App\Models\SubCourse;
 use Illuminate\Http\Request;
@@ -216,6 +217,113 @@ class CourseController extends Controller
     }
 
     public function user_continue(Course $course) {
-        dd($course);
+        $acces = CourseAcces::where('course_id', $course->id)->where('user_id', Auth::id())->first();
+        $lifetime = $acces->course_acces_subscribe;
+
+        if ($lifetime != null) {
+            $date = new \Carbon\Carbon($lifetime);
+            $gte = $date->gte(\Carbon\Carbon::now());
+
+            if (!$gte) {
+                $notification = [
+                    'message' => 'Please Enroll Again to This Course',
+                    'alert-type' => 'warning',
+                ];
+                return redirect()->route('home.course.show', $course->course_slug)->with($notification);
+            }
+        }
+
+        $i = 1;
+        foreach ($acces->course->sub_course as $sub_course) {
+            foreach ($sub_course->list_course as $list_course) {
+                if($i == $acces->course_acces_last) {
+                    return redirect()->route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]);
+                }
+                $i++;
+            }
+        }
+    }
+
+    public function user_acces(Course $course, $listcourse) {
+        $acces = CourseAcces::where('course_id', $course->id)->where('user_id', Auth::id())->first();
+        $lifetime = $acces->course_acces_subscribe;
+        $next = true;
+        $prev = true;
+        $i = 0;
+        $check = false;
+
+        if ($lifetime != null) {
+            $date = new \Carbon\Carbon($lifetime);
+            $gte = $date->gte(\Carbon\Carbon::now());
+
+            if (!$gte) {
+                $notification = [
+                    'message' => 'Please Enroll Again to This Course',
+                    'alert-type' => 'warning',
+                ];
+                return redirect()->route('home.course.show', $course->course_slug)->with($notification);
+            }
+        }
+        $list_course = ListCourse::where('course_id', $course->id)->where('list_course_slug', $listcourse)->firstOrFail();
+
+        foreach ($course->sub_course as $sub_course) {
+            foreach ($sub_course->list_course as $list) {
+                if($listcourse == $list->list_course_slug) {
+                    $check = true;
+                }
+                $i++;
+                if ($check) {
+                    // var_dump($i);
+                    // dd(count($course->list_course));
+                    if($i == 1) {
+                        $prev = false;
+                    } else if($i == count($course->list_course)) {
+                        $next = false;
+                    }
+                    return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev'));
+                }
+            }
+        }
+        // return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev'));
+    }
+
+    public function user_prev(Course $course, $listcourse) {
+        $list_course = ListCourse::where('course_id', $course->id)->where('list_course_slug', $listcourse)->first();
+        $prev = false;
+        $i = 0;
+        $array = [];
+        foreach ($course->sub_course as $sub_course) {
+            foreach ($sub_course->list_course as $list_course) {
+                array_push($array, $list_course->list_course_slug);
+                if ($prev == true) {
+                    return redirect()->route('user.course.acces', [$course->course_slug, $array[$i-2]]);
+                }
+                if($listcourse == $list_course->list_course_slug) {
+                    $prev = true;
+                }
+                $i++;
+            }
+        }
+    }
+
+    public function user_next(Course $course, $listcourse) {
+        $list_course = ListCourse::where('course_id', $course->id)->where('list_course_slug', $listcourse)->first();
+        $next = false;
+        $i = 0;
+        $akses = CourseAcces::where('course_id', $course->id)->where('user_id', Auth::id())->first();
+        foreach ($course->sub_course as $sub_course) {
+            foreach ($sub_course->list_course as $list_course) {
+                if ($next == true) {
+                    if ($i == $akses->course_acces_last) {
+                        CourseAcces::where('course_id', $course->id)->where('user_id', Auth::id())->increment('course_acces_last');
+                    }
+                    return redirect()->route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]);
+                }
+                if($listcourse == $list_course->list_course_slug) {
+                    $next = true;
+                }
+                $i++;
+            }
+        }
     }
 }

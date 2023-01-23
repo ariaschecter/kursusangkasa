@@ -22,48 +22,37 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('teacher.dashboard') }}" class="waves-effect">
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="menu-title">Course</li>
-
-                <li>
-                    <a href="{{ route('teacher.course.index') }}" class="waves-effect">
-                        <i class="ri-book-2-line"></i>
-                        <span>Course</span>
-                    </a>
-                </li>
-
-                <li class="menu-title">Wallet</li>
-
-                <li>
-                    <a href="{{ route('teacher.wallet.index') }}" class="waves-effect">
-                        <i class="ri-wallet-line"></i>
-                        <span>Wallet</span>
-                    </a>
-                </li>
-
-                <li class="menu-title">Payment</li>
-
-                <li>
-                    <a href="#" class="waves-effect">
-                        <i class=" ri-money-dollar-circle-line"></i>
-                        <span>Payment</span>
-                    </a>
-                </li>
-
-                <li class="menu-title">Affiliate</li>
-
-                <li>
-                    <a href="{{ route('teacher.affiliate.index') }}" class="waves-effect">
-                        <i class="ri-gift-line"></i>
-                        <span>My Affiliate</span>
-                    </a>
-                </li>
-
+                @php
+                    $i = 1;
+                    $last_acces = $acces->course_acces_last;
+                @endphp
+                @foreach ($course->sub_course as $sub_course)
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="{{ ($i > $last_acces) ? 'ri-book-2-line' : ' ri-book-open-line' }}"></i>
+                            <span>{{ $sub_course->sub_course_name }}</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            @foreach ($sub_course->list_course as $list_course)
+                                <li>
+                                    <a href="{{ ($i > $last_acces) ? '#' :route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]) }}">
+                                        <span class="float-end">
+                                            <i class="{{ ($i > $last_acces) ? 'ri-lock-2-line' : ' ri-play-line' }}"></i>
+                                        </span>
+                                        <span>{{ $i++ }}. {{ $list_course->list_course_name }}</span>
+                                    </a>
+                                </li>
+                                @endforeach
+                        </ul>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- Sidebar -->

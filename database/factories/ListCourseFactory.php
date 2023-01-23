@@ -18,11 +18,12 @@ class ListCourseFactory extends Factory
     public function definition()
     {
         return [
-            'list_course_slug' => Str::random(14),
+            'list_course_slug' => uniqid(),
             'course_id' => 1,
             'sub_course_id' => fake()->numberBetween(0, 5),
             'list_course_name' => fake()->name(),
-            'list_course_link' => 'https://www.youtube.com/watch?v=WW0ncSSTtwo',
+            'list_course_link' => 'tkdl6RptA0U',
+            // https://www.youtube.com/watch?v=tkdl6RptA0U
         ];
     }
 }

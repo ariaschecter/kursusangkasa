@@ -22,7 +22,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('user.dashboard') }}" class="waves-effect">
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>

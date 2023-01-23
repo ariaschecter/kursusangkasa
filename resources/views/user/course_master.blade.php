@@ -54,7 +54,7 @@
           @include('admin.body.header')
 
             <!-- ========== Left Sidebar Start ========== -->
-           @include('user.body.sidebar')
+           @include('user.body.course')
             <!-- Left Sidebar End -->
 
 
