@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentMethod;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\Wallet;
@@ -12,6 +13,11 @@ use Illuminate\Support\Str;
 
 class WalletController extends Controller
 {
+    public function wallet_all() {
+        $wallets = Wallet::orderBy('wallet_amount', 'DESC')->get();
+        return view('admin.wallet.allwallet', compact('wallets'));
+    }
+
     public function index() {
         $wallet = Wallet::with('wallet_history')->findOrFail(Auth::id());
 
@@ -36,7 +42,8 @@ class WalletController extends Controller
 
     public function method() {
         $wallet = Wallet::findOrFail(Auth::id());
-        return view('admin.wallet.method', compact('wallet'));
+        $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
+        return view('admin.wallet.method', compact('wallet', 'payment_methods'));
     }
 
     public function update(Request $request, Wallet $wallet) {
@@ -122,7 +129,8 @@ class WalletController extends Controller
 
     public function teacher_method() {
         $wallet = Wallet::findOrFail(Auth::id());
-        return view('teacher.wallet.method', compact('wallet'));
+        $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
+        return view('teacher.wallet.method', compact('wallet', 'payment_methods'));
     }
 
     public function teacher_update(Request $request, Wallet $wallet) {
@@ -208,7 +216,8 @@ class WalletController extends Controller
 
     public function user_method() {
         $wallet = Wallet::findOrFail(Auth::id());
-        return view('user.wallet.method', compact('wallet'));
+        $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
+        return view('user.wallet.method', compact('wallet', 'payment_methods'));
     }
 
     public function user_update(Request $request, Wallet $wallet) {

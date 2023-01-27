@@ -33,7 +33,7 @@
                 <div class="row mb-3">
                     <label for="wallet_method" class="col-sm-2 col-form-label">Wallet Method</label>
                     <div class="col-sm-10">
-                        <input name="wallet_method" class="form-control" type="text" value="{{ $history->wallet->wallet_method }}" id="wallet_method" readonly>
+                        <input name="wallet_method" class="form-control" type="text" value="{{ $history->wallet->payment_method->payment_method }}" id="wallet_method" readonly>
                         @error('wallet_method')
                             <span class="text-danger"> {{ $message }}</span>
                         @enderror

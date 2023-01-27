@@ -54,6 +54,13 @@
                 <li class="menu-title">Wallet</li>
 
                 <li>
+                    <a href="{{ route('admin.wallet.all') }}" class="waves-effect">
+                        <i class="ri-wallet-2-line"></i>
+                        <span>All Wallet</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('admin.wallet.index') }}" class="waves-effect">
                         <i class="ri-wallet-line"></i>
                         <span>Wallet</span>

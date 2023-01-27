@@ -33,4 +33,8 @@ class Course extends Model
     public function paycourse_acces() {
         return $this->hasMany(CourseAcces::class, 'course_id', 'id');
     }
+
+    public function review() {
+        return $this->hasMany(Review::class, 'course_id', 'id')->orderBy('created_at', 'DESC');
+    }
 }

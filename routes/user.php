@@ -3,6 +3,7 @@
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ Route::middleware('auth', 'verified', 'user')->prefix('user')->group(function() 
         Route::post('/wallet/update/{wallet}', 'user_update')->name('user.wallet.update');
         Route::get('/wallet/withdraw', 'user_withdraw')->name('user.wallet.withdraw');
         Route::post('/wallet/withdraw', 'user_withdraw_store')->name('user.wallet.withdraw.store');
+    });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::post('/review/{course:course_slug}', 'store')->name('user.review.store');
     });
 
     Route::controller(PaymentController::class)->group(function () {

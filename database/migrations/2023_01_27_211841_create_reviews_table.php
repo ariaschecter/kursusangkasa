@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('wallet_amount')->default(0);
-            $table->foreignId('wallet_method')->nullable();
-            $table->string('wallet_name')->nullable();
-            $table->string('wallet_rekening')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('course_id');
+            $table->foreignId('teacher_id');
+            $table->integer('review_star');
+            $table->string('review_feedback')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('reviews');
     }
 };

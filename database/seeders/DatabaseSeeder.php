@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'USER',
             'affiliate_id' => 2 ,
         ]);
-        Wallet::factory(3)->create();
+        Wallet::factory(4)->create();
 
         \App\Models\Setting::factory()->create([
             'default_affiliate' => 1,

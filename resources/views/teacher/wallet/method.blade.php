@@ -36,10 +36,12 @@
                     <div class="row mb-3">
                         <label for="wallet_method" class="col-sm-2 col-form-label">Wallet Method</label>
                         <div class="col-sm-5">
-                            <input name="wallet_method" class="form-control" type="text" value="{{ $wallet->wallet_method }}" id="wallet_method" placeholder="Name Bank (DANA)">
-                            @error('wallet_method')
-                                <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            <select class="form-select" aria-label="Default Select Example" name="wallet_method" id="wallet_method">
+                                @foreach ($payment_methods as $payment_method)
+                                    <option value="{{ $payment_method->id }}" {{ ($payment_method->id == $wallet->wallet_method ? 'selected' : '') }}>{{ $payment_method->payment_method }}</option>
+                                @endforeach
+                            </select>
+                            @error('wallet_method') <span class="text-danger"> {{ $message }}</span> @enderror
                         </div>
                     </div>
                     <!-- end row -->

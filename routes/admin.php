@@ -69,6 +69,7 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
     });
 
     Route::controller(WalletController::class)->group(function () {
+        Route::get('/wallet/all', 'wallet_all')->name('admin.wallet.all');
         Route::get('/wallet', 'index')->name('admin.wallet.index');
         Route::get('/wallet/method', 'method')->name('admin.wallet.method');
         Route::post('/wallet/update/{wallet}', 'update')->name('admin.wallet.update');

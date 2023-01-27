@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseAcces;
 use App\Models\ListCourse;
+use App\Models\Review;
 use App\Models\Setting;
 use App\Models\SubCourse;
 use Illuminate\Http\Request;
@@ -280,7 +281,8 @@ class CourseController extends Controller
                     } else if($i == count($course->list_course)) {
                         $next = false;
                     }
-                    return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev'));
+                    $review = Review::where('course_id', $course->id)->where('user_id', Auth::id())->first();
+                    return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev', 'review'));
                 }
             }
         }
