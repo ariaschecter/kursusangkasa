@@ -6,7 +6,7 @@ use App\Http\Controllers\SubCourseController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth', 'verified')->prefix('instructor')->group(function() {
+Route::middleware('auth', 'verified', 'teacher')->prefix('instructor')->group(function() {
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course', 'teacher_index')->name('teacher.course.index');
         Route::get('/course/add', 'teacher_create')->name('teacher.course.add');

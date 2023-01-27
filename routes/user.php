@@ -6,7 +6,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth', 'verified')->prefix('user')->group(function() {
+Route::middleware('auth', 'verified', 'user')->prefix('user')->group(function() {
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course', 'user_index')->name('user.course.index');
         Route::get('/course/continue/{course:course_slug}', 'user_continue')->name('user.course.continue');

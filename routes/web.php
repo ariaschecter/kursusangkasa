@@ -40,9 +40,9 @@ Route::middleware('auth', 'verified')->controller(PaymentController::class)->gro
 
 Route::middleware('auth', 'verified')->controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/admin/dashboard', 'admin_dashboard')->name('admin.dashboard');
-    Route::get('/instructor/dashboard', 'teacher_dashboard')->name('teacher.dashboard');
-    Route::get('/user/dashboard', 'user_dashboard')->name('user.dashboard');
+    Route::get('/admin/dashboard', 'admin_dashboard')->middleware('admin')->name('admin.dashboard');
+    Route::get('/instructor/dashboard', 'teacher_dashboard')->middleware('teacher')->name('teacher.dashboard');
+    Route::get('/user/dashboard', 'user_dashboard')->middleware('user')->name('user.dashboard');
 });
 
 

@@ -12,7 +12,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth', 'verified')->prefix('admin/')->group(function() {
+Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function() {
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category', 'index')->name('admin.category.index');
         Route::get('/category/add', 'create')->name('admin.category.add');
