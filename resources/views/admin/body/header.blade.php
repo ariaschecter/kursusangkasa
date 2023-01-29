@@ -46,6 +46,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
+                    <a class="dropdown-item d-block" href="{{ route('profile') }}"><i class="ri-user-line align-middle me-1"></i> Profile</a>
                     <a class="dropdown-item d-block" href="{{ route('logout') }}"><i class="ri-logout-box-r-line align-middle me-1"></i> Logout</a>
                 </div>
             </div>
