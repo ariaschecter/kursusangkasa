@@ -18,4 +18,7 @@ class Teacher extends Model
         return $this->hasMany(Course::class, 'teacher_id', 'id');
     }
 
+    public function review() {
+        return $this->hasMany(Review::class, 'teacher_id', 'id');
+    }
 }

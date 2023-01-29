@@ -35,34 +35,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                   <span class="page__title-pre">{{ $course->category->category_name }}</span>
                   <h1 class="page__title">{{ $course->course_name }}</h1>
                </div>
-               <div class="course-details__meta d-sm-flex">
-                  <div class="course__teacher-3 d-flex align-items-center mr-70 mb-30">
-                     <div class="course__teacher-thumb-3 mr-15">
-                        <img src="{{ asset('storage/' . $course->teacher->user->user_picture) }}" alt="">
-                     </div>
-                     <div class="course__teacher-info-3">
-                        <h5>Teacher</h5>
-                        <p><a href="{{ route('home.teacher.show', $course->teacher->user->username) }}">{{ $course->teacher->user->name }}</a></p>
-                     </div>
-                  </div>
-                  <div class="course__update mr-80 mb-30">
-                     <h5>Last Update:</h5>
-                     <p>{{ \Carbon\Carbon::parse($course->updated_at)->diffForHumans() }}</p>
-                  </div>
-                  <div class="course__rating-2 mb-30">
-                     <h5>Review:</h5>
-                     <div class="course__rating-inner d-flex align-items-center">
-                        <p>
-                           <i class="icon_star"></i>
-                           <i class="icon_star"></i>
-                           <i class="icon_star"></i>
-                           <i class="icon_star"></i>
-                           <i class="icon_star"></i>
-                           4.5
-                        </p>
-                     </div>
-                  </div>
-               </div>
+               @include('template.teacher_overview')
                <div class="course-details__content">
                   <div class="course__img w-img mb-30">
                      <img src="{{ asset('storage/' . $course->course_picture) }}" alt="">
@@ -130,293 +103,101 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="course__review">
                            <h3>Reviews</h3>
-                           <p>Gosh william I'm telling crikey burke I don't want no agro A bit of how's your father bugger all mate off his nut that, what a plonker cuppa owt to do</p>
 
-                           <div class="course__review-rating mb-50">
-                              <div class="row g-0">
-                                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                    <div class="course__review-rating-info grey-bg text-center">
-                                       <h5>5</h5>
-                                       <ul>
-                                          <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                          <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                          <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                          <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                          <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                       </ul>
-                                       <p>4 Ratings</p>
+                            <div class="course__review-rating mb-50">
+                                <div class="row g-0">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                        <div class="course__review-rating-info grey-bg text-center">
+                                        <h5>{{ $course->review->avg('review_star') }}</h5>
+                                        <ul>
+                                            <div class="rating-star">
+                                                <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{  $course->review->avg('review_star') }}"/>
+                                            </div>
+                                        </ul>
+                                        <p>{{ count($course->review) }} Ratings</p>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                                    <div class="course__review-details grey-bg">
-                                       <h5>Detailed Rating</h5>
-                                       <div class="course__review-content mb-20">
-                                          <div class="course__review-item d-flex align-items-center justify-content-between">
-                                             <div class="course__review-text">
-                                                <span>5 stars</span>
-                                             </div>
-                                             <div class="course__review-progress">
-                                                <div class="single-progress" data-width="100%" style="width: 100%;"></div>
-                                             </div>
-                                             <div class="course__review-percent">
-                                                <h5>100%</h5>
-                                             </div>
-                                          </div>
-                                          <div class="course__review-item d-flex align-items-center justify-content-between">
-                                             <div class="course__review-text">
-                                                <span>4 stars</span>
-                                             </div>
-                                             <div class="course__review-progress">
-                                                <div class="single-progress" data-width="30%" style="width: 30%;"></div>
-                                             </div>
-                                             <div class="course__review-percent">
-                                                <h5>30%</h5>
-                                             </div>
-                                          </div>
-                                          <div class="course__review-item d-flex align-items-center justify-content-between">
-                                             <div class="course__review-text">
-                                                <span>3 stars</span>
-                                             </div>
-                                             <div class="course__review-progress">
-                                                <div class="single-progress" data-width="0%" style="width: 0%;"></div>
-                                             </div>
-                                             <div class="course__review-percent">
-                                                <h5>0%</h5>
-                                             </div>
-                                          </div>
-                                          <div class="course__review-item d-flex align-items-center justify-content-between">
-                                             <div class="course__review-text">
-                                                <span>2 stars</span>
-                                             </div>
-                                             <div class="course__review-progress">
-                                                <div class="single-progress" data-width="0%" style="width: 0%;"></div>
-                                             </div>
-                                             <div class="course__review-percent">
-                                                <h5>0%</h5>
-                                             </div>
-                                          </div>
-                                          <div class="course__review-item d-flex align-items-center justify-content-between">
-                                             <div class="course__review-text">
-                                                <span>1 stars</span>
-                                             </div>
-                                             <div class="course__review-progress">
-                                                <div class="single-progress" data-width="0%" style="width: 0%;"></div>
-                                             </div>
-                                             <div class="course__review-percent">
-                                                <h5>0%</h5>
-                                             </div>
-                                          </div>
-                                       </div>
+                                    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                        <div class="course__review-details grey-bg">
+                                        <h5>Detailed Rating</h5>
+                                        <div class="course__review-content mb-20">
+                                            @php
+                                                $reviews = $course->review;
+                                                $a = $b = $c = $d = $d = $e = 0;
+                                                $i = 0;
+                                                foreach ($reviews as $review) {
+                                                    switch ($review->review_star) {
+                                                        case 1:
+                                                            $a++;
+                                                            break;
+                                                        case 2:
+                                                            $b++;
+                                                            break;
+                                                        case 3:
+                                                            $c++;
+                                                            break;
+                                                        case 4:
+                                                            $d++;
+                                                            break;
+                                                        case 5:
+                                                            $e++;
+                                                            break;
+                                                    }
+                                                    $i++;
+                                                }
+                                                $rating_boxs = [
+                                                    [
+                                                        'angka' => 5,
+                                                        'percentage' => $e/$i*100,
+                                                    ],
+                                                    [
+                                                        'angka' => 4,
+                                                        'percentage' => $d/$i*100,
+                                                    ],
+                                                    [
+                                                        'angka' => 3,
+                                                        'percentage' => $c/$i*100,
+                                                    ],
+                                                    [
+                                                        'angka' => 2,
+                                                        'percentage' => $b/$i*100,
+                                                    ],
+                                                    [
+                                                        'angka' => 1,
+                                                        'percentage' => $a/$i*100,
+                                                    ],
+                                                ];
+                                            @endphp
+                                            @foreach ($rating_boxs as $rating_box)
+                                                <div class="course__review-item d-flex align-items-center justify-content-between">
+                                                    <div class="course__review-text">
+                                                        <span>{{ $rating_box['angka'] }} stars</span>
+                                                    </div>
+                                                    <div class="course__review-progress">
+                                                        <div class="single-progress" data-width="{{ $rating_box['percentage'] }}%" style="width: {{ $rating_box['percentage'] }}%;"></div>
+                                                    </div>
+                                                    <div class="course__review-percent">
+                                                        <h5>{{ $rating_box['percentage'] }}%</h5>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="course__comment mb-75">
-                              <h3>2 Comments</h3>
-
-                              <ul>
-                                 <li>
-                                    <div class="course__comment-box ">
-                                       <div class="course__comment-thumb float-start">
-                                          <img src="assets/img/testimonial/avata-lg-2.png" alt="">
-                                       </div>
-                                       <div class="course__comment-content">
-                                          <div class="course__comment-wrapper ml-70 fix">
-                                             <div class="course__comment-info float-start">
-                                                <h4>Eleanor Fant</h4>
-                                                <span>July 14, 2022</span>
-                                             </div>
-                                             <div class="course__comment-rating float-start float-sm-end">
-                                                <ul>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                </ul>
-                                             </div>
-                                          </div>
-                                          <div class="course__comment-text ml-70">
-                                             <p>So I said lurgy dropped a clanger Jeffrey bugger cuppa gosh David blatant have it, standard A bit of how's your father my lady absolutely.</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="course__comment-box ">
-                                       <div class="course__comment-thumb float-start">
-                                          <img src="assets/img/testimonial/avata-lg-4.png" alt="">
-                                       </div>
-                                       <div class="course__comment-content">
-                                          <div class="course__comment-wrapper ml-70 fix">
-                                             <div class="course__comment-info float-start">
-                                                <h4>Samrat Islam Tushar</h4>
-                                                <span>July 17, 2022</span>
-                                             </div>
-                                             <div class="course__comment-rating float-start float-sm-end">
-                                                <ul>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#" class="no-rating"> <i class="icon_star"></i> </a></li>
-                                                </ul>
-                                             </div>
-                                          </div>
-                                          <div class="course__comment-text ml-70">
-                                             <p>David blatant have it, standard A bit of how's your father my lady absolutely.</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="course__form">
-                              <h3>Write a Review</h3>
-                              <div class="course__form-inner">
-                                 <form action="#">
-                                    <div class="row">
-                                       <div class="col-xxl-6">
-                                          <div class="course__form-input">
-                                             <input type="text" placeholder="Your Name">
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-6">
-                                          <div class="course__form-input">
-                                             <input type="email" placeholder="Your Email">
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-12">
-                                          <div class="course__form-input">
-                                             <input type="text" placeholder="Review Title">
-                                          </div>
-                                       </div>
-                                       <div class="col-xxl-12">
-                                          <div class="course__form-input">
-                                             <div class="course__form-rating">
-                                                <span>Rating : </span>
-                                                <ul>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#" class="no-rating"> <i class="icon_star"></i> </a></li>
-                                                   <li><a href="#" class="no-rating"> <i class="icon_star"></i> </a></li>
-                                                </ul>
-                                             </div>
-                                             <textarea placeholder="Review Summary"></textarea>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="row">
-                                       <div class="col-xxl-12">
-                                          <div class="course__form-btn mt-10 mb-55">
-                                             <button type="submit" class="tp-btn">
-                                                <span>Submit Review<i class="fa-regular fa-arrow-right"></i> </span>
-                                             </button>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
+                            <div class="course__comment mb-75">
+                                <h3>{{ count($course->review) }} Reviews</h3>
+                                <ul>
+                                    @foreach ($course->review as $reviewer)
+                                    @include('template.review_box')
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                      </div>
                      <div class="tab-pane fade" id="member" role="tabpanel" aria-labelledby="member-tab">
-                        <div class="course__member mb-45">
-                           <div class="course__member-item">
-                              <div class="row align-items-center">
-                                 <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
-                                    <div class="course__member-thumb d-flex align-items-center">
-                                       <img src="assets/img/testimonial/avata-lg-4.png" alt="">
-                                       <div class="course__member-name ml-20">
-                                          <h5>Samrat Islam Tushar</h5>
-                                          <span>Engineer</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-45">
-                                       <h5>07</h5>
-                                       <span>Courses</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-70">
-                                       <h5>05</h5>
-                                       <span>Reviw</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-85">
-                                       <h5>3.00</h5>
-                                       <span>Rating</span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="course__member-item">
-                              <div class="row align-items-center">
-                                 <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
-                                    <div class="course__member-thumb d-flex align-items-center">
-                                       <img src="assets/img/testimonial/avata-lg-2.png" alt="">
-                                       <div class="course__member-name ml-20">
-                                          <h5>Lauren Stamps</h5>
-                                          <span>Teacher</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-45">
-                                       <h5>05</h5>
-                                       <span>Courses</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-70">
-                                       <h5>03</h5>
-                                       <span>Reviw</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-85">
-                                       <h5>3.00</h5>
-                                       <span>Rating</span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="course__member-item">
-                              <div class="row align-items-center">
-                                 <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6 ">
-                                    <div class="course__member-thumb d-flex align-items-center">
-                                       <img src="assets/img/testimonial/avata-lg-3.png" alt="">
-                                       <div class="course__member-name ml-20">
-                                          <h5>Jonquil Von</h5>
-                                          <span>Associate</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-45">
-                                       <h5>09</h5>
-                                       <span>Courses</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-70">
-                                       <h5>07</h5>
-                                       <span>Reviw</span>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                    <div class="course__member-info pl-85">
-                                       <h5>4.00</h5>
-                                       <span>Rating</span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                        @include('template.member_box')
                      </div>
                    </div>
                </div>
@@ -461,7 +242,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                                     </svg>
                                  </div>
                                  <div class="course__video-info">
-                                    <h5><span>Lectures :</span>14</h5>
+                                    <h5><span>Lectures :</span>{{ $course->list_course ? count($course->list_course) . ' Lectures' : '0 Lecture' }}</h5>
                                  </div>
                               </li>
                               <li class="d-flex align-items-center">
@@ -472,19 +253,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                                     </svg>
                                  </div>
                                  <div class="course__video-info">
-                                    <h5><span>Enrolled :</span>20 students</h5>
-                                 </div>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                 <div class="course__video-icon">
-                                    <svg>
-                                       <circle class="st0" cx="8" cy="8" r="6.7"/>
-                                       <line class="st0" x1="1.3" y1="8" x2="14.7" y2="8"/>
-                                       <path class="st0" d="M8,1.3c1.7,1.8,2.6,4.2,2.7,6.7c-0.1,2.5-1,4.8-2.7,6.7C6.3,12.8,5.4,10.5,5.3,8C5.4,5.5,6.3,3.2,8,1.3z"/>
-                                    </svg>
-                                 </div>
-                                 <div class="course__video-info">
-                                    <h5><span>Language :</span>English</h5>
+                                    <h5><span>Enrolled :</span>{{ $course->course_enroll }} Students</h5>
                                  </div>
                               </li>
                            </ul>
@@ -512,12 +281,9 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                                     <div class="course__sm-content">
                                         <div class="course__sm-rating">
                                             <ul>
-                                                <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                4.5
+                                                <div class="rating-star">
+                                                    <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{ $related->review->avg('review_star') }}"/>
+                                                </div>
                                             </ul>
                                         </div>
                                         <h5><a href="{{ route('home.course.show', $related->course_slug) }}">{{ $related->course_name }}</a></h5>

@@ -13,6 +13,13 @@
    <!-- Place favicon.ico in the root directory -->
    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/favicon.png') }}">
 
+    <!-- Bootstrap Rating css -->
+    <link href="{{ asset('backend/assets/libs/bootstrap-rating/bootstrap-rating.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    {{-- Toastr --}}
    <!-- CSS here  -->
    <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.css') }}">
    <link rel="stylesheet" href="{{ asset('frontend/assets/css/meanmenu.css') }}">
@@ -122,6 +129,13 @@
     <!-- footer area start -->
     @include('frontend.body.footer')
     <!-- footer area end -->
+
+    <!-- Rating -->
+    <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap rating js -->
+    <script src="{{ asset('backend/assets/libs/bootstrap-rating/bootstrap-rating.min.js') }}"></script>
+
+    <script src="{{ asset('backend/assets/js/pages/rating-init.js') }}"></script>
 
 
    <!-- JS here -->

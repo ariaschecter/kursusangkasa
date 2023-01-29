@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\CourseAcces;
 use App\Models\ListCourse;
 use App\Models\SubCourse;
 use App\Models\Teacher;
@@ -73,6 +74,11 @@ class DatabaseSeeder extends Seeder
             'id' => 2,
             'teacher_tag' => 'Time To Operating The System',
             'teacher_bio' => fake()->paragraph(6, true),
+        ]);
+        CourseAcces::factory()->create([
+            'course_id' => 1,
+            'user_id' => 3,
+            'course_acces_last' => 5,
         ]);
         SubCourse::factory(5)->create();
         ListCourse::factory(20)->create();

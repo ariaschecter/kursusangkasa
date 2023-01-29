@@ -18,34 +18,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <div class="course-details__meta d-sm-flex">
-                   <div class="course__teacher-3 d-flex align-items-center mr-70 mb-30">
-                      <div class="course__teacher-thumb-3 mr-15">
-                         <img src="{{ asset('storage/' . $course->teacher->user->user_picture) }}" alt="">
-                      </div>
-                      <div class="course__teacher-info-3">
-                         <h5>Teacher</h5>
-                         <p><a href="{{ route('home.teacher.show', $course->teacher->user->username) }}">{{ $course->teacher->user->name }}</a></p>
-                      </div>
-                   </div>
-                   <div class="course__update mr-80 mb-30">
-                      <h5>Last Update:</h5>
-                      <p>{{ \Carbon\Carbon::parse($course->updated_at)->diffForHumans() }}</p>
-                   </div>
-                   <div class="course__rating-2 mb-30">
-                      <h5>Review:</h5>
-                      <div class="course__rating-inner d-flex align-items-center">
-                         <p>
-                            <i class="icon_star"></i>
-                            <i class="icon_star"></i>
-                            <i class="icon_star"></i>
-                            <i class="icon_star"></i>
-                            <i class="icon_star"></i>
-                            4.5
-                         </p>
-                      </div>
-                   </div>
-                </div>
+                @include('template.teacher_overview')
                 <div class="col-12">
                     <div class="course-details__content">
                         <div class="embed-responsive embed-responsive-16by9">
@@ -131,109 +104,47 @@
                         <div class="course__form">
                             <h3>Write a Review</h3>
                             <div class="course__form-inner">
-                                    <form action="{{ route('user.review.store',) }}" method="POST">
-                                        @csrf
-                                  <div class="row">
-                                     <div class="col-xxl-12">
+                                <form action="{{ route('user.review.store', $course->course_slug) }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-xxl-12">
                                         <div class="course__form-input">
-                                           <div class="course__form-rating">
-                                             <span>Rating : </span>
-                                             <input type="hidden" class="rating" name="review_star" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted"/>
-                                             @error('review_star') <span class="text-danger"> {{ $message }}</span> @enderror
-                                           </div>
-                                           <textarea placeholder="Review Summary" name="review_feedback"></textarea>
-                                           @error('review_feedback') <span class="text-danger"> {{ $message }}</span> @enderror
+                                            <div class="course__form-rating">
+                                                <span>Rating : </span>
+                                                <input type="hidden" class="rating" name="review_star" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted"/>
+                                                @error('review_star') <span class="text-danger"> {{ $message }}</span> @enderror
+                                            </div>
+                                            <textarea placeholder="Review Summary" name="review_feedback"></textarea>
+                                            @error('review_feedback') <span class="text-danger"> {{ $message }}</span> @enderror
                                         </div>
-                                     </div>
-                                  </div>
-                                  <div class="row">
-                                     <div class="col-xxl-12">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xxl-12">
                                         <div class="course__form-btn mt-10 mb-55">
-                                           <button type="submit" class="tp-btn">
-                                              <span>Submit Review<i class="fa-regular fa-arrow-right"></i> </span>
-                                           </button>
+                                            <button type="submit" class="tp-btn">
+                                                <span>Submit Review<i class="fa-regular fa-arrow-right"></i> </span>
+                                            </button>
                                         </div>
-                                     </div>
-                                  </div>
+                                        </div>
+                                    </div>
                                </form>
                             </div>
                          </div>
                          @endif
                         <div class="course__review">
                             <div class="course__comment mb-75">
-                               <h3>{{ count($course->review) }} Comments</h3>
+                               <h3>{{ count($course->review) }} Reviews</h3>
                                <ul>
                                     @foreach ($course->review as $reviewer)
-                                    <li>
-                                        <div class="course__comment-box ">
-                                            <div class="course__comment-thumb float-start">
-                                            <img src="{{ asset('storage/' . $reviewer->user->user_picture) }}" alt="">
-                                            </div>
-                                            <div class="course__comment-content">
-                                            <div class="course__comment-wrapper ml-70 fix">
-                                                <div class="course__comment-info float-start">
-                                                    <h4>{{ $reviewer->user->name }}</h4>
-                                                    <span>{{ \Carbon\Carbon::parse($reviewer->created_at)->diffForHumans() }}</span>
-                                                </div>
-                                                <div class="course__comment-rating float-start float-sm-end">
-                                                    <ul>
-                                                        @for($i = 0; $i < $reviewer->review_star; $i++)
-                                                            <li><a href="#"> <i class="icon_star"></i> </a></li>
-                                                        @endfor
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="course__comment-text ml-70">
-                                                <p>{{ $reviewer->review_feedback }}</p>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @include('template.review_box')
                                     @endforeach
                                </ul>
                             </div>
                          </div>
                       </div>
                       <div class="tab-pane fade" id="member" role="tabpanel" aria-labelledby="member-tab">
-                         <div class="course__member mb-45">
-                            @php
-                                $course_accesses = \App\Models\CourseAcces::where('course_id', $course->id)->get();
-                            @endphp
-                            @foreach ($course_accesses as $acces)
-                            <div class="course__member-item">
-                               <div class="row align-items-center">
-                                  <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
-                                     <div class="course__member-thumb d-flex align-items-center">
-                                        <img src="{{ asset('storage/' . $acces->user->user_picture) }}" alt="">
-                                        <div class="course__member-name ml-20">
-                                           <h5>{{ $acces->user->name }}</h5>
-                                        </div>
-                                     </div>
-                                  </div>
-                                  <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                     <div class="course__member-info pl-45">
-                                        <h5>{{ count($acces->user->course_acces) }}</h5>
-                                        <span>Courses</span>
-                                     </div>
-                                  </div>
-                                  <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                     <div class="course__member-info pl-70">
-                                        <h5>{{ count($acces->user->review) }}</h5>
-                                        <span>Reviw</span>
-                                     </div>
-                                  </div>
-                                  <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                                     <div class="course__member-info pl-85">
-                                        <h5>{{ $acces->user->review->avg('review_star') }}</h5>
-                                        <span>Rating</span>
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-                            @endforeach
-
-
-                         </div>
+                            @include('template.member_box')
                       </div>
                     </div>
                 </div>
