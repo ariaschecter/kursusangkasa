@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
                 <div class="tp-section__title-wrapper text-center mb-55">
-                <h2 class="tp-section__title">Create a free <br>  Account</h2>
+                <h2 class="tp-section__title">Register Teacher <br>  Account</h2>
                 <p>I'm a subhead that goes with a story.</p>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <div class="sign__wrapper white-bg">
                 <div class="sign__form">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register.teacher') }}">
                         @csrf
                         <div class="sign__input-wrapper mb-25">
                             <h5>Full Name</h5>
@@ -101,7 +101,6 @@
 
                         <button type="submit" class="e-btn w-100"> <span></span> Sign Up</button>
                         <div class="sign__new text-center mt-20">
-                            <p>Become a Teacher ? <a href="{{ route('register.teacher') }}"> Register as Teacher</a></p>
                             <p>Already have a Account ? <a href="{{ route('login') }}"> Log In</a></p>
                         </div>
                     </form>

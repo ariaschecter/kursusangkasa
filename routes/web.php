@@ -32,7 +32,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/affiliate/{user:username}', 'register_affiliate')->name('home.register.affiliate');
 });
 
-Route::middleware('auth', 'verified')->controller(PaymentController::class)->group(function () {
+Route::middleware('auth', 'verified', 'user')->controller(PaymentController::class)->group(function () {
     Route::get('/payment/{course:course_slug}', 'create')->name('home.payment.create');
     Route::post('/payment/{course:course_slug}', 'store')->name('home.payment.store');
 });
@@ -44,7 +44,6 @@ Route::middleware('auth', 'verified')->controller(DashboardController::class)->g
     Route::get('/instructor/dashboard', 'teacher_dashboard')->middleware('teacher')->name('teacher.dashboard');
     Route::get('/user/dashboard', 'user_dashboard')->middleware('user')->name('user.dashboard');
 });
-
 
 require __DIR__.'/admin.php';
 require __DIR__.'/teacher.php';
