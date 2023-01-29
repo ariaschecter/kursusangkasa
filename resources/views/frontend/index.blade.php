@@ -13,7 +13,7 @@
                 <p class="text-white mb-45">Presenting Academy, the tech school of the future.</p>
                 <div class="tp-hero__btn-wrappper d-md-flex align-items-center">
                    <div class="hero-btn-1 mr-20 p-relative z-index-1">
-                      <a href="course.html" class="tp-btn br-0">
+                      <a href="{{ route('home.course.index') }}" class="tp-btn br-0">
                          <span>Explore Coureses</span>
                          <div class="transition"></div>
                       </a>

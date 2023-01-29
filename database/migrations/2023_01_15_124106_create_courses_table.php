@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('course_enroll')->default(0);
             $table->integer('course_subscribe')->nullable(); // Day
             $table->string('course_status')->default('ARCHIVE'); //active, archive, pending
+            $table->string('course_admin_status')->nullable(); // Accept, DECLINE, PROCESS
             $table->timestamps();
         });
     }

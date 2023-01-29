@@ -53,7 +53,7 @@
                                                 <td>{{ $list_course->list_course_name }}</td>
                                                 <td>
                                                     <div class="course__video-play">
-                                                        <a href="{{ $list_course->list_course_link }}" clas data-fancybox="" class="play-btn popup-video"> {{ $list_course->list_course_link }} </a>
+                                                        <a href="https://www.youtube.com/watch?v={{ $list_course->list_course_link }}" clas data-fancybox="" class="play-btn popup-video"> {{ $list_course->list_course_link }} </a>
                                                     </div>
                                                 </td>
                                                 <td>

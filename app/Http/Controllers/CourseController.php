@@ -9,6 +9,7 @@ use App\Models\ListCourse;
 use App\Models\Review;
 use App\Models\Setting;
 use App\Models\SubCourse;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,7 @@ use Illuminate\Validation\Rule;
 class CourseController extends Controller
 {
     public function index() {
-        $courses = Course::orderBy('course_status', 'DESC')->get();
+        $courses = Course::orderBy('course_admin_status', 'DESC')->get();
         return view('admin.course.index', compact('courses'));
     }
 
@@ -29,12 +30,14 @@ class CourseController extends Controller
 
     public function create() {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        return view('admin.course.create', compact('categories'));
+        $teachers = User::where('role', 'TEACHER')->orderBy('name', 'ASC')->get();
+        return view('admin.course.create', compact('categories', 'teachers'));
     }
 
     public function store(Request $request) {
         $setting = Setting::first();
         $validated = $request->validate([
+            'teacher_id' => 'required|integer',
             'category_id' => 'required|integer',
             'course_name' => 'required|unique:courses,course_name',
             'course_picture' => 'required|file|image|max:5120',
@@ -44,7 +47,6 @@ class CourseController extends Controller
         ]);
 
         $upload = $request->file('course_picture')->store('upload/course');
-        $validated['teacher_id'] = Auth::id();
         $validated['course_slug'] = Str::slug($request->course_name);
         $validated['course_picture'] = $upload;
         $validated['admin_percentage'] = $setting->presentase_admin;
@@ -65,11 +67,13 @@ class CourseController extends Controller
 
     public function edit(Course $course) {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        return view('admin.course.edit', compact('course', 'categories'));
+        $teachers = User::where('role', 'TEACHER')->orderBy('name', 'ASC')->get();
+        return view('admin.course.edit', compact('course', 'categories', 'teachers'));
     }
 
     public function update(Request $request, Course $course) {
         $request->validate([
+            'teacher_id' => 'required|integer',
             'category_id' => 'required|integer',
             'course_name' => ['required', Rule::unique('courses')->ignore($course->id, 'id')],
             'price_old' => 'required|integer',
@@ -77,7 +81,6 @@ class CourseController extends Controller
             'admin_percentage' => 'required|integer',
             'teacher_percentage' => 'required|integer',
             'affiliate_percentage' => 'required|integer',
-            'course_status' => 'required',
             'course_picture' => 'file|image|max:5120',
             'course_desc' => 'required',
         ]);
@@ -178,6 +181,11 @@ class CourseController extends Controller
             'course_desc' => 'required',
         ]);
 
+        $admin_status = $course->course_admin_status;
+        if ($request->course_status == 'PENDING') {
+            $admin_status = 'PROCESS';
+        }
+
         $validated = $request->except('_token');
 
         if ($request->course_picture) {
@@ -190,6 +198,7 @@ class CourseController extends Controller
         $validated = $request->except(['_token', 'course_picture']);
         $validated['course_slug'] = Str::slug($request->course_name);
         $validated['course_picture'] = $course_picture;
+        $validated['course_admin_status'] = $admin_status;
 
         $course->update($validated);
 

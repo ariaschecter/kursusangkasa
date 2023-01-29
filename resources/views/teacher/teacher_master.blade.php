@@ -133,9 +133,6 @@
 
 
         <script>
-            $(".popup-video").magnificPopup({
-                type: "iframe",
-            });
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type','info') }}"
         switch(type){

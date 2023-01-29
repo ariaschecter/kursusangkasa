@@ -38,6 +38,7 @@
                                     <th>Price New</th>
                                     <th>Enroll</th>
                                     <th>Status</th>
+                                    <th>Admin Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,6 +54,7 @@
                                         <td>{{ number_format($course->price_new, 0) }}</td>
                                         <td>{{ $course->course_enroll }}</td>
                                         <td>{{ $course->course_status }}</td>
+                                        <td>{{ $course->course_admin_status }}</td>
                                         <td>
                                             <a href="{{ route('teacher.course.show', $course->course_slug) }}" class="btn btn-success sm" title="Show Data"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('teacher.course.edit', $course->course_slug) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>

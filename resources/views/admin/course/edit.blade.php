@@ -34,6 +34,20 @@
                     @csrf
 
                     <div class="row mb-3">
+                        <label for="teacher_id" class="col-sm-2 col-form-label">Teacher</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default Select Example" name="teacher_id" id="teacher_id">
+                                <option>Open this select menu</option>
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{ $teacher->id }}" {{ ($teacher->id == $course->teacher_id ? 'selected' : '') }}>{{ $teacher->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('teacher_id') <span class="text-danger"> {{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row mb-3">
                         <label for="category_id" class="col-sm-2 col-form-label">Category</label>
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default Select Example" name="category_id" id="category_id">
@@ -127,13 +141,27 @@
                     <div class="row mb-3">
                         <label for="course_status" class="col-sm-2 col-form-label">Course Status</label>
                         <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default Select Example" name="course_status" id="course_status">
-                                <option>Open this select menu</option>
-                                    <option value="ARCHIVE" {{ ($course->course_status == 'ARCHIVE' ? 'selected' : '') }}>ARCHIVE</option>
-                                    <option value="PENDING" {{ ($course->course_status == 'PENDING' ? 'selected' : '') }}>PENDING</option>
-                                    <option value="ACTIVE" {{ ($course->course_status == 'ACTIVE' ? 'selected' : '') }}>ACTIVE</option>
+                            <input name="course_status" class="form-control" type="text" value="{{ $course->course_status }}" id="course_status" readonly>
+                            @error('course_status')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row mb-3">
+                        <label for="course_admin_status" class="col-sm-2 col-form-label">Course Admin Status</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default Select Example" name="course_admin_status" id="course_admin_status">
+                                    @if(!$course->course_admin_status)
+                                        <option value="">Open This Select Menu</option>
+                                    @endif
+
+                                    <option value="PROCESS" {{ ($course->course_admin_status == 'PROCESS' ? 'selected' : '') }}>PROCESS</option>
+                                    <option value="ACCEPT" {{ ($course->course_admin_status == 'ACCEPT' ? 'selected' : '') }}>ACCEPT</option>
+                                    <option value="DECLINE" {{ ($course->course_admin_status == 'DECLINE' ? 'selected' : '') }}>DECLINE</option>
                             </select>
-                            @error('course_status') <span class="text-danger"> {{ $message }}</span> @enderror
+                            @error('course_admin_status') <span class="text-danger"> {{ $message }}</span> @enderror
                         </div>
                     </div>
                     <!-- end row -->

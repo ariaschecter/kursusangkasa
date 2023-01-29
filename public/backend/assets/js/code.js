@@ -79,3 +79,7 @@ $('.popup-image').magnificPopup({
         enabled: true
     }
 });
+
+$(".popup-video").magnificPopup({
+    type: "iframe",
+});

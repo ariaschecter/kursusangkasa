@@ -30,7 +30,7 @@
 
                 <h4 class="card-title">Edit Course </h4>
 
-                <form method="post" action="{{ route('teacher.course.update', $course->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('teacher.course.update', $course->course_slug) }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row mb-3">
@@ -96,9 +96,10 @@
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default Select Example" name="course_status" id="course_status">
                                 <option value="ARCHIVE" {{ ($course->course_status == 'ARCHIVE' ? 'selected' : '') }}>ARCHIVE</option>
-                                <option value="PENDING" {{ ($course->course_status == 'PENDING' ? 'selected' : '') }}>PENDING (Verification to Admin)</option>
-                                @if ($course->course_status == 'ACTIVE')
-                                    <option value="ACTIVE" {{ ($course->course_status == 'ACTIVE' ? 'selected' : '') }}>ACTIVE</option>
+                                @if ($course->course_admin_status != 'ACCEPT')
+                                <option value="PENDING" {{ ($course->course_status == 'PENDING' ? 'selected' : '') }}>PROCESS TO ADMIN</option>
+                                @elseif($course->course_admin_status == 'ACCEPT')
+                                <option value="ACTIVE" {{ ($course->course_status == 'ACTIVE' ? 'selected' : '') }}>ACTIVE</option>
                                 @endif
                             </select>
                             @error('course_status') <span class="text-danger"> {{ $message }}</span> @enderror

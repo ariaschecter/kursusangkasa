@@ -34,6 +34,20 @@
                     @csrf
 
                     <div class="row mb-3">
+                        <label for="teacher_id" class="col-sm-2 col-form-label">Teacher</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default Select Example" name="teacher_id" id="teacher_id">
+                                <option>Open this select menu</option>
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{ $teacher->id }}" {{ ($teacher->id == old('teacher_id') ? 'selected' : '') }}>{{ $teacher->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('teacher_id') <span class="text-danger"> {{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row mb-3">
                         <label for="category_id" class="col-sm-2 col-form-label">Category</label>
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default Select Example" name="category_id" id="category_id">

@@ -62,7 +62,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                      <div class="tab-pane fade active show" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <div class="mb-3" class="course__description">
                            <h3>Course Overview</h3>
-                           <p>{{ $course->course_desc }}</p>
+                           <p>{!! $course->course_desc !!}</p>
                         </div>
                      </div>
                      <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
@@ -108,7 +108,7 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                                 <div class="row g-0">
                                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
                                         <div class="course__review-rating-info grey-bg text-center">
-                                        <h5>{{ $course->review->avg('review_star') }}</h5>
+                                        <h5>{{ $course->review->avg('review_star') ?? 0 }}</h5>
                                         <ul>
                                             <div class="rating-star">
                                                 <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{  $course->review->avg('review_star') }}"/>
@@ -145,28 +145,53 @@ data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
                                                     }
                                                     $i++;
                                                 }
-                                                $rating_boxs = [
-                                                    [
-                                                        'angka' => 5,
-                                                        'percentage' => $e/$i*100,
-                                                    ],
-                                                    [
-                                                        'angka' => 4,
-                                                        'percentage' => $d/$i*100,
-                                                    ],
-                                                    [
-                                                        'angka' => 3,
-                                                        'percentage' => $c/$i*100,
-                                                    ],
-                                                    [
-                                                        'angka' => 2,
-                                                        'percentage' => $b/$i*100,
-                                                    ],
-                                                    [
-                                                        'angka' => 1,
-                                                        'percentage' => $a/$i*100,
-                                                    ],
-                                                ];
+                                                if ($i == 0) {
+                                                    $rating_boxs = [
+                                                        [
+                                                            'angka' => 5,
+                                                            'percentage' => 0,
+                                                        ],
+                                                        [
+                                                            'angka' => 4,
+                                                            'percentage' => 0,
+                                                        ],
+                                                        [
+                                                            'angka' => 3,
+                                                            'percentage' => 0,
+                                                        ],
+                                                        [
+                                                            'angka' => 2,
+                                                            'percentage' => 0,
+                                                        ],
+                                                        [
+                                                            'angka' => 1,
+                                                            'percentage' => 0,
+                                                        ],
+                                                    ];
+                                                } else {
+                                                    $rating_boxs = [
+                                                        [
+                                                            'angka' => 5,
+                                                            'percentage' => $e/$i*100,
+                                                        ],
+                                                        [
+                                                            'angka' => 4,
+                                                            'percentage' => $d/$i*100,
+                                                        ],
+                                                        [
+                                                            'angka' => 3,
+                                                            'percentage' => $c/$i*100,
+                                                        ],
+                                                        [
+                                                            'angka' => 2,
+                                                            'percentage' => $b/$i*100,
+                                                        ],
+                                                        [
+                                                            'angka' => 1,
+                                                            'percentage' => $a/$i*100,
+                                                        ],
+                                                    ];
+                                                }
                                             @endphp
                                             @foreach ($rating_boxs as $rating_box)
                                                 <div class="course__review-item d-flex align-items-center justify-content-between">

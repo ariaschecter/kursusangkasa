@@ -15,18 +15,18 @@ class HomeController extends Controller
     public function index() {
         $setting = Setting::first();
         $categories = Category::all();
-        $popular = Course::with('teacher', 'category')->orderBy('course_enroll')->limit(6)->get();
-        $latest_course = Course::with('teacher', 'category')->orderBy('created_at', 'DESC')->limit(3)->get();
+        $popular = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('course_enroll')->limit(6)->get();
+        $latest_course = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('created_at', 'DESC')->limit(3)->get();
         return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course'));
     }
 
     public function course_index() {
-        $courses = Course::with('category', 'teacher.user')->orderBy('course_name', 'ASC')->paginate(9);
+        $courses = Course::with('category', 'teacher.user')->where('course_status', 'ACTIVE')->orderBy('course_name', 'ASC')->paginate(9);
         return view('frontend.course.index', compact('courses'));
     }
 
     public function course_show(Course $course) {
-        $course = Course::with('teacher', 'category', 'sub_course.list_course')->findOrFail($course->id);
+        $course = Course::with('teacher', 'category', 'sub_course.list_course')->where('course_status', 'ACTIVE')->findOrFail($course->id);
         $sub_course = SubCourse::where('course_id', $course->id)->orderBy('sub_course_no', 'ASC')->first();
         $list_course = ListCourse::where('sub_course_id', $sub_course->id)->first();
         $relateds = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->limit(5)->get();
