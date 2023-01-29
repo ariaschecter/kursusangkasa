@@ -71,7 +71,7 @@ class DashboardController extends Controller
             }
             $image = $request->file('user_picture');
             $user_picture = 'upload/profile/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(735, 835)->save('storage/' . $user_picture);
+            Image::make($image)->resize(680, 800)->save('storage/' . $user_picture);
             $update['user_picture'] = $user_picture;
         }
 
