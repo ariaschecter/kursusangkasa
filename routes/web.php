@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,10 @@ Route::middleware('auth', 'verified')->controller(DashboardController::class)->g
     Route::get('/admin/dashboard', 'admin_dashboard')->middleware('admin')->name('admin.dashboard');
     Route::get('/instructor/dashboard', 'teacher_dashboard')->middleware('teacher')->name('teacher.dashboard');
     Route::get('/user/dashboard', 'user_dashboard')->middleware('user')->name('user.dashboard');
+});
+
+Route::controller(MailController::class)->group(function () {
+    Route::get('/cobaemail', 'index');
 });
 
 require __DIR__.'/admin.php';
