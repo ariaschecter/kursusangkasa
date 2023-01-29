@@ -59,8 +59,10 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
     });
 
     Route::controller(SettingController::class)->group(function () {
-        Route::get('/setting', 'setting_index')->name('admin.setting.index');
+        Route::get('/setting', 'setting')->name('admin.setting.index');
+        Route::get('/setting/image', 'image')->name('admin.setting.image');
         Route::post('/setting/{setting}', 'setting_update')->name('admin.setting.update');
+        Route::post('/setting/image/{setting}', 'image_update')->name('admin.setting.image.update');
     });
 
     Route::controller(AffiliateController::class)->group(function () {

@@ -39,7 +39,7 @@ class HomeController extends Controller
     }
 
     public function category_show(Category $category) {
-        $courses = Course::with('teacher.user')->where('category_id', $category->id)->orderBy('course_name', 'ASC')->paginate(9);
+        $courses = Course::with('teacher.user')->where('category_id', $category->id)->where('course_status', 'ACTIVE')->orderBy('course_name', 'ASC')->paginate(9);
         return view('frontend.category.show', compact('category', 'courses'));
     }
 

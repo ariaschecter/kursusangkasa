@@ -1,25 +1,26 @@
 @extends('frontend.frontend_master')
 
 @section('frontend')
-
+    @php
+        $setting = \App\Models\Setting::first();
+    @endphp
     <!-- breadcrumb area start -->
-    <div class="breadcrumb__area include-bg pt-200 pb-150 breadcrumb__overlay"
-    data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
-    <div class="container">
-       <div class="row">
-          <div class="col-xxl-12">
-             <div class="breadcrumb__content p-relative z-index-1">
-                <h3 class="breadcrumb__title">Forgot Password</h3>
-                <div class="breadcrumb__list">
-                   <span><a href="{{ route('home.index') }}">Home</a></span>
-                   <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-                   <span>Forgot Password</span>
+    <div class="breadcrumb__area include-bg pt-200 pb-150 breadcrumb__overlay" data-background="{{ asset('storage/' . $setting->banner_image) }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title">Forgot Password</h3>
+                        <div class="breadcrumb__list">
+                        <span><a href="{{ route('home.index') }}">Home</a></span>
+                        <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                        <span>Forgot Password</span>
+                        </div>
+                    </div>
                 </div>
-             </div>
-          </div>
-       </div>
+            </div>
+        </div>
     </div>
- </div>
  <!-- breadcrumb area end -->
 
  <!-- sign up area start -->

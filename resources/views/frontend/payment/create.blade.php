@@ -1,9 +1,11 @@
 @extends('frontend.frontend_master')
 
 @section('frontend')
-    <!-- breadcrumb area start -->
-    <div class="breadcrumb__area include-bg pt-200 pb-150 breadcrumb__overlay"
-    data-background="assets/img/breadcrumb/breadcrumb-bg.jpg">
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
+<!-- breadcrumb area start -->
+<div class="breadcrumb__area include-bg pt-200 pb-150 breadcrumb__overlay" data-background="{{ asset('storage/' . $setting->banner_image) }}">
     <div class="container">
        <div class="row">
           <div class="col-xxl-12">

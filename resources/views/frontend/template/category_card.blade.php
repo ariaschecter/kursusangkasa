@@ -7,7 +7,7 @@
             <h3 class="tp-courses__title"><a href="{{ route('home.category.show', $category->category_slug) }}">{{ $category->category_name }}</a></h3>
             <div class="tp-courses__price d-flex justify-content-between">
                 <div class="tp-courses__time">
-                    <span><a href="{{ route('home.course.show', $category->category_slug) }}" class="more-btn">Read More <i class="fa-regular fa-arrow-right"></i></a></span>
+                    <span><a href="{{ route('home.category.show', $category->category_slug) }}" class="more-btn">Read More <i class="fa-regular fa-arrow-right"></i></a></span>
                 </div>
             </div>
         </div>

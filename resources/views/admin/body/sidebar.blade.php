@@ -129,6 +129,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.setting.image') }}" class="waves-effect">
+                        <i class="ri-settings-5-line"></i>
+                        <span>Setting Image</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

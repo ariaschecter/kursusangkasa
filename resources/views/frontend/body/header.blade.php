@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
 <header>
     <div class="tp-header__area tp-header__transparent">
        <div class="tp-header__main" id="header-sticky">
@@ -36,7 +39,13 @@
                 <div class="col-xxl-5 col-xl-5 col-lg-4 col-md-6 col-6">
                    <div class="tp-header__main-right d-flex justify-content-end align-items-center pl-30">
                       <div class="header-acttion-btns d-flex align-items-center d-none d-md-flex">
-                         <a href="tel:+(443)003030266" class="tp-phone-btn d-none d-xl-block"><i class="fa-thin fa-phone"></i>+(62)812 3537 5978 <span></span></a>
+                         <a href="https://wa.me/{{ $setting->no_phone }}" class="tp-phone-btn d-none d-xl-block"><i class="fa-brands fa-whatsapp"></i>+{{ $setting->no_phone }} <span></span></a>
+                         @auth
+                         <a href="{{ route('dashboard') }}" class="tp-btn">
+                            <span>Dashboard</span>
+                            <div class="transition"></div>
+                         </a>
+                         @else
                          <a href="{{ route('login') }}" class="tp-btn">
                             <span>Login</span>
                             <div class="transition"></div>
@@ -45,6 +54,7 @@
                             <span>Register</span>
                             <div class="transition"></div>
                          </a>
+                         @endauth
                       </div>
                       <div class="tp-header__hamburger ml-50 d-lg-none">
                          <button class="hamburger-btn offcanvas-open-btn">

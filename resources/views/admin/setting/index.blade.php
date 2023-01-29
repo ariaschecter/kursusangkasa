@@ -27,15 +27,29 @@
           <div class="card">
               <div class="card-body">
 
-                <h4 class="card-title">Setting </h4>
 
                 <form method="post" action="{{ route('admin.setting.update', $setting->id) }}" enctype="multipart/form-data">
                     @csrf
 
+                    <h4 class="card-title">Frontend </h4>
+
+                    <div class="row mb-3">
+                        <label for="no_phone" class="col-sm-2 col-form-label">No Phone</label>
+                        <div class="col-sm-10">
+                            <input name="no_phone" class="form-control" type="number" value="{{ $setting->no_phone }}" id="no_phone">
+                            @error('no_phone')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <h4 class="card-title">Wallet </h4>
+
                     <div class="row mb-3">
                         <label for="min_withdraw" class="col-sm-2 col-form-label">Minimal Withdraw</label>
                         <div class="col-sm-10">
-                            <input name="min_withdraw" class="form-control" type="text" value="{{ $setting->min_withdraw }}" id="min_withdraw">
+                            <input name="min_withdraw" class="form-control" type="number" value="{{ $setting->min_withdraw }}" id="min_withdraw">
                             @error('min_withdraw')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -48,7 +62,7 @@
                     <div class="row mb-3">
                         <label for="presentase_admin" class="col-sm-2 col-form-label">Presentase Admin</label>
                         <div class="col-sm-10">
-                            <input name="presentase_admin" class="form-control" type="text" value="{{ $setting->presentase_admin }}" id="presentase_admin">
+                            <input name="presentase_admin" class="form-control" type="number" value="{{ $setting->presentase_admin }}" id="presentase_admin">
                             @error('presentase_admin')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -59,7 +73,7 @@
                     <div class="row mb-3">
                         <label for="presentase_teacher" class="col-sm-2 col-form-label">Presentase Teacher</label>
                         <div class="col-sm-10">
-                            <input name="presentase_teacher" class="form-control" type="text" value="{{ $setting->presentase_teacher }}" id="presentase_teacher">
+                            <input name="presentase_teacher" class="form-control" type="number" value="{{ $setting->presentase_teacher }}" id="presentase_teacher">
                             @error('presentase_teacher')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -70,7 +84,7 @@
                     <div class="row mb-3">
                         <label for="presentase_affiliate" class="col-sm-2 col-form-label">Presentase Affiliate</label>
                         <div class="col-sm-10">
-                            <input name="presentase_affiliate" class="form-control" type="text" value="{{ $setting->presentase_affiliate }}" id="presentase_affiliate">
+                            <input name="presentase_affiliate" class="form-control" type="number" value="{{ $setting->presentase_affiliate }}" id="presentase_affiliate">
                             @error('presentase_affiliate')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -88,27 +102,6 @@
                                 @endforeach
                             </select>
                             @error('default_affiliate') <span class="text-danger"> {{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                    <h4 class="card-title">Home</h4>
-
-                    <div class="row mb-3">
-                        <label for="hero_image" class="col-sm-2 col-form-label">Hero Image (735 x 835)</label>
-                        <div class="col-sm-10">
-                          <input name="hero_image" class="form-control" type="file"  id="image">
-                              @error('hero_image')
-                                  <span class="text-danger"> {{ $message }}</span>
-                              @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                      <div class="row mb-3">
-                         <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
-                        <div class="col-sm-10">
-                            <img id="showImage" class="img-fluid img-thumbnail" src="{{ asset('storage/' . $setting->hero_image) }}" alt="Image Show">
                         </div>
                     </div>
                     <!-- end row -->

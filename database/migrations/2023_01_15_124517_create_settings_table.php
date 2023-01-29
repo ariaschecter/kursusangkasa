@@ -19,8 +19,10 @@ return new class extends Migration
             $table->integer('presentase_admin')->default(40);
             $table->integer('presentase_teacher')->default(50);
             $table->integer('presentase_affiliate')->default(10);
-            $table->integer('default_affiliate');
+            $table->integer('default_affiliate')->nullable();
+            $table->string('no_phone')->nullable();
             $table->string('hero_image')->nullable();
+            $table->string('banner_image')->nullable();
             $table->timestamps();
         });
     }
