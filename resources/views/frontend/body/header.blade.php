@@ -30,7 +30,7 @@
                                <a href="#">About Us</a>
                             </li>
                             <li>
-                               <a href="#">Contact</a>
+                               <a href="{{ route('home.contact.index') }}">Contact</a>
                             </li>
                          </ul>
                       </nav>

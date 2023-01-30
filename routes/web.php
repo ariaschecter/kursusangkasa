@@ -31,6 +31,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/category/{category:category_slug}', 'category_show')->name('home.category.show');
     Route::get('/teacher/{user:username}', 'teacher_show')->name('home.teacher.show');
     Route::get('/affiliate/{user:username}', 'register_affiliate')->name('home.register.affiliate');
+    Route::get('/contact', 'contact_index')->name('home.contact.index');
+    Route::post('/contact', 'contact_store')->name('home.contact.store');
 });
 
 Route::middleware('auth', 'verified', 'user')->controller(PaymentController::class)->group(function () {

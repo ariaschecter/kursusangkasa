@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PaymentController;
@@ -93,6 +94,11 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/withdraw', 'index')->name('admin.withdraw.index');
         Route::get('/withdraw/edit/{wallet_history}', 'edit')->name('admin.withdraw.edit');
         Route::post('/withdraw/edit/{wallet_history}', 'update')->name('admin.withdraw.update');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/contact', 'index')->name('admin.contact.index');
+        Route::get('/contact/delete/{contact}', 'destroy')->name('admin.contact.delete');
     });
 
 });

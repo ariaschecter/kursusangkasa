@@ -22,7 +22,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="waves-effect">
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
@@ -119,6 +119,13 @@
                     <a href="{{ route('admin.teacher.index') }}" class="waves-effect">
                         <i class="ri-user-line"></i>
                         <span>Teacher</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.contact.index') }}" class="waves-effect">
+                        <i class="ri-contacts-book-2-line"></i>
+                        <span>Contact</span>
                     </a>
                 </li>
 

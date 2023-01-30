@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Course;
 use App\Models\ListCourse;
 use App\Models\Review;
@@ -11,6 +12,7 @@ use App\Models\SubCourse;
 use App\Models\Teacher;
 use App\Models\User;
 use App\Models\Youtube;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -50,5 +52,27 @@ class HomeController extends Controller
     public function teacher_show(User $user) {
         $teacher = Teacher::with('user', 'course')->findOrFail($user->id);
         return view('frontend.teacher.show', compact('teacher'));
+    }
+
+    public function contact_index() {
+        return view('frontend.contact.index');
+    }
+
+    public function contact_store(Request $request) {
+        $validated = $request->validate([
+            'contact_name' => 'required',
+            'contact_email' => 'required',
+            'contact_subject' => 'required',
+            'contact_message' => 'required',
+        ]);
+
+        Contact::create($validated);
+
+        $notification = [
+            'message' => 'Your Message Delivered Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
