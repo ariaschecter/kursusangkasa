@@ -10,7 +10,7 @@
         <div class="row">
            <div class="col-xxl-12">
               <div class="breadcrumb__content p-relative z-index-1">
-                 <h3 class="breadcrumb__title">Isnstructor Details</h3>
+                 <h3 class="breadcrumb__title">Instructor Details</h3>
                  <div class="breadcrumb__list">
                     <span><a href="{{ route('home.index') }}">Home</a></span>
                     <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
@@ -44,14 +44,10 @@
                     <div class="teacher__rating">
                        <h5>Review:</h5>
                        <div class="teacher__rating-inner d-flex align-items-center">
-                          <ul>
-                             <li><a href="#"> <i class="icon_star"></i> </a></li>
-                             <li><a href="#"> <i class="icon_star"></i> </a></li>
-                             <li><a href="#"> <i class="icon_star"></i> </a></li>
-                             <li><a href="#"> <i class="icon_star"></i> </a></li>
-                             <li><a href="#"> <i class="icon_star"></i> </a></li>
-                          </ul>
-                          <p>4.5</p>
+                            <div class="rating-star">
+                                <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{ $teacher->review->avg('review_star') }}"/>
+                            </div>
+                            {{ $teacher->review->avg('review_star') }}
                        </div>
                     </div>
                  </div>

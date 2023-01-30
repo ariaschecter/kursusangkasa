@@ -27,7 +27,7 @@
           </div>
           <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
              <div class="course__member-info pl-85">
-                <h5>{{ $acces->user->review->avg('review_star') }}</h5>
+                <h5>{{ $acces->user->review->avg('review_star') ?? 0 }}</h5>
                 <span>Rating</span>
              </div>
           </div>
