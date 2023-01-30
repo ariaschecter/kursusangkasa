@@ -8,13 +8,13 @@ use App\Models\CourseAcces;
 use App\Models\ListCourse;
 use App\Models\Review;
 use App\Models\Setting;
-use App\Models\SubCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Image;
 
 class CourseController extends Controller
 {
@@ -46,9 +46,12 @@ class CourseController extends Controller
             'price_new' => 'required|integer',
         ]);
 
-        $upload = $request->file('course_picture')->store('upload/course');
+        $image = $request->file('course_picture');
+        $course_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 533)->save('storage/' . $course_picture);
+        
         $validated['course_slug'] = Str::slug($request->course_name);
-        $validated['course_picture'] = $upload;
+        $validated['course_picture'] = $course_picture;
         $validated['admin_percentage'] = $setting->presentase_admin;
         $validated['teacher_percentage'] = $setting->presentase_teacher;
         $validated['affiliate_percentage'] = $setting->presentase_affiliate;
@@ -89,7 +92,9 @@ class CourseController extends Controller
 
         if ($request->course_picture) {
             Storage::delete($course->course_picture);
-            $course_picture = $request->file('course_picture')->store('upload/course');
+            $image = $request->file('course_picture');
+            $course_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 533)->save('storage/' . $course_picture);
         } else {
             $course_picture = $course->course_picture;
         }
@@ -145,10 +150,13 @@ class CourseController extends Controller
             'price_new' => 'required|integer',
         ]);
 
-        $upload = $request->file('course_picture')->store('upload/course');
+        $image = $request->file('course_picture');
+        $course_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 533)->save('storage/' . $course_picture);
+
         $validated['teacher_id'] = Auth::id();
         $validated['course_slug'] = Str::slug($request->course_name);
-        $validated['course_picture'] = $upload;
+        $validated['course_picture'] = $course_picture;
         $validated['admin_percentage'] = $setting->presentase_admin;
         $validated['teacher_percentage'] = $setting->presentase_teacher;
         $validated['affiliate_percentage'] = $setting->presentase_affiliate;
@@ -190,7 +198,9 @@ class CourseController extends Controller
 
         if ($request->course_picture) {
             Storage::delete($course->course_picture);
-            $course_picture = $request->file('course_picture')->store('upload/course');
+            $image = $request->file('course_picture');
+            $course_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 533)->save('storage/' . $course_picture);
         } else {
             $course_picture = $course->course_picture;
         }

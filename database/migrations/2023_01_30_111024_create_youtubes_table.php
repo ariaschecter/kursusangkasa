@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('youtubes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('course_id');
-            $table->foreignId('teacher_id');
-            $table->integer('review_star');
-            $table->text('review_feedback')->nullable();
+            $table->string('youtube_picture');
+            $table->string('youtube_link');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('youtubes');
     }
 };

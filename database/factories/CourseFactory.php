@@ -34,6 +34,7 @@ class CourseFactory extends Factory
             'teacher_percentage' => $setting->presentase_teacher,
             'affiliate_percentage' => $setting->presentase_affiliate,
             'course_enroll' => fake()->numberBetween(300, 1000),
+            'course_status' => 'ACTIVE',
         ];
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
+use App\Http\Controllers\YoutubeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function() {
@@ -49,6 +50,15 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/payment-method/edit/{payment_method}', 'edit')->name('admin.payment_method.edit');
         Route::post('/payment-method/edit/{payment_method}', 'update')->name('admin.payment_method.update');
         Route::get('/payment-method/delete/{payment_method}', 'destroy')->name('admin.payment_method.delete');
+    });
+
+    Route::controller(YoutubeController::class)->group(function () {
+        Route::get('/youtube', 'index')->name('admin.youtube.index');
+        Route::get('/youtube/add', 'create')->name('admin.youtube.add');
+        Route::post('/youtube/add', 'store')->name('admin.youtube.store');
+        Route::get('/youtube/edit/{youtube}', 'edit')->name('admin.youtube.edit');
+        Route::post('/youtube/edit/{youtube}', 'update')->name('admin.youtube.update');
+        Route::get('/youtube/delete/{youtube}', 'destroy')->name('admin.youtube.delete');
     });
 
     Route::controller(AdminController::class)->group(function () {

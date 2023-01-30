@@ -237,7 +237,7 @@
                         <div class="course__video-thumb w-img mb-25">
                            <img src="{{ asset('storage/' . $course->course_picture) }}" alt="">
                            <div class="course__video-play">
-                              <a href="{{ $list_course->list_course_link }}" clas data-fancybox="" class="play-btn popup-video"> <i class="fas fa-play"></i> </a>
+                              <a href="https://www.youtube.com/watch?v={{ $list_course->list_course_link }}" clas data-fancybox="" class="play-btn popup-video"> <i class="fas fa-play"></i> </a>
                            </div>
                         </div>
                         <div class="course__video-meta mb-25 d-flex align-items-center justify-content-between">

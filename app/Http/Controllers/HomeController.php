@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\ListCourse;
+use App\Models\Review;
 use App\Models\Setting;
 use App\Models\SubCourse;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Youtube;
 
 class HomeController extends Controller
 {
@@ -17,7 +19,9 @@ class HomeController extends Controller
         $categories = Category::all();
         $popular = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('course_enroll')->limit(6)->get();
         $latest_course = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('created_at', 'DESC')->limit(3)->get();
-        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course'));
+        $reviews = Review::latest()->limit(6)->get();
+        $youtubes = Youtube::latest()->limit(3)->get();
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes'));
     }
 
     public function course_index() {

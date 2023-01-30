@@ -123,6 +123,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('admin.youtube.index') }}" class="waves-effect">
+                        <i class="ri-youtube-line"></i>
+                        <span>Youtube</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('admin.setting.index') }}" class="waves-effect">
                         <i class="ri-settings-5-line"></i>
                         <span>Setting</span>

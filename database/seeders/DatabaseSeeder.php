@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'default_affiliate' => 1,
             'hero_image' => 'upload/home/hero_image.jpg'
         ]);
-        Course::factory(1)->create();
+        Course::factory(2)->create();
         Category::factory()->create();
         Teacher::factory()->create([
             'id' => 2,
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 3,
             'course_acces_last' => 5,
         ]);
-        SubCourse::factory(5)->create();
+        SubCourse::factory(10)->create();
         ListCourse::factory(20)->create();
 
     }

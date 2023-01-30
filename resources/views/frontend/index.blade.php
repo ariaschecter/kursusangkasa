@@ -186,80 +186,6 @@
  </div>
  <!-- course end  -->
 
- <!-- testimonial start  -->
- {{-- <div class="tp-testimonial__section pb-120">
-    <div class="container">
-       <div class="grey-bg pb-150 pt-60 tp-testimonial__bg">
-          <div class="row">
-             <div class="col-lg-12">
-                <div class="tp-section__title-wrapper mb-40 text-center">
-                   <h3 class="tp-section__title mb-15">What our clients Say <br>
-                      About us</h3>
-                   <p>Etiam Porttitor risus massa nec condiment gravida nibh.</p>
-                </div>
-             </div>
-          </div>
-          <div class="tp-testimonial__wrapper p-relative">
-             <div class="row justify-content-center">
-
-                <div class="col-lg-10">
-                   <div class="tp-testimonial__slider">
-                      <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
-                         <img src="assets/img/testimonial/testimonial-thumb.jpg" alt="">
-                         <div class="tp-testimonial__review">
-                            <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
-                            <p>Engage with our profeessional realestaeyeagants sell buy or <br> rent your home auweGet
-                               emails directly areain falls box andery <br> ithe. Quis ipsum suspendisse ultrices
-                               gravida.</p>
-                            <h3>Maria Zokatti</h3>
-                            <span>CEO, Psdboss</span>
-                         </div>
-                      </div>
-                      <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
-                         <img src="assets/img/testimonial/testimonial-thumb-2.jpg" alt="">
-                         <div class="tp-testimonial__review">
-                            <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
-                            <p>Your company is truly upstanding and is behind its product 100%. <br> I STRONGLY
-                               recommend education to EVERYONE interested <br> in running a successful online business
-                            </p>
-                            <h3>Judy N</h3>
-                            <span>CEO, Psdboss</span>
-                         </div>
-                      </div>
-                      <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
-                         <img src="assets/img/testimonial/testimonial-thumb-3.jpg" alt="">
-                         <div class="tp-testimonial__review">
-                            <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
-                            <p>Just what I was looking for. Best. Product. Ever! Education is great. Education is
-                               the most valuable business resource <br> we have EVER purchased.</p>
-                            <h3>Gabbey A.</h3>
-                            <span>CEO, Psdboss</span>
-                         </div>
-                      </div>
-                      <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
-                         <img src="assets/img/testimonial/testimonial-thumb-4.jpg" alt="">
-                         <div class="tp-testimonial__review">
-                            <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
-                            <p>I would also like to say thank you to all your staff. It's the perfect <br> solution for
-                               our business. Education is the most valuable <br> business resource we have EVER
-                               purchased.</p>
-                            <h3>Olive Yew.</h3>
-                            <span>CEO, Psdboss</span>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="row">
-                <div class="tp-testimonial__dots pt-50"></div>
-                <div class="tp-testimonial__arrows"></div>
-             </div>
-          </div>
-       </div>
-    </div>
- </div> --}}
- <!-- tesimoial end  -->
-
  <!-- team start  -->
  <div class="tp-team__section pt-120 pb-90">
     <div class="container">
@@ -282,6 +208,72 @@
     </div>
  </div>
  <!-- team end  -->
+
+ <!-- youtube start  -->
+ <div class="tp-team__section pt-120 pb-90">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+               <div class="tp-section__title-wrapper mb-40">
+                  <h3 class="tp-section__title mb-15">Our Channel Youtube.</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur aliqua adipiscing
+                     elit, sed do eiumod tempor.</p>
+               </div>
+            </div>
+         </div>
+       <div class="tp-team__wrapper mb-30">
+          <div class="row">
+             @foreach ($youtubes as $youtube)
+                @include('frontend.template.youtube_card')
+             @endforeach
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- youtube end  -->
+
+ <!-- testimonial start  -->
+ @if(count($reviews) > 0)
+    <div class="tp-testimonial__section pb-120">
+        <div class="container">
+            <div class="grey-bg pb-150 pt-60 tp-testimonial__bg">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tp-section__title-wrapper mb-40 text-center">
+                        <h3 class="tp-section__title mb-15">What our clients Say <br>
+                            About us</h3>
+                        <p>Etiam Porttitor risus massa nec condiment gravida nibh.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tp-testimonial__wrapper p-relative">
+                    <div class="row justify-content-center">
+
+                    <div class="col-lg-10">
+                        <div class="tp-testimonial__slider">
+                            @foreach ($reviews as $review)
+                                <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
+                                    <img src="{{ asset('storage/' . $review->user->user_picture) }}" style="width: 270px" alt="">
+                                    <div class="tp-testimonial__review">
+                                    <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
+                                    <p>{{ $review->review_feedback }}</p>
+                                    <h3>{{ $review->user->name }}</h3>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="tp-testimonial__dots pt-50"></div>
+                    <div class="tp-testimonial__arrows"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+<!-- tesimoial end  -->
 
 
 @endsection

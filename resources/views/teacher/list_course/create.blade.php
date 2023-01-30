@@ -59,9 +59,10 @@
                     <!-- end row -->
 
                     <div class="row mb-3">
-                        <label for="list_course_link" class="col-sm-2 col-form-label">List Course Link </label>
+                        <label for="list_course_link" class="col-sm-2 col-form-label">List Course Link</label>
                         <div class="col-sm-10">
-                            <input name="list_course_link" class="form-control" type="text" value="{{ old('list_course_link') }}" id="list_course_link" placeholder="https://www.youtube.com/watch?v=abcdefgh">
+                            <input name="list_course_link" class="form-control" type="text" value="{{ old('list_course_link') }}" id="list_course_link" placeholder="abcdefgh">
+                            <span class="text-muted">ex "abcdefgh"</span>
                             @error('list_course_link')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror

@@ -25,9 +25,11 @@ class CategoryController extends Controller
             'category_picture' => 'required|file|image|max:5120'
         ]);
 
-        $upload = $request->file('category_picture')->store('upload/category');
+        $image = $request->file('category_picture');
+        $category_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 533)->save('storage/' . $category_picture);
 
-        $validated['category_picture'] = $upload;
+        $validated['category_picture'] = $category_picture;
         $validated['category_slug'] = Str::slug($request->category_name);
 
         Category::create($validated);
@@ -51,7 +53,9 @@ class CategoryController extends Controller
 
         if ($request->category_picture) {
             Storage::delete($category->category_picture);
-            $category_picture = $request->file('category_picture')->store('upload/category');
+            $image = $request->file('category_picture');
+            $category_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 533)->save('storage/' . $category_picture);
         } else {
             $category_picture = $category->category_picture;
         }

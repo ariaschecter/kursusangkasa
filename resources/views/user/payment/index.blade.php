@@ -53,7 +53,9 @@
                                         <td>{{ $payment->payment_method->payment_method }}</td>
                                         <td>Rp. {{ number_format($payment->payment_price, 0) }}</td>
                                         <td>
-                                            <a href="{{ asset('storage/' . $payment->payment_picture) }}" clas data-fancybox="" class="play-btn popup-image">Show Picture </a>
+                                            <a href="{{ asset('storage/' . $payment->payment_picture) }}" class="popup-image">
+                                                <img src="{{ asset('storage/' . $payment->payment_picture) }}" alt="payment picture" style="width: 50px; height: 50px">
+                                            </a>
                                         </td>
                                         <td>{{ $payment->payment_status }}</td>
                                         <td>{{ \Carbon\Carbon::parse($payment->created_at)->toDateString() }}</td>

@@ -35,6 +35,7 @@
                                     <th>#</th>
                                     <th>Category</th>
                                     <th>Course Name</th>
+                                    <th>Course Picture</th>
                                     <th>Price New</th>
                                     <th>Enroll</th>
                                     <th>Status</th>
@@ -51,6 +52,11 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $course->category->category_name }}</td>
                                         <td>{{ $course->course_name }}</td>
+                                        <td>
+                                            <a href="{{ asset('storage/' . $course->course_picture) }}" class="popup-image">
+                                                <img src="{{ asset('storage/' . $course->course_picture) }}" alt="course picture" style="width: 50px; height: 50px">
+                                            </a>
+                                        </td>
                                         <td>{{ number_format($course->price_new, 0) }}</td>
                                         <td>{{ $course->course_enroll }}</td>
                                         <td>{{ $course->course_status }}</td>

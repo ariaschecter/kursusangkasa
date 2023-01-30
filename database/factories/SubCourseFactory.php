@@ -18,7 +18,7 @@ class SubCourseFactory extends Factory
     public function definition()
     {
         return [
-            'course_id' => 1,
+            'course_id' => fake()->numberBetween(1,2),
             'sub_course_slug' => Str::random(14),
             'sub_course_no' => fake()->numberBetween(0, 6),
             'sub_course_name' => fake()->name(),
