@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('payment_method_id');
             $table->integer('payment_price');
             $table->string('payment_picture');
-            $table->string('payment_status')->default('PENDING'); // Pending, Done, Cancel
+            $table->string('payment_status')->default('PENDING'); // Pending, Success, Wrong
             $table->timestamps();
         });
     }

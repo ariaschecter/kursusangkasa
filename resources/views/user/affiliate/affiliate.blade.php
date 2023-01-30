@@ -19,10 +19,19 @@
         </div>
         <!-- end page title -->
 
+            <div class="row mb-3">
+                <label for="affiliate" class="col-md-2 col-sm-12 col-form-label">Affiilate Link</label>
+                <div class="col-md-4 col-sm-8">
+                    <input name="affiliate" class="form-control" type="text" value="{{ route('register.affiliate', Auth::user()->username) }}" id="affiliate" readonly>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                    <button class="btn btn-primary" value="copy" onclick="copyToClipboard()">Copy!</button>
+                </div>
+            </div>
+            <!-- end row -->
+
         {{-- Start Table Category --}}
         <div>
-            {{-- <a href="{{ route('category.add', $city->city_slug) }}" class="btn btn-primary mb-2">Add Affiliate</a> --}}
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -66,4 +75,11 @@
 
     </div>
 </div>
+
+<script>
+    function copyToClipboard() {
+        document.getElementById('affiliate').select();
+        document.execCommand('copy');
+    }
+</script>
 @endsection

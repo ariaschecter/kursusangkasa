@@ -49,7 +49,7 @@ class CourseController extends Controller
         $image = $request->file('course_picture');
         $course_picture = 'upload/course/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(800, 533)->save('storage/' . $course_picture);
-        
+
         $validated['course_slug'] = Str::slug($request->course_name);
         $validated['course_picture'] = $course_picture;
         $validated['admin_percentage'] = $setting->presentase_admin;
@@ -232,8 +232,9 @@ class CourseController extends Controller
     }
 
     public function user_index() {
-        $courses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
-        return view('user.course.index', compact('courses'));
+        $course_accesses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
+        $courses = Course::latest()->get();
+        return view('user.course.index', compact('course_accesses','courses'));
     }
 
     public function user_continue(Course $course) {
