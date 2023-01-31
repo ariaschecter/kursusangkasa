@@ -109,9 +109,23 @@
                 <li class="menu-title">Email</li>
 
                 <li>
+                    <a href="{{ route('admin.mail.user') }}" class="waves-effect">
+                        <i class="ri-mail-line"></i>
+                        <span>Mail to User</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('admin.mail.index') }}" class="waves-effect">
                         <i class="ri-mail-line"></i>
-                        <span>Email</span>
+                        <span>Custom Email</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.mail.broadcast') }}" class="waves-effect">
+                        <i class="ri-mail-line"></i>
+                        <span>Broadcast Email</span>
                     </a>
                 </li>
 

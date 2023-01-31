@@ -45,7 +45,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $acces->course->course_name }}</td>
                                         <td>{{ $acces->user->username }}</td>
-                                        <td>{{ $acces->course_acces_last / count($acces->course->list_course) * 100 }} %</td>
+                                        <td>{{ round($acces->course_acces_last / count($acces->course->list_course) * 100) }} %</td>
                                     </tr>
                                 @endforeach
 

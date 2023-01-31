@@ -80,7 +80,10 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
 
     Route::controller(MailController::class)->group(function () {
         Route::get('/mail', 'index')->name('admin.mail.index');
+        Route::get('/mail/user', 'user')->name('admin.mail.user');
+        Route::get('/mail/broadcast', 'broadcast')->name('admin.mail.broadcast');
         Route::post('/mail', 'store')->name('admin.mail.store');
+        Route::post('/mail/broadcast', 'store_broadcast');
     });
 
     Route::controller(AffiliateController::class)->group(function () {

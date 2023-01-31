@@ -36,10 +36,12 @@
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input name="email" class="form-control" type="email" value="{{ old('email') }}" id="email">
-                            @error('email')
-                                <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            <select class="form-select" aria-label="Default Select Example" name="email" id="email">
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->email }}" {{ ($user->email == old('email') ? 'selected' : '') }}>{{ $user->email }}</option>
+                                @endforeach
+                            </select>
+                            @error('email') <span class="text-danger"> {{ $message }}</span> @enderror
                         </div>
                     </div>
                     <!-- end row -->

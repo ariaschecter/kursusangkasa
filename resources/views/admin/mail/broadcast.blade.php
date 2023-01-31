@@ -28,21 +28,10 @@
               <div class="card-body">
 
 
-                <form method="post" action="{{ route('admin.mail.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.mail.broadcast') }}" enctype="multipart/form-data">
                     @csrf
 
                     <h4 class="card-title">Email </h4>
-
-                    <div class="row mb-3">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input name="email" class="form-control" type="email" value="{{ old('email') }}" id="email">
-                            @error('email')
-                                <span class="text-danger"> {{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <!-- end row -->
 
                     <div class="row mb-3">
                         <label for="subject" class="col-sm-2 col-form-label">Subject</label>
