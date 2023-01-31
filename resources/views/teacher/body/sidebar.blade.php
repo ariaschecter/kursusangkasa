@@ -55,6 +55,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('teacher.review.index') }}" class="waves-effect">
+                        <i class="ri-feedback-line"></i>
+                        <span>Review</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

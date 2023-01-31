@@ -2,6 +2,7 @@
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ListCourseController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCourseController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\WalletController;
@@ -45,5 +46,9 @@ Route::middleware('auth', 'verified', 'teacher')->prefix('instructor')->group(fu
     Route::controller(TeacherController::class)->group(function () {
         Route::get('/bio', 'index')->name('teacher.teacher.index');
         Route::post('/bio', 'update')->name('teacher.teacher.update');
+    });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/review', 'teacher_index')->name('teacher.review.index');
     });
 });

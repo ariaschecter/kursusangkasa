@@ -129,12 +129,26 @@
                     </a>
                 </li>
 
-                <li class="menu-title">Youtube</li>
+                <li class="menu-title">Admin</li>
 
                 <li>
                     <a href="{{ route('admin.youtube.index') }}" class="waves-effect">
                         <i class="ri-youtube-line"></i>
                         <span>Youtube</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.faq.index') }}" class="waves-effect">
+                        <i class="ri-book-line"></i>
+                        <span>Faq</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.review.index') }}" class="waves-effect">
+                        <i class="ri-feedback-line"></i>
+                        <span>Review</span>
                     </a>
                 </li>
 

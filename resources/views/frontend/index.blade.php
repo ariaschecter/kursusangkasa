@@ -214,5 +214,45 @@
     @endif
 <!-- tesimoial end  -->
 
+<!-- accordion-area-start -->
+<div class="sd-accordio-area  pt-130 pb-130">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+               <div class="tp-section__title-wrapper mb-40">
+                  <h3 class="tp-section__title mb-15">FAQ.</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur aliqua adipiscing
+                     elit, sed do eiumod tempor.</p>
+               </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="tp-custom-accordio">
+                    <div class="accordion" id="faqsection">
+                        @foreach ($faqs as $faq)
+                            <div class="accordion-items">
+                                <h2 class="accordion-header" id="heading{{ $faq->id }}">
+                                    <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}">
+                                        {{ $faq->faq_title }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $faq->id }}"
+                                    data-bs-parent="#faqsection">
+                                    <div class="accordion-body">
+                                        {{ $faq->faq_desc }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- accordion-area-end -->
+
 
 @endsection

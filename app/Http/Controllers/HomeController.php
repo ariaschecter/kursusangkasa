@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Course;
+use App\Models\Faq;
 use App\Models\ListCourse;
 use App\Models\Payment;
 use App\Models\Review;
@@ -25,7 +26,8 @@ class HomeController extends Controller
         $reviews = Review::latest()->limit(6)->get();
         $all_reviews = Review::all();
         $youtubes = Youtube::latest()->limit(3)->get();
-        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes', 'all_reviews'));
+        $faqs = Faq::all();
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes', 'all_reviews', 'faqs'));
     }
 
     public function course_index() {

@@ -6,9 +6,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
@@ -100,6 +102,15 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::post('/wallet/withdraw', 'withdraw_store')->name('admin.wallet.withdraw.store');
     });
 
+    Route::controller(FaqController::class)->group(function () {
+        Route::get('/faq', 'index')->name('admin.faq.index');
+        Route::get('/faq/add', 'create')->name('admin.faq.add');
+        Route::post('/faq/add', 'store')->name('admin.faq.store');
+        Route::get('/faq/edit/{faq}', 'edit')->name('admin.faq.edit');
+        Route::post('/faq/edit/{faq}', 'update')->name('admin.faq.update');
+        Route::get('/faq/delete/{faq}', 'destroy')->name('admin.faq.delete');
+    });
+
     Route::controller(WithdrawController::class)->group(function () {
         Route::get('/withdraw', 'index')->name('admin.withdraw.index');
         Route::get('/withdraw/edit/{wallet_history}', 'edit')->name('admin.withdraw.edit');
@@ -109,6 +120,10 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
     Route::controller(ContactController::class)->group(function () {
         Route::get('/contact', 'index')->name('admin.contact.index');
         Route::get('/contact/delete/{contact}', 'destroy')->name('admin.contact.delete');
+    });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/review', 'index')->name('admin.review.index');
     });
 
 });

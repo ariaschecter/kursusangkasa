@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function index() {
+        $reviews = Review::with('user','teacher', 'course')->orderBy('created_at', 'DESC')->get();
+        return view('admin.review.index', compact('reviews'));
+    }
+
+    public function teacher_index() {
+        $reviews = Review::with('course', 'user')->where('teacher_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        return view('teacher.review.index', compact('reviews'));
+    }
     public function store(Request $request, Course $course) {
         $validated = $request->validate([
             'review_star' => 'required|integer',
