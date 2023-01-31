@@ -13,7 +13,7 @@
         </div>
         <div class="tp-courses__content white-bg">
             <div class="tp-courses__meta">
-                <span class="tp-ratting"><i class="icon_star"></i> {{ $course->review->avg('review_star') ?? 0 }} ({{ count($course->review) }})</span>
+                <span class="tp-ratting"><i class="icon_star"></i> {{ round($course->review->avg('review_star'), 2) ?? 0 }} ({{ count($course->review) }})</span>
                 <span><i class="fa-light fa-user"></i>{{ $course->course_enroll }}</span>
             </div>
             <h3 class="tp-courses__title"><a href="{{ route('home.course.show', $course->course_slug) }}">{{ $course->course_name }}</a></h3>

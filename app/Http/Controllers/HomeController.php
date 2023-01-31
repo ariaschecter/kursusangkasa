@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Course;
 use App\Models\ListCourse;
+use App\Models\Payment;
 use App\Models\Review;
 use App\Models\Setting;
 use App\Models\SubCourse;
@@ -22,8 +23,9 @@ class HomeController extends Controller
         $popular = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('course_enroll')->limit(6)->get();
         $latest_course = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('created_at', 'DESC')->limit(3)->get();
         $reviews = Review::latest()->limit(6)->get();
+        $all_reviews = Review::all();
         $youtubes = Youtube::latest()->limit(3)->get();
-        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes'));
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes', 'all_reviews'));
     }
 
     public function course_index() {
@@ -52,6 +54,15 @@ class HomeController extends Controller
     public function teacher_show(User $user) {
         $teacher = Teacher::with('user', 'course')->findOrFail($user->id);
         return view('frontend.teacher.show', compact('teacher'));
+    }
+
+    public function about_index() {
+        $payments = count(Payment::all());
+        $courses = count(Course::where('course_status', 'ACTIVE')->get());
+        $students = count(User::where('role', 'USER')->get());
+        $teachers = count(User::where('role', 'TEACHER')->get());
+        $reviews = Review::with('user')->get();
+        return view('frontend.about.index', compact('payments', 'courses', 'students', 'teachers', 'reviews'));
     }
 
     public function contact_index() {

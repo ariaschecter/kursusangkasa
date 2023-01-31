@@ -106,6 +106,13 @@ class RegisteredUserController extends Controller
 
     public function affiliate_store(Request $request, User $user): RedirectResponse
     {
+        $affiliate = $user->id;
+        $default = \App\Models\Setting::first()->default_affiliate;
+
+        if ($user->role == 'TEACHER') {
+            $affiliate = $default;
+        }
+
         $request->validate([
             'username' => 'required|unique:users,username|alpha_dash',
             'name' => ['required', 'string', 'max:255'],
@@ -120,7 +127,7 @@ class RegisteredUserController extends Controller
             'wa_number' => $request->wa_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'affiliate_id' => $user->id,
+            'affiliate_id' => $affiliate,
         ]);
 
         Wallet::create([

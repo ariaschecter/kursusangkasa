@@ -71,7 +71,8 @@
                     <div class="row mb-3">
                         <label for="wallet_history_money" class="col-sm-2 col-form-label">Withdraw Amount</label>
                         <div class="col-sm-10">
-                            <input name="wallet_history_money" class="form-control" type="text" value="{{ $history->wallet_history_money }}" id="wallet_history_money" readonly>
+                            <input name="wallet_history_money" class="form-control" type="text" value="{{ $history->wallet_history_money }}" id="wallet_history_money" hidden>
+                            <input name="" class="form-control" type="text" value="Rp. {{ number_format($history->wallet_history_money * -1, 0) }}" id="" readonly>
                             @error('wallet_history_money')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror

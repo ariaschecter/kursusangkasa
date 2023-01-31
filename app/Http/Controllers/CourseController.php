@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseAcces;
 use App\Models\ListCourse;
+use App\Models\Payment;
 use App\Models\Review;
 use App\Models\Setting;
 use App\Models\User;
@@ -88,7 +89,13 @@ class CourseController extends Controller
             'course_desc' => 'required',
         ]);
 
-        $validated = $request->except('_token');
+        $validated = $request->except('_token', 'course_picture');
+
+        if($request->course_admin_status == 'DECLINE') {
+            $validated['course_status'] = 'ARCHIVE';
+        } else if($request->course_admin_status == 'ACCEPT') {
+            $validated['course_status'] = 'ACTIVE';
+        }
 
         if ($request->course_picture) {
             Storage::delete($course->course_picture);
@@ -99,7 +106,6 @@ class CourseController extends Controller
             $course_picture = $course->course_picture;
         }
 
-        $validated = $request->except(['_token', 'course_picture']);
         $validated['course_slug'] = Str::slug($request->course_name);
         $validated['course_picture'] = $course_picture;
 
@@ -122,6 +128,12 @@ class CourseController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function detail(Course $course) {
+        $payment = Payment::where('course_id', $course->id);
+        $course_acces = CourseAcces::where('course_id', $course->id)->get();
+        return view('admin.course.details', compact('payment', 'course_acces'));
     }
 
     public function teacher_index() {
@@ -233,8 +245,7 @@ class CourseController extends Controller
 
     public function user_index() {
         $course_accesses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
-        $courses = Course::latest()->get();
-        return view('user.course.index', compact('course_accesses','courses'));
+        return view('user.course.index', compact('course_accesses'));
     }
 
     public function user_continue(Course $course) {

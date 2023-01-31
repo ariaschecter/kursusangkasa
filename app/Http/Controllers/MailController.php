@@ -9,11 +9,22 @@ use Mail;
 class MailController extends Controller
 {
     public function index() {
-        $email = 'aria@gmail.com';
+        return view('admin.mail.index');
+    }
 
-        $body = '<p>asdawdnwiajdniadwdw</p>';
+    public function store(Request $request) {
+        $email = $request->email;
 
-        Mail::to($email)->send(new Mailer($body));
-        return redirect()->route('home.index');
+        $body = $request->message;
+        $subject = $request->subject;
+        $mailer = new Mailer($body, $subject);
+
+        Mail::to($email)->send($mailer);
+
+        $notification = [
+            'message' => 'Email Sent Successfully',
+            'alert-type' => 'success',
+        ];
+        return redirect()->back()->with($notification);
     }
 }

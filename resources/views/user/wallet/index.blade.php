@@ -121,7 +121,7 @@
                                         <td>{{ $history->wallet_history_desc }}</td>
                                         <td>{{ 'Rp. ' . number_format($history->wallet_history_money, 0) }}</td>
                                         <td>{{ $history->wallet_history_status }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($history->updated_at)->diffForHumans() }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($history->updated_at)->format('d M Y') }}</td>
                                     </tr>
                                 @endforeach
 

@@ -27,7 +27,7 @@
                                <a href="{{ route('home.course.index') }}">Course</a>
                             </li>
                             <li>
-                               <a href="#">About Us</a>
+                               <a href="{{ route('home.about.index') }}">About Us</a>
                             </li>
                             <li>
                                <a href="{{ route('home.contact.index') }}">Contact</a>

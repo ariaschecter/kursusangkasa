@@ -30,6 +30,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/category', 'category_index')->name('home.category.index');
     Route::get('/category/{category:category_slug}', 'category_show')->name('home.category.show');
     Route::get('/teacher/{user:username}', 'teacher_show')->name('home.teacher.show');
+    Route::get('/about', 'about_index')->name('home.about.index');
     Route::get('/contact', 'contact_index')->name('home.contact.index');
     Route::post('/contact', 'contact_store')->name('home.contact.store');
 });

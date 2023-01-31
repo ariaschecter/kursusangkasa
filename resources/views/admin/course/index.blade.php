@@ -33,12 +33,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Teacher</th>
-                                    <th>Category</th>
-                                    <th>Course Name</th>
                                     <th>Course Picture</th>
-                                    <th>Price New</th>
+                                    <th>Course Name</th>
+                                    <th>Teacher</th>
                                     <th>Enroll</th>
+                                    <th>Price</th>
                                     <th>Teacher Status</th>
                                     <th>Admin Status</th>
                                     <th>Action</th>
@@ -51,22 +50,22 @@
                                 @foreach ($courses as $course)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $course->teacher->user->name }}</td>
-                                        <td>{{ $course->category->category_name }}</td>
-                                        <td>{{ $course->course_name }}</td>
                                         <td>
                                             <a href="{{ asset('storage/' . $course->course_picture) }}" class="popup-image">
                                                 <img src="{{ asset('storage/' . $course->course_picture) }}" alt="course picture" style="width: 50px; height: 50px">
                                             </a>
                                         </td>
-                                        <td>{{ number_format($course->price_new, 0) }}</td>
+                                        <td>{{ $course->course_name }}</td>
+                                        <td>{{ $course->teacher->user->name }}</td>
                                         <td>{{ $course->course_enroll }}</td>
+                                        <td>{{ number_format($course->price_new, 0) }}</td>
                                         <td>{{ $course->course_status }}</td>
                                         <td>{{ $course->course_admin_status }}</td>
                                         <td>
                                             <a href="{{ route('admin.course.show', $course->id) }}" class="btn btn-success sm" title="Show Data"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('admin.course.edit', $course->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.course.delete', $course->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{{ route('admin.course.detail', $course->id) }}" class="btn btn-secondary sm" title="Detail Penjualan"><i class="fas fa-arrow-right"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

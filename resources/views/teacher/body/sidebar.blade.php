@@ -46,12 +46,12 @@
                     </a>
                 </li>
 
-                <li class="menu-title">Affiliate</li>
+                <li class="menu-title">Teacher</li>
 
                 <li>
-                    <a href="{{ route('teacher.affiliate.index') }}" class="waves-effect">
-                        <i class="ri-gift-line"></i>
-                        <span>My Affiliate</span>
+                    <a href="{{ route('teacher.teacher.index') }}" class="waves-effect">
+                        <i class="ri-profile-line"></i>
+                        <span>Teacher Bio</span>
                     </a>
                 </li>
 

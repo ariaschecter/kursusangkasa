@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\SettingController;
@@ -36,6 +37,7 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/course/edit/{course}', 'edit')->name('admin.course.edit');
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');
         Route::get('/course/delete/{course}', 'destroy')->name('admin.course.delete');
+        Route::get('/course/detail/{course}', 'detail')->name('admin.course.detail');
     });
 
     Route::controller(PaymentController::class)->group(function () {
@@ -74,6 +76,11 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/setting/image', 'image')->name('admin.setting.image');
         Route::post('/setting/{setting}', 'setting_update')->name('admin.setting.update');
         Route::post('/setting/image/{setting}', 'image_update')->name('admin.setting.image.update');
+    });
+
+    Route::controller(MailController::class)->group(function () {
+        Route::get('/mail', 'index')->name('admin.mail.index');
+        Route::post('/mail', 'store')->name('admin.mail.store');
     });
 
     Route::controller(AffiliateController::class)->group(function () {

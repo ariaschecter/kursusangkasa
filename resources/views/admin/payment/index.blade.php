@@ -32,7 +32,8 @@
                                 <tr>
                                     <th>Status</th>
                                     <th>Ref</th>
-                                    <th>Course</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
                                     <th>Payment Method</th>
                                     <th>Price</th>
                                     <th>Picture</th>
@@ -46,13 +47,15 @@
                                     <tr>
                                         <td>{{ $payment->payment_status }}</td>
                                         <td>#{{ $payment->payment_ref }}</td>
-                                        <td>{{ $payment->course->course_name }}</td>
+                                        <td>{{ $payment->user->name }}</td>
+                                        <td>{{ $payment->user->email }}</td>
                                         <td>{{ $payment->payment_method->payment_method }}</td>
                                         <td>Rp. {{ number_format($payment->payment_price, 0) }}</td>
                                         <td>
                                             <a href="{{ asset('storage/' . $payment->payment_picture) }}" clas data-fancybox="" class="play-btn popup-image">Show Picture </a>
                                         </td>
                                         <td>
+                                            <a href="https://wa.me/{{ $payment->user->wa_number }}" class="btn btn-success sm" title="Follow Up Whatsapp"><i class=" fab fa-whatsapp"></i></a>
                                             @if($payment->payment_status == 'PENDING')
                                                 <a href="{{ route('admin.payment.accept', $payment->id) }}" class="btn btn-info sm" title="Accept Payment" id="accept"><i class="fas fa-check"></i></a>
                                                 <a href="{{ route('admin.payment.decline', $payment->id) }}" class="btn btn-danger sm" title="Decline Payment" id="decline"><i class="fas fa-ban"></i></a>

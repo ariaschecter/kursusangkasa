@@ -47,7 +47,7 @@
                             <div class="rating-star">
                                 <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{ $teacher->review->avg('review_star') }}"/>
                             </div>
-                            {{ $teacher->review->avg('review_star') }}
+                            {{ round($teacher->review->avg('review_star'), 2) }}
                        </div>
                     </div>
                  </div>

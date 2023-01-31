@@ -59,7 +59,7 @@
                                         </td>
                                         <td>{{ $payment->payment_status }}</td>
                                         <td>{{ \Carbon\Carbon::parse($payment->created_at)->toDateString() }}</td>
-                                        <td><a href="#">Chat Admin</a></td>
+                                        <td><a href="https://wa.me/{{ \App\Models\Setting::first()->no_phone }}">Chat Admin</a></td>
                                     </tr>
                                 @endforeach
 

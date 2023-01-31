@@ -106,7 +106,25 @@
                     </a>
                 </li>
 
-                <li class="menu-title">Admin</li>
+                <li class="menu-title">Email</li>
+
+                <li>
+                    <a href="{{ route('admin.mail.index') }}" class="waves-effect">
+                        <i class="ri-mail-line"></i>
+                        <span>Email</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Youtube</li>
+
+                <li>
+                    <a href="{{ route('admin.youtube.index') }}" class="waves-effect">
+                        <i class="ri-youtube-line"></i>
+                        <span>Youtube</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Users</li>
 
                 <li>
                     <a href="{{ route('admin.user.index') }}" class="waves-effect">
@@ -129,12 +147,7 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('admin.youtube.index') }}" class="waves-effect">
-                        <i class="ri-youtube-line"></i>
-                        <span>Youtube</span>
-                    </a>
-                </li>
+                <li class="menu-title">Setting</li>
 
                 <li>
                     <a href="{{ route('admin.setting.index') }}" class="waves-effect">

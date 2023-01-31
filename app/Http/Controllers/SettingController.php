@@ -50,18 +50,18 @@ class SettingController extends Controller
         ]);
 
         if ($request->hero_image) {
+            Storage::delete($setting->hero_image);
             $image = $request->file('hero_image');
             $hero_image = 'upload/home/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::delete($setting->hero_image);
             Image::make($image)->resize(735, 835)->save('storage/' . $hero_image);
         } else {
             $hero_image = $setting->hero_image;
         }
 
         if ($request->banner_image) {
+            Storage::delete($setting->banner_image);
             $image = $request->file('banner_image');
             $banner_image = 'upload/home/' . time() . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::delete($setting->banner_image);
             Image::make($image)->resize(1920, 1280)->save('storage/' . $banner_image);
         } else {
             $banner_image = $setting->banner_image;

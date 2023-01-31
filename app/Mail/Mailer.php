@@ -14,14 +14,23 @@ class Mailer extends Mailable
     use Queueable, SerializesModels;
 
     public $body;
+    public $subject;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($body)
+    public function __construct($body, $subject)
     {
         $this->body = $body;
+        $this->subject = $subject;
+    }
+
+    public function envelope()
+    {
+        return new Envelope(
+            subject: $this->subject,
+        );
     }
 
     /**

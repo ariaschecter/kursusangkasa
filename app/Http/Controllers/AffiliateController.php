@@ -18,11 +18,6 @@ class AffiliateController extends Controller
         return view('admin.affiliate.affiliate', compact('users'));
     }
 
-    public function teacher_index() {
-        $users = User::where('affiliate_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        return view('teacher.affiliate.affiliate', compact('users'));
-    }
-
     public function user_index() {
         $users = User::where('affiliate_id', Auth::id())->orderBy('created_at', 'DESC')->get();
         return view('user.affiliate.affiliate', compact('users'));

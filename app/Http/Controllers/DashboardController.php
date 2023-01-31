@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\CourseAcces;
 use App\Models\Payment;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -36,11 +39,15 @@ class DashboardController extends Controller
     }
 
     public function teacher_dashboard() {
-        return view('teacher.index');
+        $courses = Course::where('teacher_id', Auth::id())->get();
+        $wallet = Wallet::findOrFail(Auth::id());
+        return view('teacher.index', compact('courses', 'wallet'));
     }
 
     public function user_dashboard() {
-        return view('user.index');
+        $course_accesses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
+        $courses = Course::latest()->get();
+        return view('user.index', compact('course_accesses', 'courses'));
     }
 
     public function profile() {

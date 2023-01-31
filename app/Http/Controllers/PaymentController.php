@@ -25,6 +25,7 @@ class PaymentController extends Controller
         $setting = Setting::first();
         $payment->update(['payment_status' => 'SUCCESS']);
         $course = $payment->course;
+        $course->increment('course_enroll');
 
         $affiliate = [
             [
@@ -57,7 +58,7 @@ class PaymentController extends Controller
         CourseAcces::create([
             'course_id' => $course->id,
             'user_id' => $payment->user_id,
-            'course_acces_subscribe' => Carbon::now()->addDays($course->course_subscribe),
+            'course_acces_subscribe' => $course->course_subscribe ? Carbon::now()->addDays($course->course_subscribe) : null,
         ]);
 
         $notification = [

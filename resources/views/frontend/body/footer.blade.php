@@ -3,7 +3,7 @@
        <div class="container">
           <div class="footer__top ">
              <div class="row">
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
+                <div class="col-xxl-5 col-xl-5 col-lg-4 col-md-12">
                    <div class="footer__widget mb-50 footer-col-1">
                       <div class="footer__widget-logo mb-30">
                         <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
@@ -20,51 +20,29 @@
                       </div>
                    </div>
                 </div>
-                <div class="col-xxl-2 col-xl-2 col-lg-3 col-6">
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-6">
                    <div class="footer__widget mb-50 footer-col-2">
                       <h3 class="footer__widget-title">Information</h3>
                       <div class="footer__widget-content">
                          <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Customer</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Service</a></li>
+                            <li><a href="{{ route('home.index') }}">Home</a></li>
+                            <li><a href="{{ route('home.category.index') }}">Category</a></li>
+                            <li><a href="{{ route('home.course.index') }}">Course</a></li>
+                            <li><a href="{{ route('home.about.index') }}">About Us</a></li>
+                            <li><a href="{{ route('home.contact.index') }}">Contact</a></li>
                          </ul>
                       </div>
                    </div>
                 </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-6">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-6">
                    <div class="footer__widget mb-50 footer-col-3">
                       <h3 class="footer__widget-title">Courses</h3>
                       <div class="footer__widget-content">
                          <ul>
-                            <li><a href="#">Masters Degree</a></li>
-                            <li><a href="#">Post GraduateU</a></li>
-                            <li><a href="#">Ndergraduate</a></li>
-                            <li><a href="#">Engineering</a></li>
-                            <li><a href="#">Ph.D Degree</a></li>
+                            @foreach (\App\Models\Course::where('course_status', 'ACTIVE')->latest()->limit(5)->get() as $course)
+                                <li><a href="{{ route('home.course.show', $course->course_slug) }}">{{ $course->course_name }}</a></li>
+                            @endforeach
                          </ul>
-                      </div>
-                   </div>
-                </div>
-
-                <div class="col-xxl-4 col-xl-4 col-lg-3 col-md-6">
-                   <div class="footer__widget mb-50 footer-col-4">
-                      <h3 class="footer__widget-title">Sign Up for Our Newsletter</h3>
-                      <div class="footer__widget-content">
-                         <div class="footer__subscribe">
-                            <p>Receive weekly newsletter with educational,
-                               popular books and much more!</p>
-                            <form action="#">
-                               <div class="footer__subscribe-box">
-                                  <div class="footer__subscribe-input">
-                                     <input type="email" placeholder="Email address">
-                                  </div>
-                                  <button class="footer-sub-btn" type="submit">Subscribe</button>
-                               </div>
-                            </form>
-                         </div>
                       </div>
                    </div>
                 </div>
@@ -74,7 +52,7 @@
              <div class="row">
                 <div class="col-12">
                    <div class="footer__copyright text-center">
-                      <p> © 2022 Tutorgo, All Rights Reserved. Design By <a href="https://themeforest.net/user/theme_pure/portfolio" target="_blank">Theme Pure</a></p>
+                      <p> © {{ date('Y') }} Ruang Angkasa, All Rights Reserved.</p>
                    </div>
                 </div>
              </div>

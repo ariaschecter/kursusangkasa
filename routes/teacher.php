@@ -3,6 +3,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ListCourseController;
 use App\Http\Controllers\SubCourseController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,8 @@ Route::middleware('auth', 'verified', 'teacher')->prefix('instructor')->group(fu
         Route::post('/wallet/withdraw', 'teacher_withdraw_store')->name('teacher.wallet.withdraw.store');
     });
 
-    Route::controller(AffiliateController::class)->group(function () {
-        Route::get('/affiliate', 'teacher_index')->name('teacher.affiliate.index');
+    Route::controller(TeacherController::class)->group(function () {
+        Route::get('/bio', 'index')->name('teacher.teacher.index');
+        Route::post('/bio', 'update')->name('teacher.teacher.update');
     });
 });

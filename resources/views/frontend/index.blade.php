@@ -18,14 +18,6 @@
                          <div class="transition"></div>
                       </a>
                    </div>
-                   <div class="hero-btn-2">
-                      <a href="https://www.youtube.com/watch?v=vQD4YAgc7PE"
-                         class="tp-play-btn d-flex align-items-center popup-video">
-
-                         <i class="arrow_triangle-right"></i>
-                         <span>Watch it Now</span>
-                      </a>
-                   </div>
                 </div>
              </div>
           </div>
@@ -72,14 +64,10 @@
                       <p>Join over 1490+ partners around the world</p>
                    </div>
                    <div class="col-xl-4 col-md-6">
-                      <span>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fal fa-star"></i>
-                      </span>
-                      <p>4.5 Star Rating (20+ Review)</p>
+                    <div class="rating-star">
+                        <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" data-readonly value="{{ $all_reviews->avg('review_star') }}"/>
+                    </div>
+                      <p>{{ round($all_reviews->avg('review_star'), 2) }} Star Rating ({{ count($all_reviews) }}+ Review)</p>
                    </div>
                 </div>
                 <div class="row">
@@ -105,56 +93,7 @@
 
 
  <!-- about section  start -->
- <div class="tp-about__section pt-120 pb-90">
-    <div class="container">
-       <div class="row align-items-center">
-          <div class="col-lg-7">
-             <div class="tp-about__img-wrapper d-md-flex p-relative">
-                <div class="tp-about__img-large w-img mb-30">
-                   <img src="{{ asset('frontend/assets/img/about/about-1.jpg') }}" alt="">
-                </div>
-                <div class="tp-about__img-sm w-img mb-30">
-                   <img src="{{ asset('frontend/assets/img/about/about-2.jpg') }}" alt="">
-                </div>
-
-                <div class="tp-about-shapes">
-                   <div class="tp-about__shapes-1">
-                      <img src="{{ asset('frontend/assets/img/icons/about-shapes.png') }}" alt="">
-                      <div class="tp-about__shapes-2 ">
-                         <img src="{{ asset('frontend/assets/img/icons/ring-shape.png') }}" alt="">
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <div class="col-lg-5">
-             <div class="tp-section__title-wrapper">
-                <h3 class="tp-section__title mb-15">Benefit From Our <br>
-                   Online Learning Experties
-                   Earn professional.</h3>
-                <p class="mb-40">Lorem ipsum dolor sit amet, consectetur aliqua adipiscing
-                   elit, sed do eiumod tempor.</p>
-
-                <div class="tp-about__feature-list mb-40">
-                   <ul>
-                      <li><span><i class="icon_check"></i></span>Upskill your organization.</li>
-                      <li><span><i class="icon_check"></i></span>Access more then 100K online courses</li>
-                      <li><span><i class="icon_check"></i></span>Access more then 1M online Video</li>
-                   </ul>
-                </div>
-                <div class="tp-hero__btn-wrappper">
-                   <a href="about-us.html" class="tp-border-btn br-0">
-                      <span>Get Started</span>
-                      <div class="transition"></div>
-                   </a>
-                </div>
-             </div>
-          </div>
-
-       </div>
-
-    </div>
- </div>
+ @include('frontend.template.benefit')
  <!-- about section end  -->
 
  <!-- course start  -->
