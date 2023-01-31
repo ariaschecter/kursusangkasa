@@ -17,12 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/phpinfo', function() {
-    $course = \App\Models\Course::first();
-    return view('user.access', compact('course'));
-});
-
-
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
     Route::get('/course', 'course_index')->name('home.course.index');
@@ -48,10 +42,6 @@ Route::middleware('auth', 'verified')->controller(DashboardController::class)->g
     Route::get('/admin/dashboard', 'admin_dashboard')->middleware('admin')->name('admin.dashboard');
     Route::get('/instructor/dashboard', 'teacher_dashboard')->middleware('teacher')->name('teacher.dashboard');
     Route::get('/user/dashboard', 'user_dashboard')->middleware('user')->name('user.dashboard');
-});
-
-Route::controller(MailController::class)->group(function () {
-    Route::get('/cobaemail', 'index');
 });
 
 require __DIR__.'/admin.php';
