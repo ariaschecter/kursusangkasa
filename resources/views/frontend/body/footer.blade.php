@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
 <footer>
     <div class="footer__area grey-bg">
        <div class="container">
@@ -6,17 +9,13 @@
                 <div class="col-xxl-5 col-xl-5 col-lg-4 col-md-12">
                    <div class="footer__widget mb-50 footer-col-1">
                       <div class="footer__widget-logo mb-30">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
+                        <a href="{{ route('home.index') }}"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
                       </div>
                       <div class="footer__widget-content">
                          <p>Aut cum mollitia reprehenderit.
                             Eos cumque dicta adipisci amet
                             architecto culpa.</p>
-                         <div class="footer__social">
-                            <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                            <span><a href="#" class="yt"><i class="fab fa-youtube"></i></a></span>
-                            <span><a href="#" class="tw"><i class="fab fa-twitter"></i></a></span>
-                         </div>
+                        @include('template.social_media')
                       </div>
                    </div>
                 </div>

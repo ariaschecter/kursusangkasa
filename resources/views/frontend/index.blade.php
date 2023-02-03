@@ -72,13 +72,18 @@
                 </div>
                 <div class="row">
                    <div class="col-12">
-                      <div class="tp-brand_slider">
+                      <div class="tp-brand_slider pb-30">
                         <!-- Source -->
                         @foreach ($categories as $category)
-                            <div class="tp-category__home">
+                            {{-- <div class="tp-category__home">
                                 <img src="{{ asset('storage/' . $category->category_picture) }}" alt="">
-                                {{-- frontend/assets/img/courses/avata/course-avata-1.jpg --}}
                                 <span class="h5"><a href="{{ route('home.category.show', $category->category_slug) }}">{{ $category->category_name }}</a></span>
+                            </div> --}}
+                            <div class="col-3">
+                                <div class="row">
+                                    <img src="{{ asset('storage/' . $category->category_picture) }}" alt="" class="col-6">
+                                    <span class="col-6"><a href="{{ route('home.category.show', $category->category_slug) }}">{{ $category->category_name }}</a></span>
+                                </div>
                             </div>
                         @endforeach
                       </div>

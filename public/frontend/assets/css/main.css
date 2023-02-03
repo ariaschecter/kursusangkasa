@@ -6478,12 +6478,12 @@ input[type=color] {
   background: #03a9f4;
 }
 
-.contact__social ul li a.pin {
+.contact__social ul li a.yt {
   color: #d8163f;
   background: rgba(216, 22, 63, 0.1);
 }
 
-.contact__social ul li a.pin:hover {
+.contact__social ul li a.yt:hover {
   color: #ffffff;
   background: #d8163f;
 }
@@ -9228,13 +9228,13 @@ p.checkout-coupon input[type=text]:focus {
   color: #0d88f0;
   border: 1px solid var(--tp-theme-primary);
 }
-.footer__social span a.tw {
-  background: #03a9f4;
+.footer__social span a.tt {
+  background: #000;
 }
-.footer__social span a.tw:hover {
+.footer__social span a.tt:hover {
   background-color: var(--tp-common-white);
-  color: #03a9f4;
-  border-color: #03a9f4;
+  color: #000;
+  border-color: #000;
 }
 .footer__social span a.yt {
   background: #d2173f;
@@ -9243,6 +9243,15 @@ p.checkout-coupon input[type=text]:focus {
 .footer__social span a.yt:hover {
   background-color: var(--tp-common-white);
   color: #d2173f;
+}
+
+.footer__social span a.ig {
+  background: #e95950;
+  border-color: #e95950;
+}
+.footer__social span a.ig:hover {
+  background-color: var(--tp-common-white);
+  color: #e95950;
 }
 .footer__top {
   position: relative;

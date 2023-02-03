@@ -37,6 +37,7 @@
                         <label for="no_phone" class="col-sm-2 col-form-label">No Phone</label>
                         <div class="col-sm-10">
                             <input name="no_phone" class="form-control" type="number" value="{{ $setting->no_phone }}" id="no_phone">
+                            <span class="text-muted">ex "62812xxxx"</span>
                             @error('no_phone')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -102,6 +103,57 @@
                                 @endforeach
                             </select>
                             @error('default_affiliate') <span class="text-danger"> {{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <h4 class="card-title">Sosial Media</h4>
+
+                    <div class="row mb-3">
+                        <label for="sosmed_fb" class="col-sm-2 col-form-label">Facebook</label>
+                        <div class="col-sm-10">
+                            <input name="sosmed_fb" class="form-control" type="text" value="{{ $setting->sosmed_fb }}" id="sosmed_fb">
+                            <span class="text-muted">ex "https://xxxxx"</span>
+                            @error('sosmed_fb')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- end row -->
+                    <div class="row mb-3">
+                        <label for="sosmed_ig" class="col-sm-2 col-form-label">Instagram</label>
+                        <div class="col-sm-10">
+                            <input name="sosmed_ig" class="form-control" type="text" value="{{ $setting->sosmed_ig }}" id="sosmed_ig">
+                            <span class="text-muted">ex "https://xxxxx"</span>
+                            @error('sosmed_ig')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- end row -->
+                    <div class="row mb-3">
+                        <label for="sosmed_yt" class="col-sm-2 col-form-label">Youtube</label>
+                        <div class="col-sm-10">
+                            <input name="sosmed_yt" class="form-control" type="text" value="{{ $setting->sosmed_yt }}" id="sosmed_yt">
+                            <span class="text-muted">ex "https://xxxxx"</span>
+                            @error('sosmed_yt')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <!-- end row -->
+                    <div class="row mb-3">
+                        <label for="sosmed_tt" class="col-sm-2 col-form-label">Tiktok</label>
+                        <div class="col-sm-10">
+                            <input name="sosmed_tt" class="form-control" type="text" value="{{ $setting->sosmed_tt }}" id="sosmed_tt">
+                            <span class="text-muted">ex "https://xxxxx"</span>
+                            @error('sosmed_tt')
+                                <span class="text-danger"> {{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <!-- end row -->

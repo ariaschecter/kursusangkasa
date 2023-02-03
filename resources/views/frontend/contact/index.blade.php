@@ -92,8 +92,8 @@
                                </svg>
                             </div>
                             <div class="contact__info-text">
-                               <h4>New York Office</h4>
-                               <p><a target="_blank" href="https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873">Maypole Crescent 70-80 Upper St Norwich NR2 1LT</a></p>
+                               <h4>Kebon Kahuripan</h4>
+                               <p><a target="_blank" href="https://goo.gl/maps/JYvmTvRzaQuERa7K6">Jl. Kertasuta No.11 C, Sutawinangun, Kec. Kedawung, Kabupaten Cirebon, Jawa Barat 45153</a></p>
 
                             </div>
                          </div>
@@ -129,11 +129,7 @@
                    </ul>
                    <div class="contact__social pl-30">
                       <h4>Follow Us</h4>
-                      <ul>
-                         <li><a href="#" class="fb" ><i class="social_facebook"></i></a></li>
-                         <li><a href="#" class="tw" ><i class="social_twitter"></i></a></li>
-                         <li><a href="#" class="pin" ><i class="social_pinterest"></i></a></li>
-                      </ul>
+                      @include('template.social_media')
                    </div>
                 </div>
              </div>
@@ -146,9 +142,11 @@
  <div class="tp-contact-map">
     <div class="container-fluid p-0">
        <div class="tp-map-height">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d8189.17205082922!2d90.42451837459143!3d23.89452795954588!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1665830360467!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15849.79482527649!2d108.5398019!3d-6.7149686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd8c36307eba9d72e!2sKebon%20Kahuripan!5e0!3m2!1sen!2sid!4v1675427039730!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
        </div>
     </div>
  </div>
 
  @endsection
+
+ {{-- <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}

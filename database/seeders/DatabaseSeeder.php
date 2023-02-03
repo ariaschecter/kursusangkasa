@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             'hero_image' => 'upload/home/hero_image.jpg'
         ]);
         Course::factory(2)->create();
-        Category::factory()->create();
+        Category::factory(9)->create();
         Teacher::factory()->create([
             'id' => 2,
             'teacher_tag' => 'Time To Operating The System',

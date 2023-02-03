@@ -64,38 +64,37 @@
                                 $last_acces = $acces->course_acces_last;
                             @endphp
                              @foreach ($course->sub_course as $sub_course)
-                             <div class="accordion" id="course__accordion-2">
-                                 <div class="accordion-item mb-50">
-                                     <h2 class="accordion-header" id="{{ $sub_course->id }}">
-                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $sub_course->sub_course_slug }}" aria-expanded="true" aria-controls="{{ $sub_course->sub_course_slug }}">
-                                             {{ $sub_course->sub_course_name }}
-                                         </button>
-                                     </h2>
+                                <div class="accordion" id="course__accordion{{ $sub_course->id }}">
+                                    <div class="accordion-item mb-50">
+                                        <h2 class="accordion-header" id="section-{{ $sub_course->id }}">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section-{{ $sub_course->id }}-content" aria-expanded="true" aria-controls="section-{{ $sub_course->id }}-content">
+                                            {{ $sub_course->sub_course_name }}
+                                        </button>
+                                        </h2>
 
-                                     <div id="{{ $sub_course->sub_course_slug }}" class="accordion-collapse collapse show" aria-labelledby="{{ $sub_course->id }}" data-bs-parent="#course__accordion-2">
-                                     <div class="accordion-body">
-                                         @foreach ($sub_course->list_course as $list_course)
-                                             <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
-                                                 <div class="course__curriculum-info">
-                                                     <svg viewBox="0 0 24 24">
-                                                         <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
-                                                         <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
-                                                         </svg>
-                                                     <h3>{{ $list_course->list_course_name }}</h3>
-                                                 </div>
-                                                 <div class="course__curriculum-meta">
-                                                     <span class="time"> <i class="{{ ($i > $last_acces) ? 'ri-lock-2-line' : ' ri-play-line' }}"></i></span>
-                                                 </div>
-                                             </div>
-                                             @php
-                                                 $i++;
-                                             @endphp
-                                         @endforeach
-
-                                     </div>
-                                     </div>
-                                 </div>
-                             </div>
+                                        <div id="section-{{ $sub_course->id }}-content" class="accordion-collapse collapse show" aria-labelledby="section-{{ $sub_course->id }}" data-bs-parent="#course__accordion{{ $sub_course->id }}">
+                                            @foreach ($sub_course->list_course as $list_course)
+                                            <div class="accordion-body">
+                                                <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
+                                                    <div class="course__curriculum-info">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
+                                                            <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
+                                                            </svg>
+                                                        <h3> <span>{{ $list_course->list_course_name }}</h3>
+                                                    </div>
+                                                    <div class="course__curriculum-meta">
+                                                        <span class="time"> <i class="{{ ($i > $last_acces) ? 'ri-lock-2-line' : ' ri-play-line' }}"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
                              @endforeach
                          </div>
                       </div>

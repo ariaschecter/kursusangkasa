@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('presentase_affiliate')->default(10);
             $table->integer('default_affiliate')->nullable();
             $table->string('no_phone')->nullable();
+            $table->string('sosmed_fb')->nullable();
+            $table->string('sosmed_ig')->nullable();
+            $table->string('sosmed_yt')->nullable();
+            $table->string('sosmed_tt')->nullable();
             $table->string('hero_image')->default('upload/home/hero_image.png');
             $table->string('banner_image')->default('upload/home/banner_image.jpg');
             $table->timestamps();
