@@ -12,6 +12,7 @@ use App\Models\Review;
 use App\Models\Setting;
 use App\Models\SubCourse;
 use App\Models\Teacher;
+use App\Models\Testimoni;
 use App\Models\User;
 use App\Models\Youtube;
 use Illuminate\Http\Request;
@@ -23,11 +24,11 @@ class HomeController extends Controller
         $categories = Category::all();
         $popular = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('course_enroll')->limit(6)->get();
         $latest_course = Course::with('teacher', 'category')->where('course_status', 'ACTIVE')->orderBy('created_at', 'DESC')->limit(3)->get();
-        $reviews = Review::latest()->limit(6)->get();
+        $testimonis = Testimoni::latest()->get();
         $all_reviews = Review::all();
         $youtubes = Youtube::latest()->limit(3)->get();
         $faqs = Faq::all();
-        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'reviews', 'youtubes', 'all_reviews', 'faqs'));
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'testimonis', 'youtubes', 'all_reviews', 'faqs'));
     }
 
     public function course_index() {

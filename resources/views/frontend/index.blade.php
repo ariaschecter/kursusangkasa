@@ -177,7 +177,7 @@
  <!-- youtube end  -->
 
  <!-- testimonial start  -->
- @if(count($reviews) > 0)
+ @if(count($testimonis) > 0)
     <div class="tp-testimonial__section pb-120">
         <div class="container">
             <div class="grey-bg pb-150 pt-60 tp-testimonial__bg">
@@ -195,13 +195,13 @@
 
                     <div class="col-lg-10">
                         <div class="tp-testimonial__slider">
-                            @foreach ($reviews as $review)
+                            @foreach ($testimonis as $testimoni)
                                 <div class="tp-testimonial__box d-md-flex white-bg align-items-center">
-                                    <img src="{{ asset('storage/' . $review->user->user_picture) }}" style="width: 270px" alt="">
+                                    <img src="{{ asset('storage/' . $testimoni->testimoni_picture) }}" style="width: 270px" alt="">
                                     <div class="tp-testimonial__review">
                                     <span class="tp-testimonial__quote"><i class="fa-solid fa-quote-left"></i></span>
-                                    <p>{{ $review->review_feedback }}</p>
-                                    <h3>{{ $review->user->name }}</h3>
+                                    <p>{{ $testimoni->testimoni_feedback }}</p>
+                                    <h3>{{ $testimoni->testimoni_name }}</h3>
                                     </div>
                                 </div>
                             @endforeach

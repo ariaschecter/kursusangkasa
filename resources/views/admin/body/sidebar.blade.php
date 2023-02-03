@@ -139,6 +139,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('admin.testimoni.index') }}" class="waves-effect">
+                        <i class="ri-chat-smile-line"></i>
+                        <span>Testimoni</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('admin.faq.index') }}" class="waves-effect">
                         <i class="ri-book-line"></i>
                         <span>Faq</span>

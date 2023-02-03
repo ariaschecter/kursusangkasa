@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\YoutubeController;
@@ -100,6 +101,15 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::post('/wallet/update/{wallet}', 'update')->name('admin.wallet.update');
         Route::get('/wallet/withdraw', 'withdraw')->name('admin.wallet.withdraw');
         Route::post('/wallet/withdraw', 'withdraw_store')->name('admin.wallet.withdraw.store');
+    });
+
+    Route::controller(TestimoniController::class)->group(function () {
+        Route::get('/testimoni', 'index')->name('admin.testimoni.index');
+        Route::get('/testimoni/add', 'create')->name('admin.testimoni.add');
+        Route::post('/testimoni/add', 'store')->name('admin.testimoni.store');
+        Route::get('/testimoni/edit/{testimoni}', 'edit')->name('admin.testimoni.edit');
+        Route::post('/testimoni/edit/{testimoni}', 'update')->name('admin.testimoni.update');
+        Route::get('/testimoni/delete/{testimoni}', 'destroy')->name('admin.testimoni.delete');
     });
 
     Route::controller(FaqController::class)->group(function () {
