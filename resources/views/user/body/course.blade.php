@@ -42,13 +42,16 @@
                         <ul class="sub-menu" aria-expanded="false">
                             @foreach ($sub_course->list_course as $list_course)
                                 <li>
-                                    <a href="{{ ($i > $last_acces) ? '#' :route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]) }}">
+                                    <a href="{{ ($i > $last_acces) ? '#' : route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]) }}">
                                         <span class="float-end">
                                             <i class="{{ ($i > $last_acces) ? 'ri-lock-2-line' : ' ri-play-line' }}"></i>
                                         </span>
-                                        <span>{{ $i++ }}. {{ $list_course->list_course_name }}</span>
+                                        <span>{{ $list_course->list_course_name }}</span>
                                     </a>
                                 </li>
+                                @php
+                                    $i++;
+                                @endphp
                                 @endforeach
                         </ul>
                     </li>

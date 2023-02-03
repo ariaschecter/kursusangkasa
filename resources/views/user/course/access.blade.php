@@ -26,7 +26,7 @@
                           </div>
                           {{-- https://youtu.be/KUPxoQnjFV4?list=LRYRK7HcSUz8jX9MaAkGilfO_3fz_RJ8XK1re --}}
                         {{-- <iframe   class="course__img w-img mb-30" allow="fullscreen"></iframe> --}}
-                        <h2 class="courses-title mb-30">Title</h2>
+                        <h2 class="courses-title m-2">{{ $list_course->list_course_name }}</h2>
                         <div class="courses-tag-btn mb-3">
                             <a href="{{ route('user.course.prev', [$course->course_slug, $list_course->list_course_slug]) }}" class="{{ $prev ? 'btn btn-primary' : '' }} col-md-2">{{ $prev ? 'Prev' : '' }}</a>
                             <a href="{{ route('user.course.next', [$course->course_slug, $list_course->list_course_slug]) }}" class="{{ $next ? 'btn btn-primary' : '' }} col-md-2" style="float: right">{{ $next ? 'Next' : '' }}</a>
@@ -81,7 +81,15 @@
                                                             <polygon class="st0" points="23,7 16,12 23,17 "></polygon>
                                                             <path class="st0" d="M3,5h11c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2V7C1,5.9,1.9,5,3,5z"></path>
                                                             </svg>
-                                                        <h3> <span>{{ $list_course->list_course_name }}</h3>
+                                                        <h3>
+                                                            @if ($i <= $last_acces)
+                                                                <a href="{{ route('user.course.acces', [$course->course_slug, $list_course->list_course_slug]) }}">
+                                                                    <span>{{ $list_course->list_course_name }} </span>
+                                                                </a>
+                                                            @else
+                                                            <span>{{ $list_course->list_course_name }} </span>
+                                                            @endif
+                                                        </h3>
                                                     </div>
                                                     <div class="course__curriculum-meta">
                                                         <span class="time"> <i class="{{ ($i > $last_acces) ? 'ri-lock-2-line' : ' ri-play-line' }}"></i></span>

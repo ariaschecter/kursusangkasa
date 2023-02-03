@@ -19,8 +19,8 @@ class ListCourseFactory extends Factory
     {
         return [
             'list_course_slug' => uniqid(),
-            'course_id' => fake()->numberBetween(1,2),
-            'sub_course_id' => fake()->numberBetween(0, 5),
+            'course_id' => 1,
+            'sub_course_id' => fake()->numberBetween(1, 5),
             'list_course_name' => fake()->name(),
             'list_course_link' => 'tkdl6RptA0U',
             // https://www.youtube.com/watch?v=tkdl6RptA0U
