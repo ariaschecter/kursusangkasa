@@ -51,7 +51,7 @@
                                         <td>
                                             @if($order->order_status == 'ORDER')
                                             <a href="https://wa.me/{{ $order->user->wa_number }}" class="btn btn-success sm" title="Follow Up Whatsapp"><i class=" fab fa-whatsapp"></i></a>
-                                            <a href="#" class="btn btn-danger sm" title="Follow Up Email"><i class="ri-mail-line"></i></a>
+                                            <a href="{{ route('admin.mail.user', ['email' => $order->user->email]) }}" class="btn btn-danger sm" title="Follow Up Email"><i class="ri-mail-line"></i></a>
                                             @endif
                                         </td>
                                     </tr>

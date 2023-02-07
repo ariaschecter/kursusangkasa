@@ -38,7 +38,7 @@
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default Select Example" name="email" id="email">
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->email }}" {{ ($user->email == old('email') ? 'selected' : '') }}>{{ $user->email }}</option>
+                                    <option value="{{ $user->email }}" {{ ($user->email == request()->email ? 'selected' : '') }}>{{ $user->email }}</option>
                                 @endforeach
                             </select>
                             @error('email') <span class="text-danger"> {{ $message }}</span> @enderror
