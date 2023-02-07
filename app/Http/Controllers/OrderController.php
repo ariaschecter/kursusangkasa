@@ -36,6 +36,6 @@ class OrderController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('user.payment.index')->with($notification);
+        return redirect()->route('user.order.index')->with($notification);
     }
 }

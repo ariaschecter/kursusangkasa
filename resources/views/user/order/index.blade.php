@@ -32,10 +32,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Ref</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Course Name</th>
                                     <th>Price</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
 
@@ -48,10 +48,14 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>#{{ $order->order_ref }}</td>
-                                        <td>{{ $order->user->name }}</td>
-                                        <td>{{ $order->user->email }}</td>
+                                        <td>{{ $order->course->course_name }}</td>
                                         <td>Rp. {{ number_format($order->order_price, 0) }}</td>
                                         <td>{{ $order->order_status }}</td>
+                                        <td>
+                                            @if($order->order_status == 'ORDER')
+                                            <a href="{{ route('user.payment.create', ['order_ref' => $order->order_ref]) }}" class="btn btn-warning sm" title="Pay Order"><i class="ri-bank-card-line"></i></a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
 

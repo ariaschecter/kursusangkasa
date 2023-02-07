@@ -39,7 +39,7 @@
                             <select class="form-select" aria-label="Default Select Example" name="order_id" id="order_id">
                                 <option>Open this select menu</option>
                                 @foreach ($orders as $order)
-                                    <option value="{{ $order->id }}" {{ ($order->id == old('order_id') ? 'selected' : '') }}>
+                                    <option value="{{ $order->id }}" {{ ($order->order_ref == request()->order_ref ? 'selected' : '') }}>
                                         #{{ $order->order_ref . ' - ' . $order->course->course_name . ' - Rp. ' . number_format($order->order_price) }}
                                     </option>
                                 @endforeach
