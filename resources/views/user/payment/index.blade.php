@@ -20,6 +20,8 @@
         </div>
         <!-- end page title -->
 
+        <a href="{{ route('user.payment.create') }}" class="btn btn-primary mb-2">Add Payment</a>
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -58,8 +60,10 @@
                                             </a>
                                         </td>
                                         <td>{{ $payment->payment_status }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($payment->created_at)->toDateString() }}</td>
-                                        <td><a href="https://wa.me/{{ \App\Models\Setting::first()->no_phone }}">Chat Admin</a></td>
+                                        <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('d M Y') }}</td>
+                                        <td>
+                                            <a href="https://wa.me/{{ \App\Models\Setting::first()->no_phone }}" class="btn btn-success sm" title="Chat Admin"><i class=" fab fa-whatsapp"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

@@ -283,7 +283,7 @@
                            </ul>
                         </div>
                         <div class="course__enroll-btn p-relative z-index-1">
-                           <a href="{{ route('home.payment.create', $course->course_slug) }}" class="tp-btn w-100">
+                           <a href="{{ route('home.order.create', $course->course_slug) }}" class="tp-btn w-100">
                               <span>Enroll <i class="fa-regular fa-arrow-right"></i> </span>
                               <div class="transition"></div>
                            </a>

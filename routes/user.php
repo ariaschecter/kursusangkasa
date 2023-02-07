@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WalletController;
@@ -28,8 +29,14 @@ Route::middleware('auth', 'verified', 'user')->prefix('user')->group(function() 
         Route::post('/review/{course:course_slug}', 'store')->name('user.review.store');
     });
 
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('/order', 'user_index')->name('user.order.index');
+    });
+
     Route::controller(PaymentController::class)->group(function () {
         Route::get('/payment', 'user_index')->name('user.payment.index');
+        Route::get('/payment/add', 'user_create')->name('user.payment.create');
+        Route::post('/payment/add', 'user_store')->name('user.payment.store');
     });
 
     Route::controller(AffiliateController::class)->group(function () {

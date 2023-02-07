@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ReviewController;
@@ -41,6 +42,10 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');
         Route::get('/course/delete/{course}', 'destroy')->name('admin.course.delete');
         Route::get('/course/detail/{course}', 'detail')->name('admin.course.detail');
+    });
+
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('/order', 'index')->name('admin.order.index');
     });
 
     Route::controller(PaymentController::class)->group(function () {

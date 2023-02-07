@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_ref');
-            $table->foreignId('order_id');
+            $table->string('order_ref');
             $table->foreignId('user_id');
             $table->foreignId('course_id');
-            $table->foreignId('payment_method_id');
-            $table->integer('payment_price');
-            $table->string('payment_picture');
-            $table->string('payment_status')->default('PENDING'); // Pending, Success, Wrong
+            $table->integer('order_price');
+            $table->string('order_status')->default('ORDER'); // ORDER, PAY
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('orders');
     }
 };

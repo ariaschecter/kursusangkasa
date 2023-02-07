@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/contact', 'contact_store')->name('home.contact.store');
 });
 
-Route::middleware('auth', 'verified', 'user')->controller(PaymentController::class)->group(function () {
-    Route::get('/payment/{course:course_slug}', 'create')->name('home.payment.create');
-    Route::post('/payment/{course:course_slug}', 'store')->name('home.payment.store');
+Route::middleware('auth', 'verified', 'user')->controller(OrderController::class)->group(function () {
+    Route::get('/order/{course:course_slug}', 'create')->name('home.order.create');
 });
 
 

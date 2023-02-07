@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\CourseAcces;
+use App\Models\Order;
 use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\Setting;
@@ -79,16 +80,16 @@ class PaymentController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function create(Course $course) {
-        $additional = fake()->numberBetween(1, 999);
-        $payment_methods = PaymentMethod::orderBy('payment_name', 'ASC')->get();
-        return view('frontend.payment.create', compact('course', 'additional', 'payment_methods'));
-    }
-
-    public function store(Request $request, Course $course) {
+    public function user_store(Request $request) {
         $request->validate([
+            'order_id' => 'required|integer',
             'payment_method_id' => 'required|integer',
             'payment_picture' => 'required|file|max:5120',
+        ]);
+
+        $order = Order::findOrFail($request->order_id);
+        $order->update([
+            'order_status' => 'PAY'
         ]);
 
         $upload = $request->file('payment_picture')->store('upload/payment');
@@ -96,15 +97,28 @@ class PaymentController extends Controller
         $validated = $request->except('_token', 'payment_picture');
         $validated['payment_ref'] = Str::upper(Str::random(14));
         $validated['user_id'] = Auth::id();
-        $validated['course_id'] = $course->id;
+        $validated['course_id'] = $order->course->id;
+        $validated['payment_price'] = $order->order_price;
         $validated['payment_picture'] = $upload;
 
         Payment::create($validated);
-        return redirect()->route('home.course.index');
+
+        $notification = [
+            'message' => 'Payment Sent Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('user.payment.index')->with($notification);
     }
 
     public function user_index() {
         $payments = Payment::with('user', 'course', 'payment_method')->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
         return view('user.payment.index', compact('payments'));
+    }
+
+    public function user_create() {
+        $orders = Order::with('course')->where('user_id', Auth::id())->where('order_status', 'ORDER')->get();
+        $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
+        return view('user.payment.create', compact('orders', 'payment_methods'));
     }
 }

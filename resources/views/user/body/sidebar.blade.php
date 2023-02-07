@@ -40,6 +40,13 @@
                 <li class="menu-title">Payment</li>
 
                 <li>
+                    <a href="{{ route('user.order.index') }}" class="waves-effect">
+                        <i class="ri-shopping-cart-2-line"></i>
+                        <span>Order</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('user.payment.index') }}" class="waves-effect">
                         <i class="ri-money-dollar-circle-line"></i>
                         <span>Payment</span>
