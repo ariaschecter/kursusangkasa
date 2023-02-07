@@ -32,7 +32,7 @@
 
                 <li>
                     <a href="{{ route('admin.course_acces.index') }}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i>
+                        <i class="ri-key-2-line"></i>
                         <span>Course Acces</span>
                     </a>
                 </li>
