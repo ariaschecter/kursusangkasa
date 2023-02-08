@@ -44,10 +44,6 @@
           <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
              <div class="sign__wrapper white-bg">
                 <div class="sign__header mb-35">
-                   <div class="sign__in text-center">
-                      <p> <span>........</span><a href="sign-in.html">sign in</a> with your email<span>
-                            ........</span> </p>
-                   </div>
                 </div>
                 <div class="sign__form">
                    <form method="POST" action="{{ route('login') }}">
@@ -69,9 +65,14 @@
                          @error('password') <span class="text-danger"> {{ $message }}</span> @enderror
                       </div>
                       <div class="sign__action d-sm-flex justify-content-between mb-30">
-                         <div class="sign__forgot">
+                        <div class="sign__agree d-flex align-items-center">
+                            <input class="m-check-input" type="checkbox" id="remember" name="remember">
+                            <label class="m-check-label" for="remember">Remember Me
+                            </label>
+                        </div>
+                        <div class="sign__forgot">
                             <a href="{{ route('password.request') }}">Forgot your password?</a>
-                         </div>
+                        </div>
                       </div>
                       <button type="submit" class="e-btn  w-100"> <span></span> Sign In</button>
                       <div class="sign__new text-center mt-20">

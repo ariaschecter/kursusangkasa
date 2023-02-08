@@ -4,7 +4,7 @@
 <head>
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title> | Kursus Angkasa</title>
+   <title>{{ $title ?? 'Home' }} | Kursus Angkasa</title>
    @isset($course)
     <meta name="description" content="{{ Str::of($course->course_desc)->limit(155) }}">
    @endisset
