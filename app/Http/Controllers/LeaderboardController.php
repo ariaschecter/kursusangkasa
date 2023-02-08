@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
-class LeaderbordController extends Controller
+class LeaderboardController extends Controller
 {
     public function product() {
         $chart_options = [
@@ -23,7 +23,7 @@ class LeaderbordController extends Controller
         ];
 
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderbord.product', compact('chart1'));
+        return view('admin.leaderboard.product', compact('chart1'));
     }
 
     public function affiliate(Request $request) {
@@ -45,7 +45,7 @@ class LeaderbordController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderbord.affiliate', compact('chart1'));
+        return view('admin.leaderboard.affiliate', compact('chart1'));
     }
 
     public function course(Request $request) {
@@ -67,7 +67,7 @@ class LeaderbordController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderbord.course', compact('chart1'));
+        return view('admin.leaderboard.course', compact('chart1'));
     }
 
     public function teacher(Request $request) {
@@ -89,6 +89,6 @@ class LeaderbordController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderbord.teacher', compact('chart1'));
+        return view('admin.leaderboard.teacher', compact('chart1'));
     }
 }

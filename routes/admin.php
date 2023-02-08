@@ -7,7 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\LeaderbordController;
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -34,11 +34,11 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/course-acces', 'index')->name('admin.course_acces.index');
     });
 
-    Route::controller(LeaderbordController::class)->group(function () {
-        Route::get('/leaderbord/product', 'product')->name('admin.leaderbord.product');
-        Route::get('/leaderbord/affiliate', 'affiliate')->name('admin.leaderbord.affiliate');
-        Route::get('/leaderbord/course', 'course')->name('admin.leaderbord.course');
-        Route::get('/leaderbord/teacher', 'teacher')->name('admin.leaderbord.teacher');
+    Route::controller(LeaderboardController::class)->group(function () {
+        Route::get('/leaderboard/product', 'product')->name('admin.leaderboard.product');
+        Route::get('/leaderboard/affiliate', 'affiliate')->name('admin.leaderboard.affiliate');
+        Route::get('/leaderboard/course', 'course')->name('admin.leaderboard.course');
+        Route::get('/leaderboard/teacher', 'teacher')->name('admin.leaderboard.teacher');
     });
 
     Route::controller(CourseController::class)->group(function () {
