@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseAccesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\LeaderbordController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -31,6 +32,13 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
 
     Route::controller(CourseAccesController::class)->group(function () {
         Route::get('/course-acces', 'index')->name('admin.course_acces.index');
+    });
+
+    Route::controller(LeaderbordController::class)->group(function () {
+        Route::get('/leaderbord/product', 'product')->name('admin.leaderbord.product');
+        Route::get('/leaderbord/affiliate', 'affiliate')->name('admin.leaderbord.affiliate');
+        Route::get('/leaderbord/course', 'course')->name('admin.leaderbord.course');
+        Route::get('/leaderbord/teacher', 'teacher')->name('admin.leaderbord.teacher');
     });
 
     Route::controller(CourseController::class)->group(function () {

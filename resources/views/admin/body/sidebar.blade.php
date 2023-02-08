@@ -28,6 +28,19 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Leaderbord</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.leaderbord.product') }}">Product</a></li>
+                        <li><a href="{{ route('admin.leaderbord.affiliate') }}">Affiliate</a></li>
+                        <li><a href="{{ route('admin.leaderbord.course') }}">Course Rating</a></li>
+                        <li><a href="{{ route('admin.leaderbord.teacher') }}">Teacher Rating</a></li>
+                    </ul>
+                </li>
+
                 <li class="menu-title">Course</li>
 
                 <li>

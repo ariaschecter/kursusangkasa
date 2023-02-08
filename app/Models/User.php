@@ -40,6 +40,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Review::class, 'user_id', 'id');
     }
 
+    public function affiliate() {
+        return $this->belongsTo(static::class, 'affiliate_id');
+    }
+
 
 
     /**
