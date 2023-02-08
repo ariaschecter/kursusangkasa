@@ -26,7 +26,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Total Order</p>
-                                <h4 class="mb-2">{{ count(\App\Models\Payment::get()) }} Orders</h4>
+                                <h4 class="mb-2">{{ count(\App\Models\Order::get()) }} Orders</h4>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -43,10 +43,10 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Order Pending</p>
-                                <h4 class="mb-2">{{ count(\App\Models\Payment::where('payment_status', 'PENDING')->get()) }} Pending</h4>
+                                <h4 class="mb-2">{{ count(\App\Models\Order::where('order_status', 'ORDER')->get()) }} Pending</h4>
                             </div>
                             <div class="avatar-sm">
-                                <span class="avatar-title bg-light text-warning rounded-3">
+                                <span class="avatar-title bg-light text-danger rounded-3">
                                     <i class="ri-book-2-line font-size-24"></i>
                                 </span>
                             </div>
@@ -60,7 +60,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Order Success</p>
-                                <h4 class="mb-2">{{ count(\App\Models\Payment::where('payment_status', 'SUCCESS')->get()) }} Success</h4>
+                                <h4 class="mb-2">{{ count(\App\Models\Order::where('order_status', 'PAY')->get()) }} Payed</h4>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-success rounded-3">
@@ -76,11 +76,11 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Order Cancel</p>
-                                <h4 class="mb-2">{{ count(\App\Models\Payment::where('payment_status', 'WRONG')->get()) }} Cancel</h4>
+                                <p class="text-truncate font-size-14 mb-2">Payment Confirm</p>
+                                <h4 class="mb-2">{{ count(\App\Models\Payment::where('payment_status', '!=', 'PENDING')->get()) }} Confirm</h4>
                             </div>
                             <div class="avatar-sm">
-                                <span class="avatar-title bg-light text-danger rounded-3">
+                                <span class="avatar-title bg-light text-info rounded-3">
                                     <i class="ri-book-2-line font-size-24"></i>
                                 </span>
                             </div>
