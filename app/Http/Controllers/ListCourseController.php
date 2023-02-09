@@ -10,7 +10,8 @@ use Illuminate\Support\Str;
 class ListCourseController extends Controller
 {
     public function teacher_create(Course $course) {
-        return view('teacher.list_course.create', compact('course'));
+        $title = 'Add List Course';
+        return view('teacher.list_course.create', compact('course', 'title'));
     }
 
     public function teacher_store(Request $request, Course $course) {
@@ -34,7 +35,8 @@ class ListCourseController extends Controller
 
     public function teacher_edit(ListCourse $listcourse) {
         $course = $listcourse->course;
-        return view('teacher.list_course.edit', compact('listcourse', 'course'));
+        $title = 'Edit List Course';
+        return view('teacher.list_course.edit', compact('listcourse', 'course', 'title'));
     }
 
     public function teacher_update(Request $request, ListCourse $listcourse) {
