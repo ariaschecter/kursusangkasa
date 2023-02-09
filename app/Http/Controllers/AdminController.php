@@ -11,11 +11,13 @@ class AdminController extends Controller
 {
     public function user_index() {
         $users = User::orderBy('username', 'ASC')->get();
-        return view('admin.user.index', compact('users'));
+        $title = 'All User';
+        return view('admin.user.index', compact('users', 'title'));
     }
 
     public function teacher_index() {
         $teachers = Teacher::with('user')->get();
-        return view('admin.teacher.index', compact('teachers'));
+        $title = 'All Teacher';
+        return view('admin.teacher.index', compact('teachers', 'title'));
     }
 }

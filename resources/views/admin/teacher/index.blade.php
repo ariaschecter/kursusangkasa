@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $teacher->user->username }}</td>
-                                            <td><a target="_blank" href="mailto:{{ $teacher->user->email }}">{{ $teacher->user->email }}</a></td>
+                                            <td><a target="_blank" href="{{ route('admin.mail.user', ['email' => $teacher->user->email]) }}">{{ $teacher->user->email }}</a></td>
                                             <td><a target="_blank" href="{{ 'https://wa.me/' . $teacher->user->wa_number }}">{{ $teacher->user->wa_number }}</a></td>
                                             <td>
                                                 <a href="{{ route('admin.user.edit', $teacher->user->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
