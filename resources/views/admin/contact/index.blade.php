@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $contact->contact_name }}</td>
-                                        <td><a href="mailto:{{ $contact->contact_email }}">{{ $contact->contact_email }}</a></td>
+                                        <td><a href="{{ route('admin.mail.index', ['email' => $contact->contact_email]) }}">{{ $contact->contact_email }}</a></td>
                                         <td>{{ $contact->contact_subject }}</td>
                                         <td>{{ $contact->contact_message }}</td>
                                         <td>{{ \Carbon\Carbon::parse($contact->created_at)->format('d M Y') }}</td>
