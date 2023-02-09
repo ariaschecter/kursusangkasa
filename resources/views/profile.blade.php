@@ -79,7 +79,7 @@
 
 
                     <div class="row mb-3">
-                        <label for="password" class="col-sm-2 col-form-label">Password <span class="badge rounded-pill bg-info">Optional</span></label>
+                        <label for="password" class="col-sm-2 col-form-label">New Password <span class="badge rounded-pill bg-info">Optional</span></label>
                         <div class="col-sm-10">
                             <input name="password" class="form-control" type="password" id="password">
                             @error('password')
