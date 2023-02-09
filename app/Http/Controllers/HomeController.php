@@ -28,12 +28,14 @@ class HomeController extends Controller
         $all_reviews = Review::all();
         $youtubes = Youtube::latest()->limit(3)->get();
         $faqs = Faq::all();
-        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'testimonis', 'youtubes', 'all_reviews', 'faqs'));
+        $title = 'Home';
+        return view('frontend.index', compact('setting', 'categories', 'popular', 'latest_course', 'testimonis', 'youtubes', 'all_reviews', 'faqs', 'title'));
     }
 
     public function course_index() {
         $courses = Course::with('category', 'teacher.user')->where('course_status', 'ACTIVE')->orderBy('course_name', 'ASC')->paginate(9);
-        return view('frontend.course.index', compact('courses'));
+        $title = 'All Course';
+        return view('frontend.course.index', compact('courses', 'title'));
     }
 
     public function course_show(Course $course) {
@@ -41,22 +43,26 @@ class HomeController extends Controller
         $sub_course = SubCourse::where('course_id', $course->id)->orderBy('sub_course_no', 'ASC')->first();
         $list_course = ListCourse::where('sub_course_id', $sub_course->id)->first();
         $relateds = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->limit(5)->get();
-        return view('frontend.course.show', compact('course', 'relateds', 'list_course'));
+        $title = $course->course_name;
+        return view('frontend.course.show', compact('course', 'relateds', 'list_course', 'title'));
     }
 
     public function category_index() {
         $categories = Category::orderBy('category_name', 'ASC')->paginate(6);
-        return view('frontend.category.index', compact('categories'));
+        $title = 'All Category';
+        return view('frontend.category.index', compact('categories', 'title'));
     }
 
     public function category_show(Category $category) {
         $courses = Course::with('teacher.user')->where('category_id', $category->id)->where('course_status', 'ACTIVE')->orderBy('course_name', 'ASC')->paginate(9);
-        return view('frontend.category.show', compact('category', 'courses'));
+        $title = $category->category_name;
+        return view('frontend.category.show', compact('category', 'courses', 'title'));
     }
 
     public function teacher_show(User $user) {
         $teacher = Teacher::with('user', 'course')->findOrFail($user->id);
-        return view('frontend.teacher.show', compact('teacher'));
+        $title = $user->name;
+        return view('frontend.teacher.show', compact('teacher', 'title'));
     }
 
     public function about_index() {
@@ -65,11 +71,13 @@ class HomeController extends Controller
         $students = count(User::where('role', 'USER')->get());
         $teachers = count(User::where('role', 'TEACHER')->get());
         $reviews = Review::with('user')->get();
-        return view('frontend.about.index', compact('payments', 'courses', 'students', 'teachers', 'reviews'));
+        $title = 'About Us';
+        return view('frontend.about.index', compact('payments', 'courses', 'students', 'teachers', 'reviews', 'title'));
     }
 
     public function contact_index() {
-        return view('frontend.contact.index');
+        $title = 'Contact';
+        return view('frontend.contact.index', compact('title'));
     }
 
     public function contact_store(Request $request) {
