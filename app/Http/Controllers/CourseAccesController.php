@@ -9,6 +9,7 @@ class CourseAccesController extends Controller
 {
     public function index() {
         $course_acces = CourseAcces::with('course', 'user')->get();
-        return view('admin.course_acces.index', compact('course_acces'));
+        $title = 'Course Access';
+        return view('admin.course_acces.index', compact('course_acces', 'title'));
     }
 }
