@@ -1,3 +1,7 @@
+@php
+    $title = 'Verify Email';
+@endphp
+
 @extends('frontend.frontend_master')
 
 @section('frontend')

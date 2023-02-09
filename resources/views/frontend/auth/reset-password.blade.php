@@ -1,3 +1,7 @@
+@php
+    $title = 'Reset Password';
+@endphp
+
 @extends('frontend.frontend_master')
 
 @section('frontend')

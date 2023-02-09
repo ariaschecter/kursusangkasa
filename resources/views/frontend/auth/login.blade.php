@@ -1,3 +1,7 @@
+@php
+    $title = 'Login Page';
+@endphp
+
 @extends('frontend.frontend_master')
 
 @section('frontend')

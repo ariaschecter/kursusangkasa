@@ -1,3 +1,7 @@
+@php
+    $title = 'Register Page';
+@endphp
+
 @extends('frontend.frontend_master')
 
 @section('frontend')

@@ -1,3 +1,7 @@
+@php
+    $title = 'Teacher Register';
+@endphp
+
 @extends('frontend.frontend_master')
 
 @section('frontend')
