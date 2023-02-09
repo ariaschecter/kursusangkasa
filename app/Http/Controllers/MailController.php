@@ -10,16 +10,19 @@ use Mail;
 class MailController extends Controller
 {
     public function index() {
-        return view('admin.mail.index');
+        $title = 'Custom Mail';
+        return view('admin.mail.index', compact('title'));
     }
 
     public function user() {
         $users = User::orderBy('email', 'ASC')->get();
-        return view('admin.mail.user', compact('users'));
+        $title = 'User Mail';
+        return view('admin.mail.user', compact('users', 'title'));
     }
 
     public function broadcast() {
-        return view('admin.mail.broadcast');
+        $title = 'Broadcast Mail';
+        return view('admin.mail.broadcast', compact('title'));
     }
 
     public function store(Request $request) {
