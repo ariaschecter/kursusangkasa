@@ -12,11 +12,13 @@ class CategoryController extends Controller
 {
     public function index() {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        return view('admin.category.index', compact('categories'));
+        $title = 'All Category';
+        return view('admin.category.index', compact('categories', 'title'));
     }
 
     public function create() {
-        return view('admin.category.create');
+        $title = 'Add Category';
+        return view('admin.category.create', compact('title'));
     }
 
     public function store(Request $request) {
@@ -42,7 +44,8 @@ class CategoryController extends Controller
     }
 
     public function edit(Category $category) {
-        return view('admin.category.edit', compact('category'));
+        $title = 'Edit Category';
+        return view('admin.category.edit', compact('category', 'title'));
     }
 
     public function update(Request $request, Category $category) {
