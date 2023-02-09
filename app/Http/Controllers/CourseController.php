@@ -21,18 +21,21 @@ class CourseController extends Controller
 {
     public function index() {
         $courses = Course::orderBy('course_admin_status', 'DESC')->get();
-        return view('admin.course.index', compact('courses'));
+        $title = 'All Course';
+        return view('admin.course.index', compact('courses', 'title'));
     }
 
     public function show(Course $course) {
         $course = Course::with('sub_course.list_course')->findOrFail($course->id);
-        return view('admin.course.show', compact('course'));
+        $title = $course->course_name;
+        return view('admin.course.show', compact('course', 'title'));
     }
 
     public function create() {
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $teachers = User::where('role', 'TEACHER')->orderBy('name', 'ASC')->get();
-        return view('admin.course.create', compact('categories', 'teachers'));
+        $title = 'Add Course';
+        return view('admin.course.create', compact('categories', 'teachers', 'title'));
     }
 
     public function store(Request $request) {
@@ -72,7 +75,8 @@ class CourseController extends Controller
     public function edit(Course $course) {
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $teachers = User::where('role', 'TEACHER')->orderBy('name', 'ASC')->get();
-        return view('admin.course.edit', compact('course', 'categories', 'teachers'));
+        $title = 'Edit Course';
+        return view('admin.course.edit', compact('course', 'categories', 'teachers', 'title'));
     }
 
     public function update(Request $request, Course $course) {
@@ -133,22 +137,26 @@ class CourseController extends Controller
     public function detail(Course $course) {
         $payment = Payment::where('course_id', $course->id);
         $course_acces = CourseAcces::where('course_id', $course->id)->get();
-        return view('admin.course.details', compact('payment', 'course_acces'));
+        $title = $course->course_name . ' Details';
+        return view('admin.course.details', compact('payment', 'course_acces', 'title'));
     }
 
     public function teacher_index() {
         $courses = Course::orderBy('created_at', 'DESC')->where('teacher_id', Auth::id())->get();
-        return view('teacher.course.index', compact('courses'));
+        $title = 'All Course';
+        return view('teacher.course.index', compact('courses', 'title'));
     }
 
     public function teacher_show(Course $course) {
         $course = Course::with('sub_course.list_course')->where('teacher_id', Auth::id())->findOrFail($course->id);
-        return view('teacher.course.show', compact('course'));
+        $title = $course->course_name;
+        return view('teacher.course.show', compact('course', 'title'));
     }
 
     public function teacher_create() {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        return view('teacher.course.create', compact('categories'));
+        $title = 'Add Course';
+        return view('teacher.course.create', compact('categories', 'title'));
     }
 
     public function teacher_store(Request $request) {
@@ -187,7 +195,8 @@ class CourseController extends Controller
 
     public function teacher_edit(Course $course) {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        return view('teacher.course.edit', compact('course', 'categories'));
+        $title = 'Edit Course';
+        return view('teacher.course.edit', compact('course', 'categories', 'title'));
     }
 
     public function teacher_update(Request $request, Course $course) {
@@ -245,7 +254,8 @@ class CourseController extends Controller
 
     public function user_index() {
         $course_accesses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
-        return view('user.course.index', compact('course_accesses'));
+        $title = 'All Course';
+        return view('user.course.index', compact('course_accesses', 'title'));
     }
 
     public function user_continue(Course $course) {
@@ -313,11 +323,11 @@ class CourseController extends Controller
                         $next = false;
                     }
                     $review = Review::where('course_id', $course->id)->where('user_id', Auth::id())->first();
-                    return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev', 'review'));
+                    $title = $list_course->list_course_name;
+                    return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev', 'review', 'title'));
                 }
             }
         }
-        // return view('user.course.access', compact('course', 'acces', 'list_course', 'next', 'prev'));
     }
 
     public function user_prev(Course $course, $listcourse) {
