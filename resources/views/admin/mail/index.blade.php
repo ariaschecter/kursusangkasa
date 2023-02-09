@@ -36,7 +36,7 @@
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input name="email" class="form-control" type="email" value="{{ old('email') }}" id="email">
+                            <input name="email" class="form-control" type="email" value="{{ request()->email }}" id="email">
                             @error('email')
                                 <span class="text-danger"> {{ $message }}</span>
                             @enderror
