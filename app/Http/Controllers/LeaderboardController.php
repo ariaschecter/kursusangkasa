@@ -23,7 +23,8 @@ class LeaderboardController extends Controller
         ];
 
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderboard.product', compact('chart1'));
+        $title = 'Leaderboard Product';
+        return view('admin.leaderboard.product', compact('chart1', 'title'));
     }
 
     public function affiliate(Request $request) {
@@ -45,7 +46,8 @@ class LeaderboardController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderboard.affiliate', compact('chart1'));
+        $title = 'Leaderboard Affiliate';
+        return view('admin.leaderboard.affiliate', compact('chart1', 'title'));
     }
 
     public function course(Request $request) {
@@ -67,7 +69,8 @@ class LeaderboardController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderboard.course', compact('chart1'));
+        $title = 'Leaderboard Course Rating';
+        return view('admin.leaderboard.course', compact('chart1', 'title'));
     }
 
     public function teacher(Request $request) {
@@ -89,6 +92,7 @@ class LeaderboardController extends Controller
             $chart_options['filter_days'] = $request->day;
         }
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.leaderboard.teacher', compact('chart1'));
+        $title = 'Leaderboard Teacher';
+        return view('admin.leaderboard.teacher', compact('chart1', 'title'));
     }
 }
