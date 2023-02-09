@@ -35,24 +35,28 @@ class DashboardController extends Controller
     }
 
     public function admin_dashboard() {
-        return view('admin.index');
+        $title = 'Dashboard';
+        return view('admin.index', compact('title'));
     }
 
     public function teacher_dashboard() {
         $courses = Course::where('teacher_id', Auth::id())->get();
         $wallet = Wallet::findOrFail(Auth::id());
-        return view('teacher.index', compact('courses', 'wallet'));
+        $title = 'Dashboard';
+        return view('teacher.index', compact('courses', 'wallet', 'title'));
     }
 
     public function user_dashboard() {
         $course_accesses = CourseAcces::with('course')->where('user_id', Auth::id())->orderBy('updated_at', 'DESC')->get();
         $courses = Course::latest()->get();
-        return view('user.index', compact('course_accesses', 'courses'));
+        $title = 'Dashboard';
+        return view('user.index', compact('course_accesses', 'courses', 'title'));
     }
 
     public function profile() {
         $user = Auth::user();
-        return view('profile', compact('user'));
+        $title = 'Profile';
+        return view('profile', compact('user', 'title'));
     }
 
     public function profile_update(Request $request, User $user) {
