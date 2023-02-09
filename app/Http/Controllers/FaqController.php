@@ -9,11 +9,13 @@ class FaqController extends Controller
 {
     public function index() {
         $faqs = Faq::all();
-        return view('admin.faq.index', compact('faqs'));
+        $title = 'All Faq';
+        return view('admin.faq.index', compact('faqs', 'title'));
     }
 
     public function create() {
-        return view('admin.faq.create');
+        $title = 'Add Faq';
+        return view('admin.faq.create', compact('title'));
     }
 
     public function store(Request $request) {
@@ -32,7 +34,8 @@ class FaqController extends Controller
     }
 
     public function edit(Faq $faq) {
-        return view('admin.faq.edit', compact('faq'));
+        $title = 'Edit Faq';
+        return view('admin.faq.edit', compact('faq', 'title'));
     }
 
     public function update(Request $request, Faq $faq) {
