@@ -43,7 +43,7 @@ class HomeController extends Controller
         $sub_course = SubCourse::where('course_id', $course->id)->orderBy('sub_course_no', 'ASC')->first();
         $list_course = ListCourse::where('sub_course_id', $sub_course->id)->first();
         $relateds = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->limit(5)->get();
-        $title = $course->course_name;
+        $title = $course->course_name . ' Course';
         return view('frontend.course.show', compact('course', 'relateds', 'list_course', 'title'));
     }
 
@@ -55,13 +55,13 @@ class HomeController extends Controller
 
     public function category_show(Category $category) {
         $courses = Course::with('teacher.user')->where('category_id', $category->id)->where('course_status', 'ACTIVE')->orderBy('course_name', 'ASC')->paginate(9);
-        $title = $category->category_name;
+        $title = $category->category_name . ' Category';
         return view('frontend.category.show', compact('category', 'courses', 'title'));
     }
 
     public function teacher_show(User $user) {
         $teacher = Teacher::with('user', 'course')->findOrFail($user->id);
-        $title = $user->name;
+        $title = $user->name . ' Teacher';
         return view('frontend.teacher.show', compact('teacher', 'title'));
     }
 
