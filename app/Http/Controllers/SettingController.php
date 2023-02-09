@@ -13,12 +13,14 @@ class SettingController extends Controller
     public function setting() {
         $admins = User::where('role', 'ADMIN')->orderBy('name', 'ASC')->get();
         $setting = Setting::first();
-        return view('admin.setting.index', compact('admins', 'setting'));
+        $title = 'Setting';
+        return view('admin.setting.index', compact('admins', 'setting', 'title'));
     }
 
     public function image() {
         $setting = Setting::first();
-        return view('admin.setting.image', compact('setting'));
+        $title = 'Image Setting';
+        return view('admin.setting.image', compact('setting', 'title'));
     }
 
     public function setting_update(Request $request, Setting $setting) {

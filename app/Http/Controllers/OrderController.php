@@ -12,12 +12,14 @@ class OrderController extends Controller
 {
     public function index() {
         $orders = Order::with('user', 'course')->orderBy('order_status', 'ASC')->get();
-        return view('admin.order.index', compact('orders'));
+        $title = 'All Order';
+        return view('admin.order.index', compact('orders', 'title'));
     }
 
     public function user_index() {
         $orders = Order::with('user', 'course')->where('user_id', Auth::id())->orderBy('order_status', 'ASC')->get();
-        return view('user.order.index', compact('orders'));
+        $title = 'My Order';
+        return view('user.order.index', compact('orders', 'title'));
     }
 
     public function create(Course $course) {

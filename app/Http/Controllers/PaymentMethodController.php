@@ -9,11 +9,13 @@ class PaymentMethodController extends Controller
 {
     public function index() {
         $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
-        return view('admin.payment_method.index', compact('payment_methods'));
+        $title = 'All Payment Method';
+        return view('admin.payment_method.index', compact('payment_methods', 'title'));
     }
 
     public function create() {
-        return view('admin.payment_method.create');
+        $title = 'Add Payment Method';
+        return view('admin.payment_method.create', compact('title'));
     }
 
     public function store(Request $request) {
@@ -33,7 +35,8 @@ class PaymentMethodController extends Controller
     }
 
     public function edit(PaymentMethod $payment_method) {
-        return view('admin.payment_method.edit', compact('payment_method'));
+        $title = 'Edit Payment Method';
+        return view('admin.payment_method.edit', compact('payment_method', 'title'));
     }
 
     public function update(Request $request, PaymentMethod $payment_method) {

@@ -11,11 +11,13 @@ class YoutubeController extends Controller
 {
     public function index() {
         $youtubes = Youtube::latest()->get();
-        return view('admin.youtube.index', compact('youtubes'));
+        $title = 'All Youtube Video';
+        return view('admin.youtube.index', compact('youtubes', 'title'));
     }
 
     public function create() {
-        return view('admin.youtube.create');
+        $title = 'Add Youtube Video';
+        return view('admin.youtube.create', compact('title'));
     }
 
     public function store(Request $request) {
@@ -40,7 +42,8 @@ class YoutubeController extends Controller
     }
 
     public function edit(Youtube $youtube) {
-        return view('admin.youtube.edit', compact('youtube'));
+        $title = 'Edit Youtube Video';
+        return view('admin.youtube.edit', compact('youtube', 'title'));
     }
 
     public function update(Request $request, Youtube $youtube) {

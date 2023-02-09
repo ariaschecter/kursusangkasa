@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 class SubCourseController extends Controller
 {
     public function teacher_create(Course $course) {
-        return view('teacher.sub_course.create', compact('course'));
+        $title = 'Add Sub Course';
+        return view('teacher.sub_course.create', compact('course', 'title'));
     }
 
     public function teacher_store(Request $request, Course $course) {
@@ -34,7 +35,8 @@ class SubCourseController extends Controller
 
     public function teacher_edit(SubCourse $subcourse) {
         $subcourse = SubCourse::with('course')->findOrFail($subcourse->id);
-        return view('teacher.sub_course.edit', compact('subcourse'));
+        $title = 'Edit Sub Course';
+        return view('teacher.sub_course.edit', compact('subcourse', 'title'));
     }
 
     public function teacher_update(Request $request, SubCourse $subcourse) {

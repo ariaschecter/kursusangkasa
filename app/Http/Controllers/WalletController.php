@@ -15,7 +15,8 @@ class WalletController extends Controller
 {
     public function wallet_all() {
         $wallets = Wallet::orderBy('wallet_amount', 'DESC')->get();
-        return view('admin.wallet.allwallet', compact('wallets'));
+        $title = 'All Wallet';
+        return view('admin.wallet.allwallet', compact('wallets', 'title'));
     }
 
     public function index() {
@@ -37,13 +38,15 @@ class WalletController extends Controller
         }
 
         $affiliate = count(User::where('affiliate_id', Auth::id())->get());
-        return view('admin.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate'));
+        $title = 'My Wallet';
+        return view('admin.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate', 'title'));
     }
 
     public function method() {
         $wallet = Wallet::findOrFail(Auth::id());
         $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
-        return view('admin.wallet.method', compact('wallet', 'payment_methods'));
+        $title = 'Withdraw Method';
+        return view('admin.wallet.method', compact('wallet', 'payment_methods', 'title'));
     }
 
     public function update(Request $request, Wallet $wallet) {
@@ -73,7 +76,8 @@ class WalletController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        return view('admin.wallet.withdraw', compact('wallet'));
+        $title = 'All Withdraw';
+        return view('admin.wallet.withdraw', compact('wallet', 'title'));
     }
 
     public function withdraw_store(Request $request) {
@@ -124,13 +128,15 @@ class WalletController extends Controller
         }
 
         $affiliate = count(User::where('affiliate_id', Auth::id())->get());
-        return view('teacher.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate'));
+        $title = 'My Wallet';
+        return view('teacher.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate', 'title'));
     }
 
     public function teacher_method() {
         $wallet = Wallet::findOrFail(Auth::id());
         $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
-        return view('teacher.wallet.method', compact('wallet', 'payment_methods'));
+        $title = 'Withdraw Method';
+        return view('teacher.wallet.method', compact('wallet', 'payment_methods', 'title'));
     }
 
     public function teacher_update(Request $request, Wallet $wallet) {
@@ -160,7 +166,8 @@ class WalletController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        return view('teacher.wallet.withdraw', compact('wallet'));
+        $title = 'Withdraw';
+        return view('teacher.wallet.withdraw', compact('wallet', 'title'));
     }
 
     public function teacher_withdraw_store(Request $request) {
@@ -211,13 +218,15 @@ class WalletController extends Controller
         }
 
         $affiliate = count(User::where('affiliate_id', Auth::id())->get());
-        return view('user.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate'));
+        $title = 'My Wallet';
+        return view('user.wallet.index', compact('wallet', 'setting', 'in', 'out', 'affiliate', 'title'));
     }
 
     public function user_method() {
         $wallet = Wallet::findOrFail(Auth::id());
         $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
-        return view('user.wallet.method', compact('wallet', 'payment_methods'));
+        $title = 'Withdraw Method';
+        return view('user.wallet.method', compact('wallet', 'payment_methods', 'title'));
     }
 
     public function user_update(Request $request, Wallet $wallet) {
@@ -247,7 +256,8 @@ class WalletController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        return view('user.wallet.withdraw', compact('wallet'));
+        $title = 'Withdraw';
+        return view('user.wallet.withdraw', compact('wallet', 'title'));
     }
 
     public function user_withdraw_store(Request $request) {

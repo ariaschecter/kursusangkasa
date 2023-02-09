@@ -11,11 +11,13 @@ class TestimoniController extends Controller
 {
     public function index() {
         $testimonis = Testimoni::all();
-        return view('admin.testimoni.index', compact('testimonis'));
+        $title = 'All Testimoni';
+        return view('admin.testimoni.index', compact('testimonis', 'title'));
     }
 
     public function create() {
-        return view('admin.testimoni.create');
+        $title = 'Add Testimoni';
+        return view('admin.testimoni.create', compact('title'));
     }
 
     public function store(Request $request) {
@@ -40,7 +42,8 @@ class TestimoniController extends Controller
     }
 
     public function edit(Testimoni $testimoni) {
-        return view('admin.testimoni.edit', compact('testimoni'));
+        $title = 'Edit Testimoni';
+        return view('admin.testimoni.edit', compact('testimoni', 'title'));
     }
 
     public function update(Request $request, Testimoni $testimoni) {

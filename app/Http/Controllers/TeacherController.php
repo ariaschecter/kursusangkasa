@@ -10,7 +10,8 @@ class TeacherController extends Controller
 {
     public function index() {
         $teacher = Teacher::findOrFail(Auth::id());
-        return view('teacher.teacher.index', compact('teacher'));
+        $title = 'My Bio';
+        return view('teacher.teacher.index', compact('teacher', 'title'));
     }
 
     public function update(Request $request) {

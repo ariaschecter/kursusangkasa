@@ -10,12 +10,14 @@ class WithdrawController extends Controller
 {
     public function index() {
         $wallet_histories = WalletHistory::orderBy('wallet_history_status', 'ASC')->orderBy('created_at', 'ASC')->get();
-        return view('admin.withdraw.index', compact('wallet_histories'));
+        $title = 'All Withdraw';
+        return view('admin.withdraw.index', compact('wallet_histories', 'title'));
     }
 
     public function edit(WalletHistory $wallet_history) {
         $history = WalletHistory::with('wallet')->findOrFail($wallet_history->id);
-        return view('admin.withdraw.edit', compact('history'));
+        $title = 'Withdraw Confirmation';
+        return view('admin.withdraw.edit', compact('history', 'title'));
     }
 
     public function Update(Request $request, WalletHistory $wallet_history) {

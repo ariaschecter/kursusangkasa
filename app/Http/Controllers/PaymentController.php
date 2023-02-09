@@ -19,7 +19,8 @@ class PaymentController extends Controller
 {
     public function index() {
         $payments = Payment::with('user', 'course', 'payment_method')->orderBy('payment_status', 'ASC')->get();
-        return view('admin.payment.index', compact('payments'));
+        $title = 'All Payment';
+        return view('admin.payment.index', compact('payments', 'title'));
     }
 
     public function accept(Payment $payment) {
@@ -113,12 +114,14 @@ class PaymentController extends Controller
 
     public function user_index() {
         $payments = Payment::with('user', 'course', 'payment_method')->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        return view('user.payment.index', compact('payments'));
+        $title = 'My Payment';
+        return view('user.payment.index', compact('payments', 'title'));
     }
 
     public function user_create() {
         $orders = Order::with('course')->where('user_id', Auth::id())->where('order_status', 'ORDER')->get();
         $payment_methods = PaymentMethod::orderBy('payment_method', 'ASC')->get();
-        return view('user.payment.create', compact('orders', 'payment_methods'));
+        $title = 'Add Payment';
+        return view('user.payment.create', compact('orders', 'payment_methods', 'title'));
     }
 }
