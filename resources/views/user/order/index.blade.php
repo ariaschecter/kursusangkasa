@@ -53,7 +53,7 @@
                                         <td>{{ $order->order_status }}</td>
                                         <td>
                                             @if($order->order_status == 'ORDER')
-                                            <a href="{{ route('user.payment.create', ['order_ref' => $order->order_ref]) }}" class="btn btn-warning sm" title="Pay Order"><i class="ri-bank-card-line"></i></a>
+                                            <a href="{{ route('user.payment.create', ['order_ref' => $order->order_ref]) }}" class="btn btn-primary" title="Pay Order"><i class="ri-bank-card-line"></i></a>
                                             @endif
                                         </td>
                                     </tr>
