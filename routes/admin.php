@@ -84,6 +84,7 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
         Route::get('/user', 'user_index')->name('admin.user.index');
         Route::get('/teacher', 'teacher_index')->name('admin.teacher.index');
         Route::get('/user/edit/{user}', 'edit')->name('admin.user.edit');
+        Route::post('/user/edit/{user}', 'update')->name('admin.user.update');
         Route::get('/user/delete/{user}', 'destroy')->name('admin.user.delete');
     });
 
