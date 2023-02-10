@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->integer('course_acces_last')->default(1);
             $table->date('course_acces_subscribe')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
