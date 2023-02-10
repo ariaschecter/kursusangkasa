@@ -24,10 +24,12 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category', 'index')->name('admin.category.index');
         Route::get('/category/add', 'create')->name('admin.category.add');
+        Route::get('/category/archive', 'archive')->name('admin.category.archive');
         Route::post('/category/add', 'store')->name('admin.category.store');
         Route::get('/category/edit/{category}', 'edit')->name('admin.category.edit');
         Route::post('/category/edit/{category}', 'update')->name('admin.category.update');
         Route::get('/category/delete/{category}', 'destroy')->name('admin.category.delete');
+        Route::get('/category/restore/{category}', 'restore')->name('admin.category.restore');
     });
 
     Route::controller(CourseAccesController::class)->group(function () {
@@ -43,8 +45,10 @@ Route::middleware('auth', 'verified', 'admin')->prefix('admin/')->group(function
 
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course', 'index')->name('admin.course.index');
+        Route::get('/course/archive', 'archive')->name('admin.course.archive');
         Route::get('/course/add', 'create')->name('admin.course.add');
         Route::post('/course/add', 'store')->name('admin.course.store');
+        Route::get('/course/restore/{course}', 'restore')->name('admin.course.restore');
         Route::get('/course/show/{course}', 'show')->name('admin.course.show');
         Route::get('/course/edit/{course}', 'edit')->name('admin.course.edit');
         Route::post('/course/edit/{course}', 'update')->name('admin.course.update');

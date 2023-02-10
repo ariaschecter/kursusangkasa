@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Course;
+use App\Models\CourseAcces;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -77,11 +79,35 @@ class CategoryController extends Controller
     }
 
     public function destroy(Category $category) {
-        Storage::delete($category->category_picture);
+        $course = Course::where('category_id', $category->id);
+
+        foreach ($course->get() as $item) {
+            CourseAcces::where('course_id', $item->id)->delete();
+        }
+
+        $course->delete();
+
         $category->delete();
 
         $notification = [
             'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function archive() {
+        $categories = Category::onlyTrashed()->get();
+        $title = 'Category Archive';
+        return view('admin.category.archive', compact('categories', 'title'));
+    }
+
+    public function restore($category) {
+        Category::withTrashed()->find($category)->restore();
+
+        $notification = [
+            'message' => 'Category Restored Successfully',
             'alert-type' => 'success',
         ];
 

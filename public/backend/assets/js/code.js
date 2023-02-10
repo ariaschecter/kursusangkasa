@@ -73,6 +73,31 @@ $(function(){
     });
 });
 
+$(function(){
+    $(document).on('click','#restore',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Restore This Course?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Restore it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                'Restored!',
+                'Course has been Restored.',
+                'success'
+                )
+            }
+        })
+    });
+});
+
 $('.popup-image').magnificPopup({
     type: 'image',
     gallery: {

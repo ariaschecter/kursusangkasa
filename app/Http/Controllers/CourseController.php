@@ -123,7 +123,7 @@ class CourseController extends Controller
     }
 
     public function destroy(Course $course) {
-        Storage::delete($course->course_picture);
+        CourseAcces::where('course_id', $course->id)->delete();
         $course->delete();
 
         $notification = [
@@ -132,6 +132,26 @@ class CourseController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function archive() {
+        $courses = Course::onlyTrashed()->get();
+        $title = 'Course Archive';
+        return view('admin.course.archive', compact('courses', 'title'));
+    }
+
+    public function restore($course) {
+        Course::withTrashed()->find($course)->restore();
+        $restore = Course::findOrFail($course);
+        CourseAcces::withTrashed()->where('course_id', $course)->restore();
+        Category::withTrashed()->find($restore->category_id)->restore();
+
+        $notification = [
+            'message' => 'Course Restored Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.course.archive')->with($notification);
     }
 
     public function detail(Course $course) {
