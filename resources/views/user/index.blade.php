@@ -42,7 +42,7 @@
                                     @endforeach
 
                                     @if ($payed == false)
-                                        <div class="card col-3">
+                                        <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
                                             <a href="{{ route('home.course.show', $course->course_slug) }}"><img class="card-img-top" src="{{ asset('storage/' . $course->course_picture) }}" alt="Card image cap"></a>
                                             <div class="card-body">
                                                 <a href="{{ route('home.course.show', $course->course_slug) }}"><h5 class="card-title">{{ $course->course_name }}</h5></a>

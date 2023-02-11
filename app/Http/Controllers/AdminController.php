@@ -21,6 +21,23 @@ class AdminController extends Controller
         return view('admin.teacher.index', compact('teachers', 'title'));
     }
 
+    public function archive() {
+        $users = User::onlyTrashed()->get();
+        $title = 'User Archive';
+        return view('admin.user.archive', compact('users', 'title'));
+    }
+
+    public function restore($user) {
+        User::withTrashed()->find($user)->restore();
+
+        $notification = [
+            'message' => 'User Restored Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
     public function edit(User $user) {
         return view('admin.user.edit', compact('user'));
     }
@@ -38,5 +55,16 @@ class AdminController extends Controller
             'alert-type' => 'success',
         ];
         return redirect()->route('admin.user.index')->with($notification);
+    }
+
+    public function destroy(User $user) {
+        $user->delete();
+
+        $notification = [
+            'message' => 'User Deleted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

@@ -79,7 +79,7 @@ $(function(){
         var link = $(this).attr("href");
         Swal.fire({
             title: 'Are you sure?',
-            text: "Restore This Course?",
+            text: "Restore This Data?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -90,7 +90,7 @@ $(function(){
                 window.location.href = link
                 Swal.fire(
                 'Restored!',
-                'Course has been Restored.',
+                'Data has been Restored.',
                 'success'
                 )
             }

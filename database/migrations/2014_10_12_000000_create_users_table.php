@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('role')->default('USER');
             $table->string('affiliate_id')->default(1);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

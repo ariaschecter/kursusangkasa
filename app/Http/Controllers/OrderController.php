@@ -25,7 +25,9 @@ class OrderController extends Controller
 
     public function create(Course $course) {
         $acces = CourseAcces::where('course_id', $course->id)->where('user_id', Auth::id())->first();
-        $lifetime = $acces->course_acces_subscribe;
+
+        if ($acces) {
+            $lifetime = $acces->course_acces_subscribe;
 
         // Validate course access
         if ($lifetime != null) {
@@ -45,6 +47,7 @@ class OrderController extends Controller
                 'alert-type' => 'warning',
             ];
             return redirect()->route('user.course.index')->with($notification);
+        }
         }
 
         // Validate Order

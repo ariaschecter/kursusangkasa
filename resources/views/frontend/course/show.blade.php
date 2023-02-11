@@ -242,7 +242,7 @@
                               <h5 class="old-price">Rp. {{ number_format($course->price_old, 0) }}</h5>
                            </div>
                            <div class="course__video-discount">
-                              <span>{{ ($course->price_old-$course->price_new)/$course->price_old*100 }}% OFF</span>
+                              <span>{{ round(($course->price_old-$course->price_new)/$course->price_old*100, 1) }}% OFF</span>
                            </div>
                         </div>
                         <div class="course__video-content mb-35">

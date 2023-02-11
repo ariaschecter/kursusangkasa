@@ -21,7 +21,7 @@
 
         {{-- Start Table Category --}}
         <div>
-            {{-- <a href="{{ route('category.add', $city->city_slug) }}" class="btn btn-primary mb-2">Add User</a> --}}
+            <a href="{{ route('admin.user.archive') }}" class="btn btn-warning mb-2">Archive</a>
 
             <div class="row">
                 <div class="col-12">

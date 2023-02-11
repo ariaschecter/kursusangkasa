@@ -104,14 +104,21 @@
 
 
             <div class="offcamvas__bottom">
-               <div class="offcanvas__cta mt-30 mb-20">
-                  <h3 class="offcanvas__cta-title">Contact info</h3>
-                  <span>27 Division St, New York,</span>
-                  <span>+154 4808 84082 4830</span>
-                  <span>support@noxia.com</span>
-                  <span>Office Hours: 8AM - 5PM</span>
-                  <span>Sunday - Wekend Day</span>
-               </div>
+                @auth
+                <a href="{{ route('dashboard') }}" class="tp-btn">
+                   <span>Dashboard</span>
+                   <div class="transition"></div>
+                </a>
+                @else
+                <a href="{{ route('login') }}" class="tp-btn">
+                   <span>Login</span>
+                   <div class="transition"></div>
+                </a>
+                <a href="{{ route('register') }}" class="tp-btn">
+                   <span>Register</span>
+                   <div class="transition"></div>
+                </a>
+                @endauth
             </div>
          </div>
       </div>
