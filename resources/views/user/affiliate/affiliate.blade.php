@@ -21,7 +21,7 @@
 
             <div class="row mb-3">
                 <label for="affiliate" class="col-md-2 col-sm-12 col-form-label">Affiilate Link</label>
-                <div class="col-md-4 col-sm-8">
+                <div class="col-md-6 col-sm-8 mb-1">
                     <input name="affiliate" class="form-control" type="text" value="{{ route('register.affiliate', Auth::user()->username) }}" id="affiliate" readonly>
                 </div>
                 <div class="col-md-2 col-sm-4">
